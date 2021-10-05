@@ -1,4 +1,54 @@
-\documentclass{article}
+\documentclass{article}\usepackage[]{graphicx}\usepackage[]{color}
+% maxwidth is the original width if it is less than linewidth
+% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
 \usepackage{amsmath} %This allows me to use the align functionality.
                      %If you find yourself trying to replicate
                      %something you found online, ensure you're
@@ -11,6 +61,7 @@
 \bibliographystyle{apalike}%For the bibliography
 \usepackage[margin=0.5in]{geometry}
 \usepackage{float}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
 \noindent \textbf{MA 354: Data Analysis -- Fall 2021 -- Due 10/8 at 5p}\\%\\ gives you a new line
 \noindent \textbf{Homework 2:}\vspace{1em}\\
@@ -178,33 +229,37 @@ Simply, the Bernoulli distribution can be thought of as a model for the set of p
 
 Since the Bernoulli distribution is not cataloged by R, we have to introduce it into our calculations with the  following functions:
 
-<<>>=
-# Bernoulli PMF
-dbern<-function(x,prob){
-  if(prob<0 | prob>1){
-    errormsg <- "This function is only valid for success probabilities between 0 and 1."
-    stop(errormsg)
-  }
-  indicator <- rep(0, length(x))
-  indicator[x==0] <- 1 # indicator should be one if x=0
-  indicator[x==1] <- 1 # indicator should be one if x=1
-  fx <- (prob^x * (1-prob)^(1-x)) * indicator # PMF formula
-  return(fx)
-}
-# Bernoulli CDF
-pbern<-function(q, prob){
-  if(prob<0 | prob>1){
-    errormsg<-"This function is only valid for success probabilities between 0 and 1."
-    stop(errormsg)
-  }
-  indicator1 <- rep(1, length(q))
-  indicator1[q != 0] <- 0 #indicator should be zero if x!=0
-  indicator2 <- rep(1, length(q))
-  indicator2[q < 1] <- 0 #indicator should be zero if x<1
-  Fx <- (1-prob) * indicator1 + indicator2
-  return(Fx)
-}
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# Bernoulli PMF}
+\hlstd{dbern}\hlkwb{<-}\hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{,}\hlkwc{prob}\hlstd{)\{}
+  \hlkwa{if}\hlstd{(prob}\hlopt{<}\hlnum{0} \hlopt{|} \hlstd{prob}\hlopt{>}\hlnum{1}\hlstd{)\{}
+    \hlstd{errormsg} \hlkwb{<-} \hlstr{"This function is only valid for success probabilities between 0 and 1."}
+    \hlkwd{stop}\hlstd{(errormsg)}
+  \hlstd{\}}
+  \hlstd{indicator} \hlkwb{<-} \hlkwd{rep}\hlstd{(}\hlnum{0}\hlstd{,} \hlkwd{length}\hlstd{(x))}
+  \hlstd{indicator[x}\hlopt{==}\hlnum{0}\hlstd{]} \hlkwb{<-} \hlnum{1} \hlcom{# indicator should be one if x=0}
+  \hlstd{indicator[x}\hlopt{==}\hlnum{1}\hlstd{]} \hlkwb{<-} \hlnum{1} \hlcom{# indicator should be one if x=1}
+  \hlstd{fx} \hlkwb{<-} \hlstd{(prob}\hlopt{^}\hlstd{x} \hlopt{*} \hlstd{(}\hlnum{1}\hlopt{-}\hlstd{prob)}\hlopt{^}\hlstd{(}\hlnum{1}\hlopt{-}\hlstd{x))} \hlopt{*} \hlstd{indicator} \hlcom{# PMF formula}
+  \hlkwd{return}\hlstd{(fx)}
+\hlstd{\}}
+\hlcom{# Bernoulli CDF}
+\hlstd{pbern}\hlkwb{<-}\hlkwa{function}\hlstd{(}\hlkwc{q}\hlstd{,} \hlkwc{prob}\hlstd{)\{}
+  \hlkwa{if}\hlstd{(prob}\hlopt{<}\hlnum{0} \hlopt{|} \hlstd{prob}\hlopt{>}\hlnum{1}\hlstd{)\{}
+    \hlstd{errormsg}\hlkwb{<-}\hlstr{"This function is only valid for success probabilities between 0 and 1."}
+    \hlkwd{stop}\hlstd{(errormsg)}
+  \hlstd{\}}
+  \hlstd{indicator1} \hlkwb{<-} \hlkwd{rep}\hlstd{(}\hlnum{1}\hlstd{,} \hlkwd{length}\hlstd{(q))}
+  \hlstd{indicator1[q} \hlopt{!=} \hlnum{0}\hlstd{]} \hlkwb{<-} \hlnum{0} \hlcom{#indicator should be zero if x!=0}
+  \hlstd{indicator2} \hlkwb{<-} \hlkwd{rep}\hlstd{(}\hlnum{1}\hlstd{,} \hlkwd{length}\hlstd{(q))}
+  \hlstd{indicator2[q} \hlopt{<} \hlnum{1}\hlstd{]} \hlkwb{<-} \hlnum{0} \hlcom{#indicator should be zero if x<1}
+  \hlstd{Fx} \hlkwb{<-} \hlstd{(}\hlnum{1}\hlopt{-}\hlstd{prob)} \hlopt{*} \hlstd{indicator1} \hlopt{+} \hlstd{indicator2}
+  \hlkwd{return}\hlstd{(Fx)}
+\hlstd{\}}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (b)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -229,63 +284,68 @@ pbern<-function(q, prob){
 	
 	\textbf{Solutions:} We can plot the PMF of the Bernoulli distribution for different parameters.Note that the initially chosen parameters were $\mathrm{p =0.4}$ and $\mathrm{p=0.6}$. Let us also look at the PMF when the parameter values are 0.5, and 0.8.
 	
-<<P3fig_1, eval=FALSE>>=
-library(ggplot2)
-library(patchwork)
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{library}\hlstd{(ggplot2)}
+\hlkwd{library}\hlstd{(patchwork)}
 
-plot.df <- data.frame(x = (-1:2),
-                      f1 = dbern(x = (-1:2), prob = 0.4),
-                      f2 = dbern(x = (-1:2), prob = 0.5),
-                      f3 = dbern(x = (-1:2), prob = 0.6),
-                      f4 = dbern(x = (-1:2), prob = 0.8),
-                      F1 = pbern(q = (-1:2), prob = 0.4),
-                      F2 = pbern(q = (-1:2), prob = 0.5),
-                      F3 = pbern(q = (-1:2), prob = 0.6),
-                      F4 = pbern(q = (-1:2), prob = 0.8))
+\hlstd{plot.df} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),}
+                      \hlkwc{f1} \hlstd{=} \hlkwd{dbern}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.4}\hlstd{),}
+                      \hlkwc{f2} \hlstd{=} \hlkwd{dbern}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.5}\hlstd{),}
+                      \hlkwc{f3} \hlstd{=} \hlkwd{dbern}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.6}\hlstd{),}
+                      \hlkwc{f4} \hlstd{=} \hlkwd{dbern}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.8}\hlstd{),}
+                      \hlkwc{F1} \hlstd{=} \hlkwd{pbern}\hlstd{(}\hlkwc{q} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.4}\hlstd{),}
+                      \hlkwc{F2} \hlstd{=} \hlkwd{pbern}\hlstd{(}\hlkwc{q} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.5}\hlstd{),}
+                      \hlkwc{F3} \hlstd{=} \hlkwd{pbern}\hlstd{(}\hlkwc{q} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.6}\hlstd{),}
+                      \hlkwc{F4} \hlstd{=} \hlkwd{pbern}\hlstd{(}\hlkwc{q} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.8}\hlstd{))}
 
-PMF1 <- ggplot(data = plot.df, aes(x = x))+
-  geom_linerange(aes(ymax = f1), ymin = 0)+
-  geom_hline(yintercept = 0)+
-  theme_bw() +
-  xlab("X") +
-  ylab(bquote(f[x](x))) +
-  ggtitle("Bernoulli PMF", subtitle = paste("p =", 0.4))
+\hlstd{PMF1} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x))}\hlopt{+}
+  \hlkwd{geom_linerange}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{ymax} \hlstd{= f1),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept} \hlstd{=} \hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+  \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)} \hlopt{+}
+  \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(f[x](x)))} \hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli PMF"}\hlstd{,} \hlkwc{subtitle} \hlstd{=} \hlkwd{paste}\hlstd{(}\hlstr{"p ="}\hlstd{,} \hlnum{0.4}\hlstd{))}
 
-PMF2 <- ggplot(data = plot.df, aes(x = x))+
-  geom_linerange(aes(ymax = f2), ymin = 0)+
-  geom_hline(yintercept = 0)+
-  theme_bw() +
-  xlab("X") +
-  ylab(bquote(f[x](x))) +
-  ggtitle("Bernoulli PMF", subtitle = paste("p =", 0.5))
+\hlstd{PMF2} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x))}\hlopt{+}
+  \hlkwd{geom_linerange}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{ymax} \hlstd{= f2),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept} \hlstd{=} \hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+  \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)} \hlopt{+}
+  \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(f[x](x)))} \hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli PMF"}\hlstd{,} \hlkwc{subtitle} \hlstd{=} \hlkwd{paste}\hlstd{(}\hlstr{"p ="}\hlstd{,} \hlnum{0.5}\hlstd{))}
 
-PMF3 <- ggplot(data = plot.df, aes(x = x))+
-  geom_linerange(aes(ymax = f3), ymin = 0)+
-  geom_hline(yintercept = 0)+
-  theme_bw() +
-  xlab("X") +
-  ylab(bquote(f[x](x))) +
-  ggtitle("Bernoulli PMF", subtitle = paste("p =", 0.6))
+\hlstd{PMF3} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x))}\hlopt{+}
+  \hlkwd{geom_linerange}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{ymax} \hlstd{= f3),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept} \hlstd{=} \hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+  \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)} \hlopt{+}
+  \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(f[x](x)))} \hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli PMF"}\hlstd{,} \hlkwc{subtitle} \hlstd{=} \hlkwd{paste}\hlstd{(}\hlstr{"p ="}\hlstd{,} \hlnum{0.6}\hlstd{))}
 
-PMF4 <- ggplot(data = plot.df, aes(x = x))+
-  geom_linerange(aes(ymax = f4), ymin = 0)+
-  geom_hline(yintercept = 0)+
-  theme_bw() +
-  xlab("X") +
-  ylab(bquote(f[x](x))) +
-  ggtitle("Bernoulli PMF", subtitle = paste("p =", 0.8))
+\hlstd{PMF4} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x))}\hlopt{+}
+  \hlkwd{geom_linerange}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{ymax} \hlstd{= f4),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept} \hlstd{=} \hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+  \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)} \hlopt{+}
+  \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(f[x](x)))} \hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli PMF"}\hlstd{,} \hlkwc{subtitle} \hlstd{=} \hlkwd{paste}\hlstd{(}\hlstr{"p ="}\hlstd{,} \hlnum{0.8}\hlstd{))}
 
-PMF1 + PMF2 + PMF3 + PMF4
-@
+\hlstd{PMF1} \hlopt{+} \hlstd{PMF2} \hlopt{+} \hlstd{PMF3} \hlopt{+} \hlstd{PMF4}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 \begin{figure}[H]
   \begin{center}
   % This code is evaluated, but not printed
   % note below I use message=FALSE and warning=FALSE to surpress what's printed
   % when running library(ggmap) or library(patchwork) which would otherwise cause
   % an error because Sweave is expecting just a graph (not a graph + text)
-<<echo=FALSE, fig.dim=c(7.5,5.5), message=FALSE, warning=FALSE, error=FALSE>>=
-<<P3fig_1>>
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-2-1} 
+\end{knitrout}
     \caption{The PMF of the Bernoulli distribution for different probability parameters p}
     \label{P3fig_1} %we can now reference P3fig_1
   \end{center}
@@ -298,57 +358,61 @@ PMF1 + PMF2 + PMF3 + PMF4
 	 Question \ref{q3PMF}. What does changing the parameter(s) do to the shape of 
 	 the CDF? Comment on the aspects of the CDFs that show that the CDF is valid.
 	 
-<<P3fig_2, eval=FALSE>>=
-# Handle open/closed points
-plot.df.openpoints <- data.frame(x = plot.df$x,
-                                 y1 = pbern(plot.df$x-1, prob = 0.4),
-                                 y2 = pbern(plot.df$x-1, prob = 0.5),
-                                 y3 = pbern(plot.df$x-1, prob = 0.6),
-                                 y4 = pbern(plot.df$x-1, prob = 0.8))
-plot.df.closedpoints <- data.frame(x = plot.df$x,
-                                   y1 = pbern(plot.df$x,prob=0.4),
-                                   y2 = pbern(plot.df$x,prob=0.5),
-                                   y3 = pbern(plot.df$x,prob=0.6),
-                                   y4 = pbern(plot.df$x,prob=0.8))
-  
-CDF1 <- ggplot(data = plot.df, aes(x = x, y = F1)) +
-    geom_step()+
-    geom_point(data = plot.df.openpoints, aes(x = x, y = y1), shape = 1) +
-    geom_point(data = plot.df.closedpoints, aes(x = x, y = y1)) +
-    theme_bw()+
-    xlab("X")+
-    ylab(bquote(F[x](x)))+
-    ggtitle("Bernoulli CDF",subtitle=(paste("p =", 0.4)))
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# Handle open/closed points}
+\hlstd{plot.df.openpoints} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= plot.df}\hlopt{$}\hlstd{x,}
+                                 \hlkwc{y1} \hlstd{=} \hlkwd{pbern}\hlstd{(plot.df}\hlopt{$}\hlstd{x}\hlopt{-}\hlnum{1}\hlstd{,} \hlkwc{prob} \hlstd{=} \hlnum{0.4}\hlstd{),}
+                                 \hlkwc{y2} \hlstd{=} \hlkwd{pbern}\hlstd{(plot.df}\hlopt{$}\hlstd{x}\hlopt{-}\hlnum{1}\hlstd{,} \hlkwc{prob} \hlstd{=} \hlnum{0.5}\hlstd{),}
+                                 \hlkwc{y3} \hlstd{=} \hlkwd{pbern}\hlstd{(plot.df}\hlopt{$}\hlstd{x}\hlopt{-}\hlnum{1}\hlstd{,} \hlkwc{prob} \hlstd{=} \hlnum{0.6}\hlstd{),}
+                                 \hlkwc{y4} \hlstd{=} \hlkwd{pbern}\hlstd{(plot.df}\hlopt{$}\hlstd{x}\hlopt{-}\hlnum{1}\hlstd{,} \hlkwc{prob} \hlstd{=} \hlnum{0.8}\hlstd{))}
+\hlstd{plot.df.closedpoints} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= plot.df}\hlopt{$}\hlstd{x,}
+                                   \hlkwc{y1} \hlstd{=} \hlkwd{pbern}\hlstd{(plot.df}\hlopt{$}\hlstd{x,}\hlkwc{prob}\hlstd{=}\hlnum{0.4}\hlstd{),}
+                                   \hlkwc{y2} \hlstd{=} \hlkwd{pbern}\hlstd{(plot.df}\hlopt{$}\hlstd{x,}\hlkwc{prob}\hlstd{=}\hlnum{0.5}\hlstd{),}
+                                   \hlkwc{y3} \hlstd{=} \hlkwd{pbern}\hlstd{(plot.df}\hlopt{$}\hlstd{x,}\hlkwc{prob}\hlstd{=}\hlnum{0.6}\hlstd{),}
+                                   \hlkwc{y4} \hlstd{=} \hlkwd{pbern}\hlstd{(plot.df}\hlopt{$}\hlstd{x,}\hlkwc{prob}\hlstd{=}\hlnum{0.8}\hlstd{))}
 
-CDF2 <- ggplot(data = plot.df, aes(x = x, y = F2)) +
-    geom_step()+
-    geom_point(data = plot.df.openpoints, aes(x = x, y = y2), shape = 1) +
-    geom_point(data = plot.df.closedpoints, aes(x = x, y = y2)) +
-    theme_bw()+
-    xlab("X")+
-    ylab(bquote(F[x](x)))+
-    ggtitle("Bernoulli CDF",subtitle=(paste("p =", 0.5)))
+\hlstd{CDF1} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= F1))} \hlopt{+}
+    \hlkwd{geom_step}\hlstd{()}\hlopt{+}
+    \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= plot.df.openpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y1),} \hlkwc{shape} \hlstd{=} \hlnum{1}\hlstd{)} \hlopt{+}
+    \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= plot.df.closedpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y1))} \hlopt{+}
+    \hlkwd{theme_bw}\hlstd{()}\hlopt{+}
+    \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)}\hlopt{+}
+    \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(F[x](x)))}\hlopt{+}
+    \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli CDF"}\hlstd{,}\hlkwc{subtitle}\hlstd{=(}\hlkwd{paste}\hlstd{(}\hlstr{"p ="}\hlstd{,} \hlnum{0.4}\hlstd{)))}
 
-CDF3 <- ggplot(data = plot.df, aes(x = x, y = F3)) +
-    geom_step()+
-    geom_point(data = plot.df.openpoints, aes(x = x, y = y3), shape = 1) +
-    geom_point(data = plot.df.closedpoints, aes(x = x, y = y3)) +
-    theme_bw()+
-    xlab("X")+
-    ylab(bquote(F[x](x)))+
-    ggtitle("Bernoulli CDF",subtitle=(paste("p =", 0.6)))
+\hlstd{CDF2} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= F2))} \hlopt{+}
+    \hlkwd{geom_step}\hlstd{()}\hlopt{+}
+    \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= plot.df.openpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y2),} \hlkwc{shape} \hlstd{=} \hlnum{1}\hlstd{)} \hlopt{+}
+    \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= plot.df.closedpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y2))} \hlopt{+}
+    \hlkwd{theme_bw}\hlstd{()}\hlopt{+}
+    \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)}\hlopt{+}
+    \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(F[x](x)))}\hlopt{+}
+    \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli CDF"}\hlstd{,}\hlkwc{subtitle}\hlstd{=(}\hlkwd{paste}\hlstd{(}\hlstr{"p ="}\hlstd{,} \hlnum{0.5}\hlstd{)))}
 
-CDF4 <- ggplot(data = plot.df, aes(x = x, y = F4)) +
-    geom_step()+
-    geom_point(data = plot.df.openpoints, aes(x = x, y = y4), shape = 1) +
-    geom_point(data = plot.df.closedpoints, aes(x = x, y = y4)) +
-    theme_bw()+
-    xlab("X")+
-    ylab(bquote(F[x](x)))+
-    ggtitle("Bernoulli CDF",subtitle=(paste("p =", 0.8)))
+\hlstd{CDF3} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= F3))} \hlopt{+}
+    \hlkwd{geom_step}\hlstd{()}\hlopt{+}
+    \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= plot.df.openpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y3),} \hlkwc{shape} \hlstd{=} \hlnum{1}\hlstd{)} \hlopt{+}
+    \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= plot.df.closedpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y3))} \hlopt{+}
+    \hlkwd{theme_bw}\hlstd{()}\hlopt{+}
+    \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)}\hlopt{+}
+    \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(F[x](x)))}\hlopt{+}
+    \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli CDF"}\hlstd{,}\hlkwc{subtitle}\hlstd{=(}\hlkwd{paste}\hlstd{(}\hlstr{"p ="}\hlstd{,} \hlnum{0.6}\hlstd{)))}
 
-CDF1 + CDF2 + CDF3 + CDF4
-@
+\hlstd{CDF4} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= F4))} \hlopt{+}
+    \hlkwd{geom_step}\hlstd{()}\hlopt{+}
+    \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= plot.df.openpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y4),} \hlkwc{shape} \hlstd{=} \hlnum{1}\hlstd{)} \hlopt{+}
+    \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= plot.df.closedpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y4))} \hlopt{+}
+    \hlkwd{theme_bw}\hlstd{()}\hlopt{+}
+    \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)}\hlopt{+}
+    \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(F[x](x)))}\hlopt{+}
+    \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli CDF"}\hlstd{,}\hlkwc{subtitle}\hlstd{=(}\hlkwd{paste}\hlstd{(}\hlstr{"p ="}\hlstd{,} \hlnum{0.8}\hlstd{)))}
+
+\hlstd{CDF1} \hlopt{+} \hlstd{CDF2} \hlopt{+} \hlstd{CDF3} \hlopt{+} \hlstd{CDF4}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 
 \begin{figure}[H]
   \begin{center}
@@ -356,9 +420,10 @@ CDF1 + CDF2 + CDF3 + CDF4
   % note below I use message=FALSE and warning=FALSE to surpress what's printed
   % when running library(ggmap) or library(patchwork) which would otherwise cause
   % an error because Sweave is expecting just a graph (not a graph + text)
-<<echo=FALSE, fig.dim=c(7.5,5.5), message=FALSE, warning=FALSE, error=FALSE>>=
-<<P3fig_2>>
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-3-1} 
+\end{knitrout}
     \caption{The CDF of the Bernoulli distribution for different probability parameters p}
     \label{P3fig_2} %we can now reference P3fig_1
   \end{center}
