@@ -92,6 +92,17 @@ bernoulli.plot <- function(data){
 }
 
 
+even.10 <- rbinom(n=10,        #number of observations
+                    size=1,        #number of trials (size=1 for a Bernoulli distribution)
+                    prob=.5)       #probability of success
+
+MOM.bernoulli(even.10)
+
+MLE.bernoulli(even.10)
+
+bernoulli.plot(even.10)
+
+
 
 uneven.10 <- rbinom(n=10,        #number of observations
                     size=1,        #number of trials (size=1 for a Bernoulli distribution)
