@@ -102,17 +102,99 @@ each other complete the homework in collaboration.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Provide the mean, standard deviation, skewness, and kurtosis of the PDF.
   Ensure to interpret each.
+    E(X) = mu
+    var(X) = sigma^2
+    skew(X) = 0
+    The population skewness of the PDF is 0, which indicates that the Normal
+    distribution is symmetric (with line of symmetry at the mean)
+    kurt(X) = 0
+    The population excess kurtosis of the PDF is 0, which indicates that the
+    Normal distribution is mesokurtic.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (b)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Generate a random sample of size $n=10, 25, 100$, and $1000$ for your 
   two sets of parameter(s). Calculate the sample mean, standard deviation, 
   skewness, and kurtosis. Interpret the results.
+  <<>>=
+  library(e1071)
+  obs <- c(10, 25, 100, 1000)
+  s1 <- rnorm(n = obs[1], mean = 0, sd = 1)
+  s2 <- rnorm(n = obs[2], mean = 0, sd = 1)
+  s3 <- rnorm(n = obs[3], mean = 0, sd = 1)
+  s4 <- rnorm(n = obs[4], mean = 0, sd = 1)
+  
+  ###############################################
+  ### Summary statistics for n = 10 #############
+  ###############################################
+  paste("Sample mean:", mean(s1), sep = " ")
+  paste("Standard Deviation:",sd(s1), sep = " ")
+  paste("Skewness:",skewness(s1), sep = " ")
+  paste("Kurtosis:",kurtosis(s1), sep = " ")
+  
+  ###############################################
+  ### Summary statistics for n = 25 #############
+  ###############################################
+  paste("Sample mean:", mean(s2), sep = " ")
+  paste("Standard Deviation:",sd(s2), sep = " ")
+  paste("Skewness:",skewness(s2), sep = " ")
+  paste("Kurtosis:",kurtosis(s2), sep = " ")
+  
+  ###############################################
+  ### Summary statistics for n = 100 ############
+  ###############################################
+  paste("Sample mean:", mean(s3), sep = " ")
+  paste("Standard Deviation:",sd(s3), sep = " ")
+  paste("Skewness:",skewness(s3), sep = " ")
+  paste("Kurtosis:",kurtosis(s3), sep = " ")
+  
+  ###############################################
+  ### Summary statistics for n = 1000 ###########
+  ###############################################
+  paste("Sample mean:", mean(s4), sep = " ")
+  paste("Standard Deviation:",sd(s4), sep = " ")
+  paste("Skewness:",skewness(s4), sep = " ")
+  paste("Kurtosis:",kurtosis(s4), sep = " ")
+  @
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (c)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Generate a random sample of size $n=10$ for your two sets of parameter(s).
+  <<>>=
+  dat1 <- rnorm(n = obs[1], mean = 0, sd = 1)
+  @
   Calculate the method of moments estimator(s) and maximum likelihood estimator(s).
+  <<>>=
+  
+  #######################################################
+  # MOM
+  #######################################################
+  norm.mom<-function(par, data){
+    mu <- par[1]
+    sigma <- par[2]
+  
+    EX1 <- mu
+    EX2 <- sigma
+  
+    xbar1 <- mean(data)
+    xbar2 <- mean(data^2)
+  
+    c(EX1-xbar1, EX2-xbar2)
+  }
+  library(nleqslv)
+  nleqslv(x = c(0,1),fn = norm.mom, data = dat1)
+  
+  #######################################################
+  # MLE
+  #######################################################
+  norm.ll<-function(par, data, neg=T){
+    mu <- par[1]
+    sigma <- par[2]
+    ll <- prod(dnorm(x=data, mean=mu, sd=sigma))
+    ifelse(neg, -ll, ll)
+  }
+  optim(par = c(0,1), fn = norm.ll, data=dat1)
+  @
   In a $1 \times 2$ grid, plot a histogram of each set of data with (1) the method 
   of moments estimated distribution, (2) the maximum likelihood estimated 
   distribution, and superimpose the true distribution in both.
