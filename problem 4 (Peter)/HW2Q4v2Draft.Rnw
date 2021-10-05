@@ -1,0 +1,172 @@
+%% LyX 2.3.6.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass{article}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage[authoryear]{natbib}
+\usepackage[unicode=true,
+ bookmarks=false,
+ breaklinks=false,pdfborder={0 0 1},backref=section,colorlinks=true]
+ {hyperref}
+\hypersetup{
+ citecolor=black}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+%This allows me to use the align functionality.
+                     %If you find yourself trying to replicate
+                     %something you found online, ensure you're
+                     %loading the necessary packages!
+\usepackage{amsfonts}%Math font
+\usepackage{graphicx}%For including graphics
+%For Hyperlinks
+
+%For the bibliography
+%For the bibliography
+\usepackage{float}
+
+\makeatother
+
+\begin{document}
+\noindent \textbf{MA 354: Data Analysis -- Fall 2021 -- Due 10/8
+at 5p}\\
+%\\ gives you a new line
+\textbf{Homework 2:}\vspace{1em}
+\\
+ \emph{Complete the following opportunities to use what we've talked
+about in class. These questions will be graded for correctness, communication
+and succinctness. Ensure you show your work and explain your logic
+in a legible and refined submission.}\\
+\vspace{1em}
+ %Comments -- anything after % is not put into the PDF
+
+\noindent The starting jobs will be applied in alphabetical order
+(last name) for question two. 
+\begin{enumerate}
+\item \textbf{Solver:} provide a solution, if possible, and reasoning for
+the solution. \textbf{Due to group 10/5 or earlier.} 
+\item \textbf{Code Checker:} provides a first check of the solver's worked
+solutions and ensures they are correct with a solid interpretation. 
+\item \textbf{Checker} checks the solution for completeness, proposes and
+implements changes if agreed upon by the group. Provides a short paragraph
+summarizing the discussion of proposals and their reason for acceptance
+or non-acceptance. 
+\item \textbf{Double Checker} checks the solution for completeness, communication
+and polish. The Double Checker ensures that the solution is correct
+and highly polished for submission. 
+\end{enumerate}
+\noindent For subsequent questions student roles will move down one
+position. The rolls change as follows. 
+\begin{enumerate}
+\item \textbf{Solver} $\Longrightarrow$ \textbf{Code Checker} 
+\item \textbf{Code Checker} $\Longrightarrow$ \textbf{Checker} 
+\item \textbf{Checker} $\Longrightarrow$ \textbf{Double Checker} 
+\item \textbf{Double Checker} $\Longrightarrow$ \textbf{Solver} 
+\end{enumerate}
+While students have assigned jobs for each question I encourage students
+to help each other complete the homework in collaboration. \newpage %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%  Question 4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+\item Continue with the discrete distribution you selected for Question
+\ref{Q3}. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%  Part (a)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+\item Provide the mean, standard deviation, skewness, and kurtosis of the
+PMF. Ensure to interpret each. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%%%%%%%%  Part (b)
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+
+Bernoulli Distribution:
+
+\[
+\]
+
+PMF:
+
+\[
+\begin{align*}f\left(k;p\right) & =p^{k}\left(1-p\right)^{1-k} &  & \textrm{for \ensuremath{k\in\left\{ 0,1\right\} }}\end{align*}
+\]
+
+Mean:
+
+\[
+E(X)=p
+\]
+
+Standard Deviation:
+
+\[
+\sigma=\sqrt{p\left(1-p\right)}
+\]
+
+Skewness:
+
+\[
+\xi_{X}=\frac{\left(1-p\right)-p}{\sqrt{p\left(1-p\right)}}
+\]
+
+Kurtosis:
+
+\[
+\kappa_{Y}=3+\frac{1-6p\left(1-p\right)}{p\left(1-p\right)}
+\]
+
+\item Generate a random sample of size $n=10,25,100$, and $1000$ for your
+two sets of parameter(s). Calculate the sample mean, standard deviation,
+skewness, and kurtosis. Interpret the results. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%%%%%%%%  Part (c)
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\item Generate a random sample of size $n=10$ for your two sets of parameter(s).
+Calculate the method of moments estimator(s) and maximum likelihood
+estimator(s). In a $1\times2$ grid, plot a histogram (with bin size
+1) of each set of data with (1) the method of moments estimated distribution,
+(2) the maximum likelihood estimated distribution, and superimpose
+the true distribution in both. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%%%%%%%%  Part (d)
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\item Generate a random sample of size $n=25$ for your two sets of parameter(s).
+Calculate the method of moments estimator(s) and maximum likelihood
+estimator(s). In a $1\times2$ grid, plot a histogram (with bin size
+1) of each set of data with (1) the method of moments estimated distribution,
+(2) the maximum likelihood estimated distribution, and superimpose
+the true distribution in both. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%%%%%%%%  Part (e)
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\item Generate a random sample of size $n=100$ for your two sets of parameter(s).
+Calculate the method of moments estimator(s) and maximum likelihood
+estimator(s). In a $1\times2$ grid, plot a histogram (with bin size
+1) of each set of data with (1) the method of moments estimated distribution,
+(2) the maximum likelihood estimated distribution, and superimpose
+the true distribution in both. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%%%%%%%%  Part (f)
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\item Generate a random sample of size $n=100$ for your two sets of parameter(s).
+Calculate the method of moments estimator(s) and maximum likelihood
+estimator(s). In a $1\times2$ grid, plot a histogram (with bin size
+1) of each set of data with (1) the method of moments estimated distribution,
+(2) the maximum likelihood estimated distribution, and superimpose
+the true distribution in both. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%%%%%%%%  Part (g)
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\item Comment on the results of parts (c)-(f). 
+\end{enumerate}
+\end{enumerate}
+%End overall enumerate
+\newpage\bibliography{bib}
+ 
+\end{document}
