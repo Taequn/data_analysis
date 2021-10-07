@@ -219,7 +219,7 @@ each other complete the homework in collaboration.
   what's the history of the distribution, why was it created and named? What are
   some exciting applications of this distribution? Cite all of your sources.\\
   
-\textbf{Solution:} The discrete distribution we have chosen is the Bernoulli distribution. The Bernoulli distribution  is a discrete probability distribution for a Bernoulli trial - a probabilistic experiment that can have one of two outcomes, success $\mathrm{(x = 1)}$ and failure $\mathrm{(x = 0)}$, and in which the probability fo success is $p$. Often $p$  is called the Bernoulli probability parameter. In Bernoulli distribution, the random variable $X$ can have only one of two values: 0 or 1. This means that the support of our discrete random variable is the set $\mathrm{{0, 1}}$. This distribution can be summarized as follows:
+\textbf{Solution:} The discrete distribution we have chosen is the Bernoulli distribution. The Bernoulli distribution  is a discrete probability distribution for a Bernoulli trial - a probabilistic experiment that can have one of two outcomes, success $\mathrm{(x = 1)}$ and failure $\mathrm{(x = 0)}$, and in which the probability fo success is $p$. Often $p$  is called the Bernoulli probability parameter \textbf{(QUOTE: Statistical Distributions fourth edition, Catherine forbes)}. In Bernoulli distribution, the random variable $X$ can have only one of two values: 0 or 1. This means that the support of our discrete random variable is the set $\mathrm{{0, 1}}$. This distribution can be summarized as follows:
 \begin{align*}
   p               &\in (0,1)                                                                               &\text{\textbf{[Parameter]}}\\
   \mathcal{X}     & = \{x: x \in \{0,1\}\}                                                                   &\text{\textbf{[Support]}}\\
@@ -227,7 +227,7 @@ each other complete the homework in collaboration.
   F_{X}(x \mid p) & = P(X \leq \left\lfloor x \right\rfloor)\\
                   & = [(1-p)I(\left\lfloor x \right\rfloor = 0)] + I(\left\lfloor x \right\rfloor \geq 1)  &\text{\textbf{[CDF]}}\\
 \end{align*}
-Simply, the Bernoulli distribution can be thought of as a model for the set of possible outcomes of any single experiment that asks a yes-no question. This distribution is named after the 17th century Swiss mathematician Jacob Bernoulli, because he was the one who explicitly defined the concept of Bernoulli trial (in his book \emph{Ars Conjectandi}) described above. Bernoulli distribution serves as a building block for discrete distributions which model Bernoulli trials, such as Binomial distribution and geometric distribution. Logistic regression, a widely used classification model that models a binary outcome, also takes advantage of the Bernoulli distribution.
+Simply, the Bernoulli distribution can be thought of as a model for the set of possible outcomes of any single experiment that asks a yes-no question \textbf{(QUOTE:https://brilliant.org/wiki/bernoulli-distribution/)}. This distribution is named after the 17th century Swiss mathematician Jacob Bernoulli, because he was the one who explicitly defined the concept of Bernoulli trial (in his book \emph{Ars Conjectandi}) described above. Bernoulli distribution serves as a building block for discrete distributions which model Bernoulli trials, such as Binomial distribution and geometric distribution \textbf{(https://www.probabilisticworld.com/bernoulli-distribution-intuitive-understanding/)}. Logistic regression, a widely used classification model that models a binary outcome, also takes advantage of the Bernoulli distribution.
 
 Since the Bernoulli distribution is not cataloged by R, we have to introduce it into our calculations with the  following functions:
 
@@ -294,8 +294,16 @@ Since the Bernoulli distribution is not cataloged by R, we have to introduce it 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\item Find the median for your two sets of parameter(s). Conduct some research 
 	to find the median based on our PMF to confirm that your numerical approach is
-	correct. 
-	\textbf{Solution:} In the Bernoulli distribution, where p is the probability parameter and $\mathrm{q = 1 - p}$, when p\textgreater q, there are more "successes" (that is when $X$ is 1) than failure (when $X$ is 0), so the median must also be a success. Similar, when q\textgreater p, there are more "failures" than "successes", hence resulting in the median being 0. When $\mathrm{p = q}$, there is an equal probability of $X$ being 0 or 1, thus the median is ambiguous. Therefore, the median for when $\mathrm{p = 0.4}$ is zero and the median for when $\mathrm{p = 0.6}$ is 1.
+	correct.\\ 
+	
+	\textbf{Solution:} In the Bernoulli distribution, where p is the probability parameter and $\mathrm{q = 1 - p}$, when p\textgreater q, there are more "successes" (that is when $X$ is 1) than failure (when $X$ is 0), so the median must also be a success. Similar, when q\textgreater p, there are more "failures" than "successes", hence resulting in the median being 0. When $\mathrm{p = q}$, there is an equal probability of $X$ being 0 or 1, thus the median is ambiguous. Therefore, the median for when $\mathrm{p = 0.4}$ is zero and the median for when $\mathrm{p = 0.6}$ is 1. Further inquiry \textbf{(QUOTE: Wikipedia)} suggests that this really is the case for the median of the Bernoulli distribution:\
+	\begin{align*}
+	Median=\begin{cases}
+          0 \quad &\text{if} \, p < 1/2\\
+          [0,1] \quad &\text{if} \, p = 1/2\\
+          1 \quad &\text{if} \, p > 1/2\\
+     \end{cases}
+	\end{align*}
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (d)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -303,7 +311,7 @@ Since the Bernoulli distribution is not cataloged by R, we have to introduce it 
 	including the two sets you specified. What does changing the parameter(s) do 
 	to the shape of the PMF?
 	
-	\textbf{Solutions:} We can plot the PMF of the Bernoulli distribution for different parameters.Note that the initially chosen parameters were $\mathrm{p =0.4}$ and $\mathrm{p=0.6}$. Let us also look at the PMF when the parameter values are 0.5, and 0.8.
+	\textbf{Solution:} We can plot the PMF of the Bernoulli distribution for different parameters.Note that the initially chosen parameters were $\mathrm{p =0.4}$ and $\mathrm{p=0.6}$. Let us also look at the PMF when the parameter values are 0.5, and 0.8.
 	
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -346,6 +354,8 @@ Since the Bernoulli distribution is not cataloged by R, we have to introduce it 
     \label{P3fig_1} %we can now reference P3fig_1
   \end{center}
 \end{figure}
+
+We observe the same characteristic of the Bernoulli distribution in Figure \ref{P3fig_1} as we discussed about its median above. If the $\mathrm{p<0.5}$ then there are more failures than successes, indicated by the taller PMF at 0. On the other hand, if If the $\mathrm{p>0.5}$ then there are more successes than failures, which is reflected in the PMF plot being taller at 1. The plot of the PMF when $\mathrm{p=0.5}$ suggests that there are equal chances for success as there is for failure.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (e)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -353,6 +363,7 @@ Since the Bernoulli distribution is not cataloged by R, we have to introduce it 
 	 Question \ref{q3PMF}. What does changing the parameter(s) do to the shape of 
 	 the CDF? Comment on the aspects of the CDFs that show that the CDF is valid.
 	 
+	 \textbf{Solution:} We can plot the CDF of the Bernoulli distribution for the different parameters 0.4, 0.5, 0.6, and 0.8 below:
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -368,6 +379,7 @@ Since the Bernoulli distribution is not cataloged by R, we have to introduce it 
     \hlkwd{geom_step}\hlstd{()}\hlopt{+}
     \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= ggdat.openpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y),} \hlkwc{shape} \hlstd{=} \hlnum{1}\hlstd{)} \hlopt{+}
     \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= ggdat.closedpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y))} \hlopt{+}
+    \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept} \hlstd{=} \hlnum{0.5}\hlstd{,} \hlkwc{linetype}\hlstd{=}\hlstr{"dotted"}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
     \hlkwd{theme_bw}\hlstd{()}\hlopt{+}
     \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)}\hlopt{+}
     \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(F[x](x)))}\hlopt{+}
@@ -392,7 +404,8 @@ Since the Bernoulli distribution is not cataloged by R, we have to introduce it 
     \label{P3fig_2} %we can now reference P3fig_1
   \end{center}
 \end{figure}
-	 
+
+In the Figure \ref{P3fig_2}, we can see that with increasing p, the most of the "area" under the CDF is moving towards 1, which correctly indicates that the number of successes increase as the value of p increases. Furthermore, we can see that in all the CDF plots, the functions always add up to 1. The CDF are also monotonically increasing towards the right. All of these above characteristics together indicate that our CDF is valid. Notice that in all of the plots of Figure \ref{P3fig_2}, we have drawn a horizontal line at 1/2. This is another way we can determine the median of the Bernoulli distribution using the CDF. Where the horizontal line intersects the CDF indicates where the median is for the given value of p. These results agree with our results from problem 3(c).
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (f)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -400,6 +413,8 @@ Since the Bernoulli distribution is not cataloged by R, we have to introduce it 
   two sets of parameter(s). In a $4 \times 2$ grid, plot a histogram (with bin 
   size 1) of each set of data and superimpose the true mass function at the 
   specified parameter values. Interpret the results.
+  
+
   \textbf{Solution:} The two parameters we are working with are $\mathrm{p=0.4}$ and $\mathrm{p=0.6}$
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -509,15 +524,14 @@ Since the Bernoulli distribution is not cataloged by R, we have to introduce it 
   % note below I use message=FALSE and warning=FALSE to surpress what's printed
   % when running library(ggmap) or library(patchwork) which would otherwise cause
   % an error because Sweave is expecting just a graph (not a graph + text)
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-5-1} 
-\end{knitrout}
-    \caption{(Top row) Samples of 10, 25, 100, 1000 for the Bernoulli distribution with p = 0.4. (Bottom row) Samples of 10, 25, 100, 1000 for the Bernoulli distribution with p = 0.6. In each plot the red lines indicate the true PMF function of the corresponding Bernoulli distribution}
+  \includegraphics[width=7in, height=4in]{figure/histograms.png}
+    \caption{(Top row) Samples of 10, 25, 100, 1000 for the Bernoulli distribution with p = 0.4. (Bottom row) Samples of 10, 25, 100, 1000 for the Bernoulli distribution with p = 0.6. In each plot the red lines indicate the true PMF function of the corresponding Bernoulli distribution. Notice that the y-axis indicates the prportional frequency in the histograms}
     \label{P3fig_3} %we can now reference P3fig_1
   \end{center}
 \end{figure}
 	\end{enumerate}
+	For each of the cases of p (see the first and the second row of plots in Figure \ref{P3fig_3}), the more we sample, the better our histograms agree with the the true PMF of the Bernoulli distribution. These histograms above represent only one variation of the random sampling done on the Bernoulli distribution. While the histograms for n=1000 does not stray much from the PMF as we take newere samples, the smaller samples (10, 25) vary significantly from the PMF. From sample to sample, the results of the histograms vary (in terms of agreement with the true PMF). The larger the size of the sample, the more consistent is its agreement with the true PMF. 
+	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%  Question 2
