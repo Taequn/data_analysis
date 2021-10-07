@@ -140,6 +140,10 @@ each other complete the homework in collaboration.
   two sets of parameter(s). In a $4 \times 2$ grid, plot a histogram of each set
   of data and superimpose the true density function at the specified parameter 
   values. Interpret the results.
+  \textbf{Solution:}
+  
+
+  
 	\end{enumerate}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -216,7 +220,6 @@ each other complete the homework in collaboration.
   some exciting applications of this distribution? Cite all of your sources.\\
   
 \textbf{Solution:} The discrete distribution we have chosen is the Bernoulli distribution. The Bernoulli distribution  is a discrete probability distribution for a Bernoulli trial - a probabilistic experiment that can have one of two outcomes, success $\mathrm{(x = 1)}$ and failure $\mathrm{(x = 0)}$, and in which the probability fo success is $p$. Often $p$  is called the Bernoulli probability parameter. In Bernoulli distribution, the random variable $X$ can have only one of two values: 0 or 1. This means that the support of our discrete random variable is the set $\mathrm{{0, 1}}$. This distribution can be summarized as follows:
-
 \begin{align*}
   p               &\in (0,1)                                                                               &\text{\textbf{[Parameter]}}\\
   \mathcal{X}     & = \{x: x \in \{0,1\}\}                                                                   &\text{\textbf{[Support]}}\\
@@ -224,8 +227,7 @@ each other complete the homework in collaboration.
   F_{X}(x \mid p) & = P(X \leq \left\lfloor x \right\rfloor)\\
                   & = [(1-p)I(\left\lfloor x \right\rfloor = 0)] + I(\left\lfloor x \right\rfloor \geq 1)  &\text{\textbf{[CDF]}}\\
 \end{align*}
-
-Simply, the Bernoulli distribution can be thought of as a model for the set of possible outcomes of any single experiment that asks a yes-no question. This distribution is named after the 17th century Swiss mathematician Jacob Bernoulli, because he was the one who explicitly defined the concept of Bernoulli trial (in his book \emph{Ars Conjectandi}) described above. 
+Simply, the Bernoulli distribution can be thought of as a model for the set of possible outcomes of any single experiment that asks a yes-no question. This distribution is named after the 17th century Swiss mathematician Jacob Bernoulli, because he was the one who explicitly defined the concept of Bernoulli trial (in his book \emph{Ars Conjectandi}) described above. Bernoulli distribution serves as a building block for discrete distributions which model Bernoulli trials, such as Binomial distribution and geometric distribution. Logistic regression, a widely used classification model that models a binary outcome, also takes advantage of the Bernoulli distribution.
 
 Since the Bernoulli distribution is not cataloged by R, we have to introduce it into our calculations with the  following functions:
 
@@ -267,14 +269,33 @@ Since the Bernoulli distribution is not cataloged by R, we have to introduce it 
 	calculating the series in a repeat loop until probability mass evaluations are 
 	infinitesimally small.
 	
-	\textbf{Solution:} Simple mathematical validation that requires no coding. Will put it up here shortly
+	\textbf{Solution:} For a PMF to be valid, it has to fulfill the following statements:
+	\begin{enumerate}
+	\item[1.] $0 \leq f_{X}(x) \leq 1$ for all $x \in \mathbb{R}$
+	\item[2.] $ \sum_{-\infty}^{\infty} f_{X} = \sum_{\mathcal{X}}f_{X} = 1$
+	\end{enumerate}
+	
+	By definition, the Bernoulli distribution satisfies statement 1, since the support is {0,1} and the probability parameter $\mathrm{p \in (0,1)}$, so the term for PMF (see above) cannot have a value smaller than 0 or greater than 1.
+	
+	We can also show that the statement 2 is true for the Bernoulli distribution:
+	
+	\begin{align*}
+	  \sum_{\mathcal{X}}f_{X} = \sum_{x = 0}^{1}f_{X}(x) &= \sum_{x = 0}^{1}p^{x}(1-p)^{1-x}\\
+	  &= p^{0}(1-p)^{1-0} +p^{1}(1-p)^{1-1}\\
+	  &= (1)(1-p) + p(1)\\
+	  &= 1-p+p\\
+	  &= 1
+	\end{align*}
+	
+	Therefore, we have a valid PMF for our distribution.
+	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (c)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\item Find the median for your two sets of parameter(s). Conduct some research 
 	to find the median based on our PMF to confirm that your numerical approach is
 	correct. 
-	\textbf{Solution:} Still a bit confused about this. Will put it up after office hours.
+	\textbf{Solution:} In the Bernoulli distribution, where p is the probability parameter and $\mathrm{q = 1 - p}$, when p\textgreater q, there are more "successes" (that is when $X$ is 1) than failure (when $X$ is 0), so the median must also be a success. Similar, when q\textgreater p, there are more "failures" than "successes", hence resulting in the median being 0. When $\mathrm{p = q}$, there is an equal probability of $X$ being 0 or 1, thus the median is ambiguous. Therefore, the median for when $\mathrm{p = 0.4}$ is zero and the median for when $\mathrm{p = 0.6}$ is 1.
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (d)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -289,127 +310,24 @@ Since the Bernoulli distribution is not cataloged by R, we have to introduce it 
 \begin{alltt}
 \hlkwd{library}\hlstd{(ggplot2)}
 \hlkwd{library}\hlstd{(patchwork)}
+\hlstd{plotbernPMF} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{prob}\hlstd{)\{} \hlcom{# Pass in the success probability}
+  \hlstd{ggdat} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),}
+                      \hlkwc{f} \hlstd{=} \hlkwd{dbern}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{= prob),}
+                      \hlkwc{F} \hlstd{=} \hlkwd{pbern}\hlstd{(}\hlkwc{q} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{= prob))}
+  \hlcom{## Plot PMF}
+  \hlstd{PMF} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= ggdat,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x))} \hlopt{+}
+    \hlkwd{geom_linerange}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{ymax} \hlstd{= f),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{)} \hlopt{+}
+    \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept} \hlstd{=} \hlnum{0}\hlstd{)} \hlopt{+}
+    \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+    \hlkwd{ylim}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{)} \hlopt{+}
+    \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)} \hlopt{+}
+    \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(f[x](x)))} \hlopt{+}
+    \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlkwd{paste}\hlstd{(}\hlstr{"p ="}\hlstd{, prob))}
 
-\hlstd{plot.df} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),}
-                      \hlkwc{f1} \hlstd{=} \hlkwd{dbern}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.4}\hlstd{),}
-                      \hlkwc{f2} \hlstd{=} \hlkwd{dbern}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.5}\hlstd{),}
-                      \hlkwc{f3} \hlstd{=} \hlkwd{dbern}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.6}\hlstd{),}
-                      \hlkwc{f4} \hlstd{=} \hlkwd{dbern}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.8}\hlstd{),}
-                      \hlkwc{F1} \hlstd{=} \hlkwd{pbern}\hlstd{(}\hlkwc{q} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.4}\hlstd{),}
-                      \hlkwc{F2} \hlstd{=} \hlkwd{pbern}\hlstd{(}\hlkwc{q} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.5}\hlstd{),}
-                      \hlkwc{F3} \hlstd{=} \hlkwd{pbern}\hlstd{(}\hlkwc{q} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.6}\hlstd{),}
-                      \hlkwc{F4} \hlstd{=} \hlkwd{pbern}\hlstd{(}\hlkwc{q} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.8}\hlstd{))}
+  \hlkwd{return}\hlstd{(PMF)}
+\hlstd{\}}
 
-\hlstd{PMF1} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x))}\hlopt{+}
-  \hlkwd{geom_linerange}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{ymax} \hlstd{= f1),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{)}\hlopt{+}
-  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept} \hlstd{=} \hlnum{0}\hlstd{)}\hlopt{+}
-  \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
-  \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)} \hlopt{+}
-  \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(f[x](x)))} \hlopt{+}
-  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli PMF"}\hlstd{,} \hlkwc{subtitle} \hlstd{=} \hlkwd{paste}\hlstd{(}\hlstr{"p ="}\hlstd{,} \hlnum{0.4}\hlstd{))}
-
-\hlstd{PMF2} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x))}\hlopt{+}
-  \hlkwd{geom_linerange}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{ymax} \hlstd{= f2),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{)}\hlopt{+}
-  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept} \hlstd{=} \hlnum{0}\hlstd{)}\hlopt{+}
-  \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
-  \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)} \hlopt{+}
-  \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(f[x](x)))} \hlopt{+}
-  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli PMF"}\hlstd{,} \hlkwc{subtitle} \hlstd{=} \hlkwd{paste}\hlstd{(}\hlstr{"p ="}\hlstd{,} \hlnum{0.5}\hlstd{))}
-
-\hlstd{PMF3} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x))}\hlopt{+}
-  \hlkwd{geom_linerange}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{ymax} \hlstd{= f3),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{)}\hlopt{+}
-  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept} \hlstd{=} \hlnum{0}\hlstd{)}\hlopt{+}
-  \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
-  \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)} \hlopt{+}
-  \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(f[x](x)))} \hlopt{+}
-  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli PMF"}\hlstd{,} \hlkwc{subtitle} \hlstd{=} \hlkwd{paste}\hlstd{(}\hlstr{"p ="}\hlstd{,} \hlnum{0.6}\hlstd{))}
-
-\hlstd{PMF4} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x))}\hlopt{+}
-  \hlkwd{geom_linerange}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{ymax} \hlstd{= f4),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{)}\hlopt{+}
-  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept} \hlstd{=} \hlnum{0}\hlstd{)}\hlopt{+}
-  \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
-  \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)} \hlopt{+}
-  \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(f[x](x)))} \hlopt{+}
-  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli PMF"}\hlstd{,} \hlkwc{subtitle} \hlstd{=} \hlkwd{paste}\hlstd{(}\hlstr{"p ="}\hlstd{,} \hlnum{0.8}\hlstd{))}
-
-\hlstd{PMF1} \hlopt{+} \hlstd{PMF2} \hlopt{+} \hlstd{PMF3} \hlopt{+} \hlstd{PMF4}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
-\begin{figure}[H]
-  \begin{center}
-  % This code is evaluated, but not printed
-  % note below I use message=FALSE and warning=FALSE to surpress what's printed
-  % when running library(ggmap) or library(patchwork) which would otherwise cause
-  % an error because Sweave is expecting just a graph (not a graph + text)
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-2-1} 
-\end{knitrout}
-    \caption{The PMF of the Bernoulli distribution for different probability parameters p}
-    \label{P3fig_1} %we can now reference P3fig_1
-  \end{center}
-\end{figure}
-
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%%%%%%%  Part (e)
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	 \item Graph the CDF for the same values of the parameter(s) as you did in 
-	 Question \ref{q3PMF}. What does changing the parameter(s) do to the shape of 
-	 the CDF? Comment on the aspects of the CDFs that show that the CDF is valid.
-	 
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlcom{# Handle open/closed points}
-\hlstd{plot.df.openpoints} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= plot.df}\hlopt{$}\hlstd{x,}
-                                 \hlkwc{y1} \hlstd{=} \hlkwd{pbern}\hlstd{(plot.df}\hlopt{$}\hlstd{x}\hlopt{-}\hlnum{1}\hlstd{,} \hlkwc{prob} \hlstd{=} \hlnum{0.4}\hlstd{),}
-                                 \hlkwc{y2} \hlstd{=} \hlkwd{pbern}\hlstd{(plot.df}\hlopt{$}\hlstd{x}\hlopt{-}\hlnum{1}\hlstd{,} \hlkwc{prob} \hlstd{=} \hlnum{0.5}\hlstd{),}
-                                 \hlkwc{y3} \hlstd{=} \hlkwd{pbern}\hlstd{(plot.df}\hlopt{$}\hlstd{x}\hlopt{-}\hlnum{1}\hlstd{,} \hlkwc{prob} \hlstd{=} \hlnum{0.6}\hlstd{),}
-                                 \hlkwc{y4} \hlstd{=} \hlkwd{pbern}\hlstd{(plot.df}\hlopt{$}\hlstd{x}\hlopt{-}\hlnum{1}\hlstd{,} \hlkwc{prob} \hlstd{=} \hlnum{0.8}\hlstd{))}
-\hlstd{plot.df.closedpoints} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= plot.df}\hlopt{$}\hlstd{x,}
-                                   \hlkwc{y1} \hlstd{=} \hlkwd{pbern}\hlstd{(plot.df}\hlopt{$}\hlstd{x,}\hlkwc{prob}\hlstd{=}\hlnum{0.4}\hlstd{),}
-                                   \hlkwc{y2} \hlstd{=} \hlkwd{pbern}\hlstd{(plot.df}\hlopt{$}\hlstd{x,}\hlkwc{prob}\hlstd{=}\hlnum{0.5}\hlstd{),}
-                                   \hlkwc{y3} \hlstd{=} \hlkwd{pbern}\hlstd{(plot.df}\hlopt{$}\hlstd{x,}\hlkwc{prob}\hlstd{=}\hlnum{0.6}\hlstd{),}
-                                   \hlkwc{y4} \hlstd{=} \hlkwd{pbern}\hlstd{(plot.df}\hlopt{$}\hlstd{x,}\hlkwc{prob}\hlstd{=}\hlnum{0.8}\hlstd{))}
-
-\hlstd{CDF1} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= F1))} \hlopt{+}
-    \hlkwd{geom_step}\hlstd{()}\hlopt{+}
-    \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= plot.df.openpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y1),} \hlkwc{shape} \hlstd{=} \hlnum{1}\hlstd{)} \hlopt{+}
-    \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= plot.df.closedpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y1))} \hlopt{+}
-    \hlkwd{theme_bw}\hlstd{()}\hlopt{+}
-    \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)}\hlopt{+}
-    \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(F[x](x)))}\hlopt{+}
-    \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli CDF"}\hlstd{,}\hlkwc{subtitle}\hlstd{=(}\hlkwd{paste}\hlstd{(}\hlstr{"p ="}\hlstd{,} \hlnum{0.4}\hlstd{)))}
-
-\hlstd{CDF2} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= F2))} \hlopt{+}
-    \hlkwd{geom_step}\hlstd{()}\hlopt{+}
-    \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= plot.df.openpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y2),} \hlkwc{shape} \hlstd{=} \hlnum{1}\hlstd{)} \hlopt{+}
-    \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= plot.df.closedpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y2))} \hlopt{+}
-    \hlkwd{theme_bw}\hlstd{()}\hlopt{+}
-    \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)}\hlopt{+}
-    \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(F[x](x)))}\hlopt{+}
-    \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli CDF"}\hlstd{,}\hlkwc{subtitle}\hlstd{=(}\hlkwd{paste}\hlstd{(}\hlstr{"p ="}\hlstd{,} \hlnum{0.5}\hlstd{)))}
-
-\hlstd{CDF3} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= F3))} \hlopt{+}
-    \hlkwd{geom_step}\hlstd{()}\hlopt{+}
-    \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= plot.df.openpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y3),} \hlkwc{shape} \hlstd{=} \hlnum{1}\hlstd{)} \hlopt{+}
-    \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= plot.df.closedpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y3))} \hlopt{+}
-    \hlkwd{theme_bw}\hlstd{()}\hlopt{+}
-    \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)}\hlopt{+}
-    \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(F[x](x)))}\hlopt{+}
-    \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli CDF"}\hlstd{,}\hlkwc{subtitle}\hlstd{=(}\hlkwd{paste}\hlstd{(}\hlstr{"p ="}\hlstd{,} \hlnum{0.6}\hlstd{)))}
-
-\hlstd{CDF4} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= F4))} \hlopt{+}
-    \hlkwd{geom_step}\hlstd{()}\hlopt{+}
-    \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= plot.df.openpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y4),} \hlkwc{shape} \hlstd{=} \hlnum{1}\hlstd{)} \hlopt{+}
-    \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= plot.df.closedpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y4))} \hlopt{+}
-    \hlkwd{theme_bw}\hlstd{()}\hlopt{+}
-    \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)}\hlopt{+}
-    \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(F[x](x)))}\hlopt{+}
-    \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli CDF"}\hlstd{,}\hlkwc{subtitle}\hlstd{=(}\hlkwd{paste}\hlstd{(}\hlstr{"p ="}\hlstd{,} \hlnum{0.8}\hlstd{)))}
-
-\hlstd{CDF1} \hlopt{+} \hlstd{CDF2} \hlopt{+} \hlstd{CDF3} \hlopt{+} \hlstd{CDF4}
+\hlkwd{plotbernPMF}\hlstd{(}\hlnum{0.4}\hlstd{)} \hlopt{+} \hlkwd{plotbernPMF}\hlstd{(}\hlnum{0.5}\hlstd{)} \hlopt{+} \hlkwd{plotbernPMF}\hlstd{(}\hlnum{0.6}\hlstd{)} \hlopt{+} \hlkwd{plotbernPMF}\hlstd{(}\hlnum{0.8}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -425,9 +343,56 @@ Since the Bernoulli distribution is not cataloged by R, we have to introduce it 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-3-1} 
 \end{knitrout}
     \caption{The CDF of the Bernoulli distribution for different probability parameters p}
+    \label{P3fig_1} %we can now reference P3fig_1
+  \end{center}
+\end{figure}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (e)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 \item Graph the CDF for the same values of the parameter(s) as you did in 
+	 Question \ref{q3PMF}. What does changing the parameter(s) do to the shape of 
+	 the CDF? Comment on the aspects of the CDFs that show that the CDF is valid.
+	 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{plotbernCDF} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{prob}\hlstd{)\{} \hlcom{# Pass in the success probability}
+  \hlstd{ggdat} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),}
+                      \hlkwc{f} \hlstd{=} \hlkwd{dbern}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{= prob),}
+                      \hlkwc{F} \hlstd{=} \hlkwd{pbern}\hlstd{(}\hlkwc{q} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{= prob))}
+  \hlstd{ggdat.openpoints} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= ggdat}\hlopt{$}\hlstd{x,}
+                                 \hlkwc{y} \hlstd{=} \hlkwd{pbern}\hlstd{(ggdat}\hlopt{$}\hlstd{x}\hlopt{-}\hlnum{1}\hlstd{,} \hlkwc{prob} \hlstd{= prob))}
+  \hlstd{ggdat.closedpoints} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= ggdat}\hlopt{$}\hlstd{x,}
+                                   \hlkwc{y} \hlstd{=} \hlkwd{pbern}\hlstd{(ggdat}\hlopt{$}\hlstd{x,}\hlkwc{prob}\hlstd{=prob))}
+  \hlstd{CDF}\hlkwb{<-}\hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= ggdat,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= F))} \hlopt{+}
+    \hlkwd{geom_step}\hlstd{()}\hlopt{+}
+    \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= ggdat.openpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y),} \hlkwc{shape} \hlstd{=} \hlnum{1}\hlstd{)} \hlopt{+}
+    \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= ggdat.closedpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y))} \hlopt{+}
+    \hlkwd{theme_bw}\hlstd{()}\hlopt{+}
+    \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)}\hlopt{+}
+    \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(F[x](x)))}\hlopt{+}
+    \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli CDF"}\hlstd{,}\hlkwc{subtitle}\hlstd{=(}\hlkwd{paste}\hlstd{(}\hlstr{"p ="}\hlstd{, prob)))}
+  \hlkwd{return}\hlstd{(CDF)}
+\hlstd{\}}
+\hlkwd{plotbernCDF}\hlstd{(}\hlnum{0.4}\hlstd{)} \hlopt{+} \hlkwd{plotbernCDF}\hlstd{(}\hlnum{0.5}\hlstd{)} \hlopt{+} \hlkwd{plotbernCDF}\hlstd{(}\hlnum{0.6}\hlstd{)} \hlopt{+} \hlkwd{plotbernCDF}\hlstd{(}\hlnum{0.8}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\begin{figure}[H]
+  \begin{center}
+  % This code is evaluated, but not printed
+  % note below I use message=FALSE and warning=FALSE to surpress what's printed
+  % when running library(ggmap) or library(patchwork) which would otherwise cause
+  % an error because Sweave is expecting just a graph (not a graph + text)
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-4-1} 
+\end{knitrout}
+    \caption{The CDF of the Bernoulli distribution for different probability parameters p}
     \label{P3fig_2} %we can now reference P3fig_1
   \end{center}
 \end{figure}
+	 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (f)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -435,6 +400,123 @@ Since the Bernoulli distribution is not cataloged by R, we have to introduce it 
   two sets of parameter(s). In a $4 \times 2$ grid, plot a histogram (with bin 
   size 1) of each set of data and superimpose the true mass function at the 
   specified parameter values. Interpret the results.
+  \textbf{Solution:} The two parameters we are working with are $\mathrm{p=0.4}$ and $\mathrm{p=0.6}$
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# Using sampling with replacement to generate arrays of 0 and 1}
+
+\hlkwd{library}\hlstd{(ggplot2)}
+\hlkwd{library}\hlstd{(patchwork)}
+
+\hlstd{plot.df} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),}
+                      \hlkwc{f1} \hlstd{=} \hlkwd{dbern}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.4}\hlstd{),}
+                      \hlkwc{f2} \hlstd{=} \hlkwd{dbern}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.6}\hlstd{))}
+
+\hlstd{bern_sample} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{n}\hlstd{,}\hlkwc{prob}\hlstd{)\{}
+  \hlstd{support} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{1}\hlstd{)}
+  \hlstd{x} \hlkwb{<-} \hlkwd{sample}\hlstd{(}\hlkwc{x} \hlstd{= support,} \hlkwc{size}\hlstd{=n,} \hlkwc{replace}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{prob}\hlstd{=}\hlkwd{dbern}\hlstd{(support, prob))}
+  \hlstd{x}
+\hlstd{\}}
+
+
+\hlstd{sample_p1_n10} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{10}\hlstd{,} \hlnum{0.4}\hlstd{))}
+\hlstd{sample_p1_n25} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{25}\hlstd{,} \hlnum{0.4}\hlstd{))}
+\hlstd{sample_p1_n100} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{100}\hlstd{,} \hlnum{0.4}\hlstd{))}
+\hlstd{sample_p1_n1000}\hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{1000}\hlstd{,} \hlnum{0.4}\hlstd{))}
+
+\hlstd{sample_p2_n10} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{10}\hlstd{,} \hlnum{0.6}\hlstd{))}
+\hlstd{sample_p2_n25} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{25}\hlstd{,} \hlnum{0.6}\hlstd{))}
+\hlstd{sample_p2_n100} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{100}\hlstd{,} \hlnum{0.6}\hlstd{))}
+\hlstd{sample_p2_n1000}\hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{1000}\hlstd{,} \hlnum{0.6}\hlstd{))}
+
+
+\hlcom{#first line}
+          \hlstd{x1}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
+          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p1_n10,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
+                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
+          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f1),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
+          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+          \hlkwd{xlab}\hlstd{(}\hlstr{"x1"}\hlstd{)}\hlopt{+}
+          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 10, Prob =0.4"}\hlstd{)}
+
+                \hlstd{x2}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
+          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p1_n25,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
+                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
+          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f1),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
+          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+          \hlkwd{xlab}\hlstd{(}\hlstr{"x2"}\hlstd{)}\hlopt{+}
+          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 25, Prob =0.4"}\hlstd{)}
+
+                \hlstd{x3}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
+          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p1_n100,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
+                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
+          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f1),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
+          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+          \hlkwd{xlab}\hlstd{(}\hlstr{"x3"}\hlstd{)}\hlopt{+}
+          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 100, Prob =0.4"}\hlstd{)}
+
+                \hlstd{x4}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
+          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p1_n1000,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
+                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
+          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f1),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
+          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+          \hlkwd{xlab}\hlstd{(}\hlstr{"x4"}\hlstd{)}\hlopt{+}
+          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 1000, Prob =0.4"}\hlstd{)}
+
+\hlcom{#second line}
+
+                \hlstd{y1}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
+          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p2_n10,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
+                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
+          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f2),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
+          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+          \hlkwd{xlab}\hlstd{(}\hlstr{"y1"}\hlstd{)}\hlopt{+}
+          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 10, Prob =0.6"}\hlstd{)}
+
+                \hlstd{y2}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
+          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p2_n25,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
+                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
+          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f2),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
+          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+          \hlkwd{xlab}\hlstd{(}\hlstr{"y2"}\hlstd{)}\hlopt{+}
+          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 25, Prob =0.6"}\hlstd{)}
+
+                \hlstd{y3}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
+          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p2_n100,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
+                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
+          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f2),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
+          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+          \hlkwd{xlab}\hlstd{(}\hlstr{"y3"}\hlstd{)}\hlopt{+}
+          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 100, Prob =0.6"}\hlstd{)}
+
+                \hlstd{y4}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
+          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p2_n1000,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
+                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
+          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f2),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
+          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+          \hlkwd{xlab}\hlstd{(}\hlstr{"y4"}\hlstd{)}\hlopt{+}
+          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 1000, Prob =0.6"}\hlstd{)}
+
+\hlstd{(x1}\hlopt{|}\hlstd{x2}\hlopt{|}\hlstd{x3}\hlopt{|}\hlstd{x4)}\hlopt{/}\hlstd{(y1}\hlopt{|}\hlstd{y2}\hlopt{|}\hlstd{y3}\hlopt{|}\hlstd{y4)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\begin{figure}[H]
+  \begin{center}
+  % This code is evaluated, but not printed
+  % note below I use message=FALSE and warning=FALSE to surpress what's printed
+  % when running library(ggmap) or library(patchwork) which would otherwise cause
+  % an error because Sweave is expecting just a graph (not a graph + text)
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-5-1} 
+\end{knitrout}
+    \caption{(Top row) Samples of 10, 25, 100, 1000 for the Bernoulli distribution with p = 0.4. (Bottom row) Samples of 10, 25, 100, 1000 for the Bernoulli distribution with p = 0.6. In each plot the red lines indicate the true PMF function of the corresponding Bernoulli distribution}
+    \label{P3fig_3} %we can now reference P3fig_1
+  \end{center}
+\end{figure}
 	\end{enumerate}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

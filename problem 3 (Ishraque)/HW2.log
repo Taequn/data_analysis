@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.8.27)  5 OCT 2021 13:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.8.27)  6 OCT 2021 23:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -436,78 +436,109 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/Users/fairuzishraque/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex
 .map}] [2]
-Underfull \hbox (badness 10000) in paragraph at lines 212--217
+Underfull \hbox (badness 10000) in paragraph at lines 216--221
 
  []
 
-Package color Info: Redefining color shadecolor on input line 233.
+Package color Info: Redefining color shadecolor on input line 235.
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 236.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 238.
 LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 
-236.
+238.
 (/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/omscmtt.fd
 File: omscmtt.fd 
 )
 LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 236.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 238.
 
 [3]
-Package color Info: Redefining color shadecolor on input line 288.
-Package color Info: Redefining color shadecolor on input line 346.
-<figure/unnamed-chunk-2-1.pdf, id=61, 542.025pt x 397.485pt>
-File: figure/unnamed-chunk-2-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-2-1.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-2-1.pdf  used on input line 347.
+LaTeX Font Info:    Trying to load font information for OML+cmr on input line 2
+98.
+ (/Users/fairuzishraque/Library/TinyTeX/texmf-dist/tex/latex/base/omlcmr.fd
+File: omlcmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 298.
+Package color Info: Redefining color shadecolor on input line 309.
+Package color Info: Redefining color shadecolor on input line 342.
+<figure/unnamed-chunk-3-1.pdf, id=61, 542.025pt x 397.485pt>
+File: figure/unnamed-chunk-3-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-3-1.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-3-1.pdf  used on input line 343.
 (pdftex.def)             Requested size: 542.02367pt x 397.49614pt.
- [4]
-Package color Info: Redefining color shadecolor on input line 362.
+[4]
+Package color Info: Redefining color shadecolor on input line 357.
+Package color Info: Redefining color shadecolor on input line 388.
+<figure/unnamed-chunk-4-1.pdf, id=71, 542.025pt x 397.485pt>
+File: figure/unnamed-chunk-4-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-4-1.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-4-1.pdf  used on input line 389.
+(pdftex.def)             Requested size: 542.02367pt x 397.49614pt.
  [5pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.414 \end{kframe}
-                   <./figure/unnamed-chunk-2-1.pdf>]
-Package color Info: Redefining color shadecolor on input line 424.
-<figure/unnamed-chunk-3-1.pdf, id=81, 542.025pt x 397.485pt>
-File: figure/unnamed-chunk-3-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-3-1.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-3-1.pdf  used on input line 425.
-(pdftex.def)             Requested size: 542.02367pt x 397.49614pt.
- [6] [7pdfTeX warning (ext4): destination with the same identifier (name{figure
-.2}) has been already used, duplicate ignored
+l.395 	
+        <./figure/unnamed-chunk-3-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 405.
+ [6pdfTeX warning (ext4): destination with the same identifier (name{figure.2})
+ has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.492   \item C
-               omment on the results of parts (c)-(f). <./figure/unnamed-chunk-
-3-1.pdf>] [8] (./HW2.bbl) [9] (./HW2.aux)
+l.503 \end{kframe}
+                   <./figure/unnamed-chunk-4-1.pdf>]
+Underfull \vbox (badness 10000) detected at line 503
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 503
+ []
+
+[7]
+Package color Info: Redefining color shadecolor on input line 513.
+<figure/unnamed-chunk-5-1.pdf, id=101, 650.43pt x 433.62pt>
+File: figure/unnamed-chunk-5-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-5-1.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-5-1.pdf  used on input line 514.
+(pdftex.def)             Requested size: 542.02501pt x 361.37337pt.
+ [8pdfTeX warning (ext4): destination with the same identifier (name{figure.3})
+ has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.542   \item G
+               enerate a random sample of size $n=10$ for your two sets of p...
+ <./figure/unnamed-chunk-5-1.pdf>] [9] (./HW2.bbl) [10] (./HW2.aux)
 Package rerunfilecheck Info: File `HW2.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 9339 strings out of 480502
- 139272 string characters out of 5898668
- 467934 words of memory out of 5000000
- 26835 multiletter control sequences out of 15000+600000
+ 9369 strings out of 480502
+ 139945 string characters out of 5898668
+ 491417 words of memory out of 5000000
+ 26859 multiletter control sequences out of 15000+600000
  407343 words of font info for 43 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,10n,66p,676b,554s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,10n,66p,699b,565s stack positions out of 5000i,500n,10000p,200000b,80000s
 </Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmbx10.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmbx12.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmitt10.pfb></Users/fairuzishraque/Library/TinyTe
-X/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/fairuzishraque/L
-ibrary/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/fair
-uzishraque/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-</Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr7.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy10.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmsy7.pfb></Users/fairuzishraque/Library/TinyTeX/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></Users/fairuzishraque/Library
-/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on HW2.pdf (9 pages, 168562 bytes).
+onts/type1/public/amsfonts/cm/cmex10.pfb></Users/fairuzishraque/Library/TinyTeX
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></Users/fairuzishraque/L
+ibrary/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/fai
+ruzishraque/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
+></Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr10.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr7.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy10.pfb></Users/fairuzishraque/Library/TinyTeX/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/fairuzishraque/Library
+/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></Users/fairuzish
+raque/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></Us
+ers/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbo
+ls/msbm10.pfb>
+Output written on HW2.pdf (10 pages, 191925 bytes).
 PDF statistics:
- 179 PDF objects out of 1000 (max. 8388607)
- 140 compressed objects within 2 object streams
- 52 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 200 PDF objects out of 1000 (max. 8388607)
+ 154 compressed objects within 2 object streams
+ 54 named destinations out of 1000 (max. 500000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

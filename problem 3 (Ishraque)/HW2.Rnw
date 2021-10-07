@@ -89,6 +89,12 @@ each other complete the homework in collaboration.
   two sets of parameter(s). In a $4 \times 2$ grid, plot a histogram of each set
   of data and superimpose the true density function at the specified parameter 
   values. Interpret the results.
+  \textbf{Solution:}
+  
+<<>>=
+
+@
+  
 	\end{enumerate}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -165,7 +171,6 @@ each other complete the homework in collaboration.
   some exciting applications of this distribution? Cite all of your sources.\\
   
 \textbf{Solution:} The discrete distribution we have chosen is the Bernoulli distribution. The Bernoulli distribution  is a discrete probability distribution for a Bernoulli trial - a probabilistic experiment that can have one of two outcomes, success $\mathrm{(x = 1)}$ and failure $\mathrm{(x = 0)}$, and in which the probability fo success is $p$. Often $p$  is called the Bernoulli probability parameter. In Bernoulli distribution, the random variable $X$ can have only one of two values: 0 or 1. This means that the support of our discrete random variable is the set $\mathrm{{0, 1}}$. This distribution can be summarized as follows:
-
 \begin{align*}
   p               &\in (0,1)                                                                               &\text{\textbf{[Parameter]}}\\
   \mathcal{X}     & = \{x: x \in \{0,1\}\}                                                                   &\text{\textbf{[Support]}}\\
@@ -173,8 +178,7 @@ each other complete the homework in collaboration.
   F_{X}(x \mid p) & = P(X \leq \left\lfloor x \right\rfloor)\\
                   & = [(1-p)I(\left\lfloor x \right\rfloor = 0)] + I(\left\lfloor x \right\rfloor \geq 1)  &\text{\textbf{[CDF]}}\\
 \end{align*}
-
-Simply, the Bernoulli distribution can be thought of as a model for the set of possible outcomes of any single experiment that asks a yes-no question. This distribution is named after the 17th century Swiss mathematician Jacob Bernoulli, because he was the one who explicitly defined the concept of Bernoulli trial (in his book \emph{Ars Conjectandi}) described above. 
+Simply, the Bernoulli distribution can be thought of as a model for the set of possible outcomes of any single experiment that asks a yes-no question. This distribution is named after the 17th century Swiss mathematician Jacob Bernoulli, because he was the one who explicitly defined the concept of Bernoulli trial (in his book \emph{Ars Conjectandi}) described above. Bernoulli distribution serves as a building block for discrete distributions which model Bernoulli trials, such as Binomial distribution and geometric distribution. Logistic regression, a widely used classification model that models a binary outcome, also takes advantage of the Bernoulli distribution.
 
 Since the Bernoulli distribution is not cataloged by R, we have to introduce it into our calculations with the  following functions:
 
@@ -212,14 +216,33 @@ pbern<-function(q, prob){
 	calculating the series in a repeat loop until probability mass evaluations are 
 	infinitesimally small.
 	
-	\textbf{Solution:} Simple mathematical validation that requires no coding. Will put it up here shortly
+	\textbf{Solution:} For a PMF to be valid, it has to fulfill the following statements:
+	\begin{enumerate}
+	\item[1.] $0 \leq f_{X}(x) \leq 1$ for all $x \in \mathbb{R}$
+	\item[2.] $ \sum_{-\infty}^{\infty} f_{X} = \sum_{\mathcal{X}}f_{X} = 1$
+	\end{enumerate}
+	
+	By definition, the Bernoulli distribution satisfies statement 1, since the support is {0,1} and the probability parameter $\mathrm{p \in (0,1)}$, so the term for PMF (see above) cannot have a value smaller than 0 or greater than 1.
+	
+	We can also show that the statement 2 is true for the Bernoulli distribution:
+	
+	\begin{align*}
+	  \sum_{\mathcal{X}}f_{X} = \sum_{x = 0}^{1}f_{X}(x) &= \sum_{x = 0}^{1}p^{x}(1-p)^{1-x}\\
+	  &= p^{0}(1-p)^{1-0} +p^{1}(1-p)^{1-1}\\
+	  &= (1)(1-p) + p(1)\\
+	  &= 1-p+p\\
+	  &= 1
+	\end{align*}
+	
+	Therefore, we have a valid PMF for our distribution.
+	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (c)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\item Find the median for your two sets of parameter(s). Conduct some research 
 	to find the median based on our PMF to confirm that your numerical approach is
 	correct. 
-	\textbf{Solution:} Still a bit confused about this. Will put it up after office hours.
+	\textbf{Solution:} In the Bernoulli distribution, where p is the probability parameter and $\mathrm{q = 1 - p}$, when p\textgreater q, there are more "successes" (that is when $X$ is 1) than failure (when $X$ is 0), so the median must also be a success. Similar, when q\textgreater p, there are more "failures" than "successes", hence resulting in the median being 0. When $\mathrm{p = q}$, there is an equal probability of $X$ being 0 or 1, thus the median is ambiguous. Therefore, the median for when $\mathrm{p = 0.4}$ is zero and the median for when $\mathrm{p = 0.6}$ is 1.
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (d)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -230,53 +253,28 @@ pbern<-function(q, prob){
 	\textbf{Solutions:} We can plot the PMF of the Bernoulli distribution for different parameters.Note that the initially chosen parameters were $\mathrm{p =0.4}$ and $\mathrm{p=0.6}$. Let us also look at the PMF when the parameter values are 0.5, and 0.8.
 	
 <<P3fig_1, eval=FALSE>>=
-library(ggplot2)
+library(ggplot2) 
 library(patchwork)
+plotbernPMF <- function(prob){ # Pass in the success probability
+  ggdat <- data.frame(x = (-1:2),
+                      f = dbern(x = (-1:2), prob = prob),
+                      F = pbern(q = (-1:2), prob = prob))
+  ## Plot PMF
+  PMF <- ggplot(data = ggdat, aes(x = x)) +
+    geom_linerange(aes(ymax = f), ymin = 0) +
+    geom_hline(yintercept = 0) +
+    theme_bw() +
+    ylim(0, 1) +
+    xlab("X") +
+    ylab(bquote(f[x](x))) +
+    ggtitle("Bernoulli Distribution",subtitle = paste("p =", prob))
+  
+  return(PMF)
+}
 
-plot.df <- data.frame(x = (-1:2),
-                      f1 = dbern(x = (-1:2), prob = 0.4),
-                      f2 = dbern(x = (-1:2), prob = 0.5),
-                      f3 = dbern(x = (-1:2), prob = 0.6),
-                      f4 = dbern(x = (-1:2), prob = 0.8),
-                      F1 = pbern(q = (-1:2), prob = 0.4),
-                      F2 = pbern(q = (-1:2), prob = 0.5),
-                      F3 = pbern(q = (-1:2), prob = 0.6),
-                      F4 = pbern(q = (-1:2), prob = 0.8))
-
-PMF1 <- ggplot(data = plot.df, aes(x = x))+
-  geom_linerange(aes(ymax = f1), ymin = 0)+
-  geom_hline(yintercept = 0)+
-  theme_bw() +
-  xlab("X") +
-  ylab(bquote(f[x](x))) +
-  ggtitle("Bernoulli PMF", subtitle = paste("p =", 0.4))
-
-PMF2 <- ggplot(data = plot.df, aes(x = x))+
-  geom_linerange(aes(ymax = f2), ymin = 0)+
-  geom_hline(yintercept = 0)+
-  theme_bw() +
-  xlab("X") +
-  ylab(bquote(f[x](x))) +
-  ggtitle("Bernoulli PMF", subtitle = paste("p =", 0.5))
-
-PMF3 <- ggplot(data = plot.df, aes(x = x))+
-  geom_linerange(aes(ymax = f3), ymin = 0)+
-  geom_hline(yintercept = 0)+
-  theme_bw() +
-  xlab("X") +
-  ylab(bquote(f[x](x))) +
-  ggtitle("Bernoulli PMF", subtitle = paste("p =", 0.6))
-
-PMF4 <- ggplot(data = plot.df, aes(x = x))+
-  geom_linerange(aes(ymax = f4), ymin = 0)+
-  geom_hline(yintercept = 0)+
-  theme_bw() +
-  xlab("X") +
-  ylab(bquote(f[x](x))) +
-  ggtitle("Bernoulli PMF", subtitle = paste("p =", 0.8))
-
-PMF1 + PMF2 + PMF3 + PMF4
+plotbernPMF(0.4) + plotbernPMF(0.5) + plotbernPMF(0.6) + plotbernPMF(0.8)
 @
+
 \begin{figure}[H]
   \begin{center}
   % This code is evaluated, but not printed
@@ -286,12 +284,11 @@ PMF1 + PMF2 + PMF3 + PMF4
 <<echo=FALSE, fig.dim=c(7.5,5.5), message=FALSE, warning=FALSE, error=FALSE>>=
 <<P3fig_1>>
 @
-    \caption{The PMF of the Bernoulli distribution for different probability parameters p}
+    \caption{The CDF of the Bernoulli distribution for different probability parameters p}
     \label{P3fig_1} %we can now reference P3fig_1
   \end{center}
 \end{figure}
-
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (e)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	 \item Graph the CDF for the same values of the parameter(s) as you did in 
@@ -299,57 +296,26 @@ PMF1 + PMF2 + PMF3 + PMF4
 	 the CDF? Comment on the aspects of the CDFs that show that the CDF is valid.
 	 
 <<P3fig_2, eval=FALSE>>=
-# Handle open/closed points
-plot.df.openpoints <- data.frame(x = plot.df$x,
-                                 y1 = pbern(plot.df$x-1, prob = 0.4),
-                                 y2 = pbern(plot.df$x-1, prob = 0.5),
-                                 y3 = pbern(plot.df$x-1, prob = 0.6),
-                                 y4 = pbern(plot.df$x-1, prob = 0.8))
-plot.df.closedpoints <- data.frame(x = plot.df$x,
-                                   y1 = pbern(plot.df$x,prob=0.4),
-                                   y2 = pbern(plot.df$x,prob=0.5),
-                                   y3 = pbern(plot.df$x,prob=0.6),
-                                   y4 = pbern(plot.df$x,prob=0.8))
-  
-CDF1 <- ggplot(data = plot.df, aes(x = x, y = F1)) +
+plotbernCDF <- function(prob){ # Pass in the success probability
+  ggdat <- data.frame(x = (-1:2),
+                      f = dbern(x = (-1:2), prob = prob),
+                      F = pbern(q = (-1:2), prob = prob))
+  ggdat.openpoints <- data.frame(x = ggdat$x,
+                                 y = pbern(ggdat$x-1, prob = prob))
+  ggdat.closedpoints <- data.frame(x = ggdat$x,
+                                   y = pbern(ggdat$x,prob=prob))
+  CDF<-ggplot(data = ggdat, aes(x = x, y = F)) +
     geom_step()+
-    geom_point(data = plot.df.openpoints, aes(x = x, y = y1), shape = 1) +
-    geom_point(data = plot.df.closedpoints, aes(x = x, y = y1)) +
+    geom_point(data = ggdat.openpoints, aes(x = x, y = y), shape = 1) +
+    geom_point(data = ggdat.closedpoints, aes(x = x, y = y)) +
     theme_bw()+
     xlab("X")+
     ylab(bquote(F[x](x)))+
-    ggtitle("Bernoulli CDF",subtitle=(paste("p =", 0.4)))
-
-CDF2 <- ggplot(data = plot.df, aes(x = x, y = F2)) +
-    geom_step()+
-    geom_point(data = plot.df.openpoints, aes(x = x, y = y2), shape = 1) +
-    geom_point(data = plot.df.closedpoints, aes(x = x, y = y2)) +
-    theme_bw()+
-    xlab("X")+
-    ylab(bquote(F[x](x)))+
-    ggtitle("Bernoulli CDF",subtitle=(paste("p =", 0.5)))
-
-CDF3 <- ggplot(data = plot.df, aes(x = x, y = F3)) +
-    geom_step()+
-    geom_point(data = plot.df.openpoints, aes(x = x, y = y3), shape = 1) +
-    geom_point(data = plot.df.closedpoints, aes(x = x, y = y3)) +
-    theme_bw()+
-    xlab("X")+
-    ylab(bquote(F[x](x)))+
-    ggtitle("Bernoulli CDF",subtitle=(paste("p =", 0.6)))
-
-CDF4 <- ggplot(data = plot.df, aes(x = x, y = F4)) +
-    geom_step()+
-    geom_point(data = plot.df.openpoints, aes(x = x, y = y4), shape = 1) +
-    geom_point(data = plot.df.closedpoints, aes(x = x, y = y4)) +
-    theme_bw()+
-    xlab("X")+
-    ylab(bquote(F[x](x)))+
-    ggtitle("Bernoulli CDF",subtitle=(paste("p =", 0.8)))
-
-CDF1 + CDF2 + CDF3 + CDF4
+    ggtitle("Bernoulli CDF",subtitle=(paste("p =", prob)))
+  return(CDF)
+}
+plotbernCDF(0.4) + plotbernCDF(0.5) + plotbernCDF(0.6) + plotbernCDF(0.8)
 @
-
 \begin{figure}[H]
   \begin{center}
   % This code is evaluated, but not printed
@@ -363,6 +329,7 @@ CDF1 + CDF2 + CDF3 + CDF4
     \label{P3fig_2} %we can now reference P3fig_1
   \end{center}
 \end{figure}
+	 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (f)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -370,6 +337,118 @@ CDF1 + CDF2 + CDF3 + CDF4
   two sets of parameter(s). In a $4 \times 2$ grid, plot a histogram (with bin 
   size 1) of each set of data and superimpose the true mass function at the 
   specified parameter values. Interpret the results.
+  \textbf{Solution:} The two parameters we are working with are $\mathrm{p=0.4}$ and $\mathrm{p=0.6}$
+<<P3fig_3, eval=FALSE>>=
+# Using sampling with replacement to generate arrays of 0 and 1
+
+library(ggplot2)
+library(patchwork)
+
+plot.df <- data.frame(x = (-1:2),
+                      f1 = dbern(x = (-1:2), prob = 0.4),
+                      f2 = dbern(x = (-1:2), prob = 0.6))
+
+bern_sample <- function(n,prob){
+  support <- c(0,1)
+  x <- sample(x = support, size=n, replace=TRUE, prob=dbern(support, prob))
+  x
+}
+
+
+sample_p1_n10 <- data.frame(sample = bern_sample(10, 0.4))
+sample_p1_n25 <- data.frame(sample = bern_sample(25, 0.4))
+sample_p1_n100 <- data.frame(sample = bern_sample(100, 0.4))
+sample_p1_n1000<- data.frame(sample = bern_sample(1000, 0.4))
+
+sample_p2_n10 <- data.frame(sample = bern_sample(10, 0.6))
+sample_p2_n25 <- data.frame(sample = bern_sample(25, 0.6))
+sample_p2_n100 <- data.frame(sample = bern_sample(100, 0.6))
+sample_p2_n1000<- data.frame(sample = bern_sample(1000, 0.6))
+
+
+#first line
+ 	  x1<-ggplot()+
+	  geom_histogram(data = sample_p1_n10, aes(x = sample, y=..density..), binwidth=1,
+	                 color="black")+
+	  geom_linerange(data=plot.df, aes(x=x, ymax = f1), ymin = 0, size=2, color="red")+
+	  theme_bw() +
+	  xlab("x1")+
+	  ggtitle("Bernoulli Distribution",subtitle = "Sample = 10, Prob =0.4")
+	
+		x2<-ggplot()+
+	  geom_histogram(data = sample_p1_n25, aes(x = sample, y=..density..), binwidth=1,
+	                 color="black")+
+	  geom_linerange(data=plot.df, aes(x=x, ymax = f1), ymin = 0, size=2, color="red")+
+	  theme_bw() +
+	  xlab("x2")+
+	  ggtitle("Bernoulli Distribution",subtitle = "Sample = 25, Prob =0.4")
+		
+		x3<-ggplot()+
+	  geom_histogram(data = sample_p1_n100, aes(x = sample, y=..density..), binwidth=1,
+	                 color="black")+
+	  geom_linerange(data=plot.df, aes(x=x, ymax = f1), ymin = 0, size=2, color="red")+
+	  theme_bw() +
+	  xlab("x3")+
+	  ggtitle("Bernoulli Distribution",subtitle = "Sample = 100, Prob =0.4")
+		
+		x4<-ggplot()+
+	  geom_histogram(data = sample_p1_n1000, aes(x = sample, y=..density..), binwidth=1,
+	                 color="black")+
+	  geom_linerange(data=plot.df, aes(x=x, ymax = f1), ymin = 0, size=2, color="red")+
+	  theme_bw() +
+	  xlab("x4")+
+	  ggtitle("Bernoulli Distribution",subtitle = "Sample = 1000, Prob =0.4")
+		
+#second line
+	  
+		y1<-ggplot()+
+	  geom_histogram(data = sample_p2_n10, aes(x = sample, y=..density..), binwidth=1,
+	                 color="black")+
+	  geom_linerange(data=plot.df, aes(x=x, ymax = f2), ymin = 0, size=2, color="red")+
+	  theme_bw() +
+	  xlab("y1")+
+	  ggtitle("Bernoulli Distribution",subtitle = "Sample = 10, Prob =0.6")
+	
+		y2<-ggplot()+
+	  geom_histogram(data = sample_p2_n25, aes(x = sample, y=..density..), binwidth=1,
+	                 color="black")+
+	  geom_linerange(data=plot.df, aes(x=x, ymax = f2), ymin = 0, size=2, color="red")+
+	  theme_bw() +
+	  xlab("y2")+
+	  ggtitle("Bernoulli Distribution",subtitle = "Sample = 25, Prob =0.6")
+		
+		y3<-ggplot()+
+	  geom_histogram(data = sample_p2_n100, aes(x = sample, y=..density..), binwidth=1,
+	                 color="black")+
+	  geom_linerange(data=plot.df, aes(x=x, ymax = f2), ymin = 0, size=2, color="red")+
+	  theme_bw() +
+	  xlab("y3")+
+	  ggtitle("Bernoulli Distribution",subtitle = "Sample = 100, Prob =0.6")
+		
+		y4<-ggplot()+
+	  geom_histogram(data = sample_p2_n1000, aes(x = sample, y=..density..), binwidth=1,
+	                 color="black")+
+	  geom_linerange(data=plot.df, aes(x=x, ymax = f2), ymin = 0, size=2, color="red")+
+	  theme_bw() +
+	  xlab("y4")+
+	  ggtitle("Bernoulli Distribution",subtitle = "Sample = 1000, Prob =0.6")
+		
+(x1|x2|x3|x4)/(y1|y2|y3|y4)
+@
+
+\begin{figure}[H]
+  \begin{center}
+  % This code is evaluated, but not printed
+  % note below I use message=FALSE and warning=FALSE to surpress what's printed
+  % when running library(ggmap) or library(patchwork) which would otherwise cause
+  % an error because Sweave is expecting just a graph (not a graph + text)
+<<echo=FALSE, fig.dim=c(9,6), message=FALSE, warning=FALSE, error=FALSE>>=
+<<P3fig_3>>
+@
+    \caption{(Top row) Samples of 10, 25, 100, 1000 for the Bernoulli distribution with p = 0.4. (Bottom row) Samples of 10, 25, 100, 1000 for the Bernoulli distribution with p = 0.6. In each plot the red lines indicate the true PMF function of the corresponding Bernoulli distribution}
+    \label{P3fig_3} %we can now reference P3fig_1
+  \end{center}
+\end{figure}
 	\end{enumerate}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
