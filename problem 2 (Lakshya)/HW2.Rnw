@@ -102,6 +102,7 @@ each other complete the homework in collaboration.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Provide the mean, standard deviation, skewness, and kurtosis of the PDF.
   Ensure to interpret each.
+    \\
     \\E(X) = mu
     \\var(X) = sigma^2
     \\skew(X) = 0
@@ -129,15 +130,15 @@ each other complete the homework in collaboration.
   s1_stats
   @
   \textbf{Interpretation:}
-  \\ Center: The sample mean of a normal distribution is the balancing point of the distribution. In this case, this will be equal to around - 
+  \\ \textbf{Center:} The sample mean of a normal distribution is the balancing point of the distribution. In this case, this will be equal to around - 
   <<>>= 
   s1_stats$Mean
   @
-  \\ Spread: The average distance from the sample mean is - 
+  \\ \textbf{Spread:} The average distance from the sample mean is - 
   <<>>= 
   s1_stats$SD
   @
-  \\ Skewness: The skewness of a dataset describes the symmetry of a distribution.
+  \\ \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
   <<>>=
   s1_stats$Skewness
   @
@@ -153,15 +154,15 @@ each other complete the homework in collaboration.
   s2_stats
   @
   \textbf{Interpretation:}
-  \\ Center: The sample mean of a normal distribution is the balancing point of the distribution. In this case, this will be equal to around - 
+  \\ \textbf{Center:} The sample mean of a normal distribution is the balancing point of the distribution. In this case, this will be equal to around - 
   <<>>= 
   s2_stats$Mean
   @
-  \\ Spread: The average distance from the sample mean is - 
+  \\ \textbf{Spread:} The average distance from the sample mean is - 
   <<>>= 
   s2_stats$SD
   @
-  \\ Skewness: The skewness of a dataset describes the symmetry of a distribution.
+  \\ \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
   <<>>=
   s2_stats$Skewness
   @
@@ -177,15 +178,15 @@ each other complete the homework in collaboration.
   s3_stats
   @
   \textbf{Interpretation:}
-  \\ Center: The sample mean of a normal distribution is the balancing point of the distribution. In this case, this will be equal to around - 
+  \\ \textbf{Center:} The sample mean of a normal distribution is the balancing point of the distribution. In this case, this will be equal to around - 
   <<>>= 
   s3_stats$Mean
   @
-  \\ Spread: The average distance from the sample mean is - 
+  \\ \textbf{Spread:} The average distance from the sample mean is - 
   <<>>= 
   s3_stats$SD
   @
-  \\ Skewness: The skewness of a dataset describes the symmetry of a distribution.
+  \\ \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
   <<>>=
   s3_stats$Skewness
   @
@@ -200,15 +201,15 @@ each other complete the homework in collaboration.
   s4_stats <- s4 %>% summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" = kurtosis(x))
   @
   \textbf{Interpretation:}
-  \\ Center: The sample mean of a normal distribution is the balancing point of the distribution. In this case, this will be equal to around - 
+  \\ \textbf{Center:} The sample mean of a normal distribution is the balancing point of the distribution. In this case, this will be equal to around - 
   <<>>= 
   s4_stats$Mean
   @
-  \\ Spread: The average distance from the sample mean is - 
+  \\ \textbf{Spread:} The average distance from the sample mean is - 
   <<>>= 
   s4_stats$SD
   @
-  \\ Skewness: The skewness of a dataset describes the symmetry of a distribution.
+  \\ \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
   <<>>=
   s4_stats$Skewness
   @
@@ -218,7 +219,8 @@ each other complete the homework in collaboration.
   s4_stats$`Excess Kurtosis`
   @
   \\ Since the excess kurtosis is almost 0 (slightly lesser), it indicates that the data is almost mesokurtic.
-  \\ \textbf{As the sample size increases, the distribution moves towards becoming more Normal (the sample statistics move towards the population statistics for Gaussian distribution) - the mean tends to equal 0, the SD tends to equal 1 , and both the skewness and excess kurtosis tend to equal 0.}
+  
+  \\ \textbf{As the sample size increases, the distribution moves towards becoming more Normal - the mean tends to equal 0, the SD tends to equal 1, and both the skewness and excess kurtosis tend to equal 0.}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (c)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -273,7 +275,7 @@ each other complete the homework in collaboration.
   
   mom1_p + mle1_p
   
-  dat1_h <- ggplot(data=dat1, aes(x=x))+ geom_histogram(color="black", fill = "lightblue", alpha = 0.5, binwidth = 0.2)+ geom_hline(yintercept=0)+ geom_density(alpha=.2, fill="purple") + theme_bw()+ xlab("x")+ ylab("Density")+ ggtitle("Normal Distrubution (n = 10)") + geom_vline(xintercept = mean(dat1$x), alpha=0.35, color="red",size=1)
+  dat1_h <- ggplot(data=dat1, aes(x=x))+ geom_histogram(color="black", fill = "lightblue", alpha = 0.5, binwidth = 0.2, aes(y=..density..))+ geom_hline(yintercept=0)+ geom_density(alpha=.2, fill="purple") + theme_bw()+ xlab("x")+ ylab("Density")+ ggtitle("Normal Distrubution (n = 10)") + geom_vline(xintercept = mean(dat1$x), alpha=0.35, color="red",size=1)
   
   dat1<-dat1 %>% mutate(n = seq(1,obs[1],1)) 
   dat1_p <- ggplot(data=dat1, aes(x=n, y=x))+ geom_line()+ geom_hline(yintercept=0)+ geom_hline(yintercept = mean(dat1$x), alpha=0.35, color="red",size=1) + theme_bw()+ xlab("n")+ ylab("x")+ ggtitle("Normal Distrubution (n = 10)")
