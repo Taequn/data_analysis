@@ -126,24 +126,101 @@ each other complete the homework in collaboration.
   
   <<>>=
   s1 <- data.frame(x = rnorm(n = obs[1], mean = 0, sd = 1))
-  s1 %>% summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), Kurtosis = kurtosis(x))
+  s1_stats <- s1 %>% summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" = kurtosis(x))
+  s1_stats
   @
-  
-  
+  \textbf{Interpretation:}
+  \\ Center: The sample mean of a normal distribution is the balancing point of the distribution. In this case, this will be equal to around - 
+  <<>>= 
+  s1_stats$Mean
+  @
+  \\ Spread: The average distance from the sample mean is - 
+  <<>>= 
+  s1_stats$SD
+  @
+  \\ Skewness: The skewness of a dataset describes the symmetry of a distribution.
+  <<>>=
+  s1_stats$Skewness
+  @
+  \\ Since skewness > 0, there are more observations for low values and fewer with high values.
+  \\ Kurtosis describes how the peaked data is in relation to the Gaussian distribution (the bell-shaped curve). 
+  <<>>= 
+  s1_stats$`Excess Kurtosis`
+  @
+  Since the excess kurtosis < 0, it indicates that the data is platykurtic. 
   <<>>=
   s2 <- data.frame(x = rnorm(n = obs[2], mean = 0, sd = 1))
-  s2 %>% summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), Kurtosis = kurtosis(x))
+  s2_stats <- s2 %>% summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" = kurtosis(x))
+  s2_stats
   @
-  
+  \textbf{Interpretation:}
+  \\ Center: The sample mean of a normal distribution is the balancing point of the distribution. In this case, this will be equal to around - 
+  <<>>= 
+  s2_stats$Mean
+  @
+  \\ Spread: The average distance from the sample mean is - 
+  <<>>= 
+  s2_stats$SD
+  @
+  \\ Skewness: The skewness of a dataset describes the symmetry of a distribution.
+  <<>>=
+  s2_stats$Skewness
+  @
+  \\ Since skewness is slightly greater than 0, there are more observations for low values and fewer with high values. However, note that the skewness for this sample is closer to 0 than s1. 
+  \\ Kurtosis describes how the peaked data is in relation to the Gaussian distribution (the bell-shaped curve). 
+  <<>>= 
+  s2_stats$`Excess Kurtosis`
+  @
+  \\ Since the excess kurtosis < 0, it indicates that the data is platykurtic. However, note that the excess kurtosis for this sample is closer to 0 than s1. 
   <<>>=
   s3 <- data.frame(x = rnorm(n = obs[3], mean = 0, sd = 1))
-  s3 %>% summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), Kurtosis = kurtosis(x))
+  s3_stats <- s3 %>% summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" = kurtosis(x))
+  s3_stats
   @
-  
+  \textbf{Interpretation:}
+  \\ Center: The sample mean of a normal distribution is the balancing point of the distribution. In this case, this will be equal to around - 
+  <<>>= 
+  s3_stats$Mean
+  @
+  \\ Spread: The average distance from the sample mean is - 
+  <<>>= 
+  s3_stats$SD
+  @
+  \\ Skewness: The skewness of a dataset describes the symmetry of a distribution.
+  <<>>=
+  s3_stats$Skewness
+  @
+  \\ Since skewness is slightly greater than 0, there are more observations for low values and fewer with high values. However, note that the skewness for this sample is closer to 0 than s2. 
+  \\ Kurtosis describes how the peaked data is in relation to the Gaussian distribution (the bell-shaped curve). 
+  <<>>= 
+  s3_stats$`Excess Kurtosis`
+  @
+  \\ Since the excess kurtosis < 0, it indicates that the data is platykurtic. However, note that the excess kurtosis for this sample is closer to 0 than s2. 
   <<>>=
   s4 <- data.frame(x = rnorm(n = obs[4], mean = 0, sd = 1))
-  s4 %>% summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), Kurtosis = kurtosis(x))
+  s4_stats <- s4 %>% summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" = kurtosis(x))
   @
+  \textbf{Interpretation:}
+  \\ Center: The sample mean of a normal distribution is the balancing point of the distribution. In this case, this will be equal to around - 
+  <<>>= 
+  s4_stats$Mean
+  @
+  \\ Spread: The average distance from the sample mean is - 
+  <<>>= 
+  s4_stats$SD
+  @
+  \\ Skewness: The skewness of a dataset describes the symmetry of a distribution.
+  <<>>=
+  s4_stats$Skewness
+  @
+  \\ Since skewness is almost 0 (slightly greater), the distribution is almost symmetric. 
+  \\ Kurtosis describes how the peaked data is in relation to the Gaussian distribution (the bell-shaped curve). 
+  <<>>= 
+  s4_stats$`Excess Kurtosis`
+  @
+  \\ Since the excess kurtosis is almost 0 (slightly lesser), it indicates that the data is almost mesokurtic.
+  
+  \\ \textbf{As the sample size increases, the distribution moves towards becoming more Normal - the mean tends to equal 0, the SD tends to equal 1, and both the skewness and excess kurtosis tend to equal 0.}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (c)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
