@@ -102,13 +102,12 @@ each other complete the homework in collaboration.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Provide the mean, standard deviation, skewness, and kurtosis of the PDF.
   Ensure to interpret each.
-    E(X) = mu
-    var(X) = sigma^2
-    skew(X) = 0
-    The population skewness of the PDF is 0, which indicates that the Normal
-    distribution is symmetric (with line of symmetry at the mean)
-    kurt(X) = 0
-    The population excess kurtosis of the PDF is 0, which indicates that the
+    \\E(X) = mu
+    \\var(X) = sigma^2
+    \\skew(X) = 0
+    \\The population skewness of the PDF is 0, which indicates that the Normal distribution is symmetric (with line of symmetry at the mean).
+    \\ kurt(X) = 0
+    \\ The population excess kurtosis of the PDF is 0, which indicates that the
     Normal distribution is mesokurtic.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (b)
@@ -219,8 +218,7 @@ each other complete the homework in collaboration.
   s4_stats$`Excess Kurtosis`
   @
   \\ Since the excess kurtosis is almost 0 (slightly lesser), it indicates that the data is almost mesokurtic.
-  
-  \\ \textbf{As the sample size increases, the distribution moves towards becoming more Normal - the mean tends to equal 0, the SD tends to equal 1, and both the skewness and excess kurtosis tend to equal 0.}
+  \\ \textbf{As the sample size increases, the distribution moves towards becoming more Normal (the sample statistics move towards the population statistics for Gaussian distribution) - the mean tends to equal 0, the SD tends to equal 1 , and both the skewness and excess kurtosis tend to equal 0.}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (c)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
