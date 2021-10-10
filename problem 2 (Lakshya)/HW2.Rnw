@@ -309,7 +309,7 @@ summarize(Mean = mean(x), SD = sd(x),
 <<echo=FALSE, fig.dim=c(6,4), message=FALSE, warning=FALSE, error=FALSE>>=
 <<p2plot1>>
 @
-	\caption{Cool caption!}
+	\caption{Random Sample of Size $n=10$}
 \label{p2plot1} %we can now reference plot1
 \end{center}
 \end{figure}
@@ -342,7 +342,7 @@ summarize(Mean = mean(x), SD = sd(x),
 <<echo=FALSE, fig.dim=c(6,4), message=FALSE, warning=FALSE, error=FALSE>>=
 <<p2plot2>>
 @
-	\caption{Cool caption!}
+	\caption{Random Sample of Size $n=25$}
 \label{p2plot2} %we can now reference plot1
 \end{center}
 \end{figure}
@@ -397,7 +397,7 @@ summarize(Mean = mean(x), SD = sd(x),
 <<echo=FALSE, fig.dim=c(6,4), message=FALSE, warning=FALSE, error=FALSE>>=
 <<p2plot3>>
 @
-	\caption{Cool caption!}
+	\caption{Random Sample of Size $n=100$}
 \label{p2plot3} %we can now reference plot1
 \end{center}
 \end{figure}
@@ -434,7 +434,7 @@ summarize(Mean = mean(x), SD = sd(x),
 <<echo=FALSE, fig.dim=c(6,4), message=FALSE, warning=FALSE, error=FALSE>>=
 <<p2plot4>>
 @
-	\caption{Cool caption!}
+	\caption{Random Sample of Size $n=1000$}
 \label{p2plot4} %we can now reference plot1
 \end{center}
 \end{figure}
