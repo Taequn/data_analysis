@@ -390,48 +390,731 @@ As we can see, the bigger sample we have, the closer the resulting histogram is 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Provide the mean, standard deviation, skewness, and kurtosis of the PDF.
   Ensure to interpret each.
+  
+\begin{align*}
+  E(x) &= \mu &\text{\textbf{[Mean]}}\\
+var(X) &= \sigma ^{2} &\text{\textbf{[Variance]}}\\
+skew(X) &= 0 &\text{\textbf{[Skewness]}}\\
+kurt(X) &= 0 &\text{\textbf{[Kurtosis]}}
+\end{align*}
+
+The population skewness of the PDF is 0, which indicates that the Normal distribution is symmetric (with line of symmetry at the mean). The population excess kurtosis of the PDF is 0, which indicates that the Normal distribution is mesokurtic.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (b)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Generate a random sample of size $n=10, 25, 100$, and $1000$ for your 
   two sets of parameter(s). Calculate the sample mean, standard deviation, 
   skewness, and kurtosis. Interpret the results.
+  
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{library}\hlstd{(e1071)}
+\hlkwd{library}\hlstd{(tidyverse)}
+\hlkwd{library}\hlstd{(patchwork)}
+\hlstd{obs} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{10}\hlstd{,} \hlnum{25}\hlstd{,} \hlnum{100}\hlstd{,} \hlnum{1000}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+  
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{s1} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlkwc{n} \hlstd{= obs[}\hlnum{1}\hlstd{],} \hlkwc{mean} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{sd} \hlstd{=} \hlnum{1}\hlstd{))}
+\hlstd{s1_stats} \hlkwb{<-} \hlstd{s1} \hlopt{%>%}
+\hlkwd{summarize}\hlstd{(}\hlkwc{Mean} \hlstd{=} \hlkwd{mean}\hlstd{(x),} \hlkwc{SD} \hlstd{=} \hlkwd{sd}\hlstd{(x),}
+        \hlkwc{Skewness} \hlstd{=} \hlkwd{skewness}\hlstd{(x),}
+        \hlstr{"Excess Kurtosis"} \hlstd{=} \hlkwd{kurtosis}\hlstd{(x))}
+\hlstd{s1_stats}
+\end{alltt}
+\begin{verbatim}
+##        Mean        SD Skewness Excess Kurtosis
+## 1 0.2245916 0.8970171 0.189067      -0.9200314
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  \textbf{Interpretation:}
+  \\ \textbf{Center:} The sample mean of a normal distribution is the balancing point of the distribution. In this case, this will be equal to around - 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{s1_stats}\hlopt{$}\hlstd{Mean}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.2245916
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  \textbf{Spread:} The average distance from the sample mean is - 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{s1_stats}\hlopt{$}\hlstd{SD}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.8970171
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{s1_stats}\hlopt{$}\hlstd{Skewness}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.189067
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  Since skewness > 0, there are more observations for low values and fewer with high values.
+  \\ Kurtosis describes how the peaked data is in relation to the Gaussian distribution (the bell-shaped curve). 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{s1_stats}\hlopt{$}\hlstd{`Excess Kurtosis`}
+\end{alltt}
+\begin{verbatim}
+## [1] -0.9200314
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  Since the excess kurtosis < 0, it indicates that the data is platykurtic. 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{s2} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlkwc{n} \hlstd{= obs[}\hlnum{2}\hlstd{],} \hlkwc{mean} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{sd} \hlstd{=} \hlnum{1}\hlstd{))}
+\hlstd{s2_stats} \hlkwb{<-} \hlstd{s2} \hlopt{%>%} \hlkwd{summarize}\hlstd{(}\hlkwc{Mean} \hlstd{=} \hlkwd{mean}\hlstd{(x),}
+                             \hlkwc{SD} \hlstd{=} \hlkwd{sd}\hlstd{(x),} \hlkwc{Skewness} \hlstd{=} \hlkwd{skewness}\hlstd{(x),}
+                             \hlstr{"Excess Kurtosis"} \hlstd{=} \hlkwd{kurtosis}\hlstd{(x))}
+\hlstd{s2_stats}
+\end{alltt}
+\begin{verbatim}
+##         Mean       SD   Skewness Excess Kurtosis
+## 1 -0.1281396 1.010546 0.04255577      -0.9013308
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  \textbf{Interpretation:}
+  \\ \textbf{Center:} The sample mean of a normal distribution is the balancing point of the distribution. In this case, this will be equal to around - 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{s2_stats}\hlopt{$}\hlstd{Mean}
+\end{alltt}
+\begin{verbatim}
+## [1] -0.1281396
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  \textbf{Spread:} The average distance from the sample mean is - 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{s2_stats}\hlopt{$}\hlstd{SD}
+\end{alltt}
+\begin{verbatim}
+## [1] 1.010546
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{s2_stats}\hlopt{$}\hlstd{Skewness}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.04255577
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  Since skewness is slightly greater than 0, there are more observations for low values and fewer with high values. However, note that the skewness for this sample is closer to 0 than s1. 
+  \\ Kurtosis describes how the peaked data is in relation to the Gaussian distribution (the bell-shaped curve). 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{s2_stats}\hlopt{$}\hlstd{`Excess Kurtosis`}
+\end{alltt}
+\begin{verbatim}
+## [1] -0.9013308
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  Since the excess kurtosis < 0, it indicates that the data is platykurtic. However, note that the excess kurtosis for this sample is closer to 0 than s1. 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{s3} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlkwc{n} \hlstd{= obs[}\hlnum{3}\hlstd{],} \hlkwc{mean} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{sd} \hlstd{=} \hlnum{1}\hlstd{))}
+\hlstd{s3_stats} \hlkwb{<-} \hlstd{s3} \hlopt{%>%} \hlkwd{summarize}\hlstd{(}\hlkwc{Mean} \hlstd{=} \hlkwd{mean}\hlstd{(x),} \hlkwc{SD} \hlstd{=} \hlkwd{sd}\hlstd{(x),}
+                             \hlkwc{Skewness} \hlstd{=} \hlkwd{skewness}\hlstd{(x),}
+                             \hlstr{"Excess Kurtosis"} \hlstd{=} \hlkwd{kurtosis}\hlstd{(x))}
+\hlstd{s3_stats}
+\end{alltt}
+\begin{verbatim}
+##        Mean       SD  Skewness Excess Kurtosis
+## 1 0.2391397 1.060967 0.3076019      0.03810334
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  \textbf{Interpretation:}
+  \\ \textbf{Center:} The sample mean of a normal distribution is the balancing point of the distribution. In this case, this will be equal to around - 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{s3_stats}\hlopt{$}\hlstd{Mean}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.2391397
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  \textbf{Spread:} The average distance from the sample mean is - 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{s3_stats}\hlopt{$}\hlstd{SD}
+\end{alltt}
+\begin{verbatim}
+## [1] 1.060967
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{s3_stats}\hlopt{$}\hlstd{Skewness}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.3076019
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  Since skewness is slightly greater than 0, there are more observations for low values and fewer with high values. However, note that the skewness for this sample is closer to 0 than s2. 
+  \\ Kurtosis describes how the peaked data is in relation to the Gaussian distribution (the bell-shaped curve). 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{s3_stats}\hlopt{$}\hlstd{`Excess Kurtosis`}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.03810334
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  Since the excess kurtosis < 0, it indicates that the data is platykurtic. However, note that the excess kurtosis for this sample is closer to 0 than s2. 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{s4} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlkwc{n} \hlstd{= obs[}\hlnum{4}\hlstd{],} \hlkwc{mean} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{sd} \hlstd{=} \hlnum{1}\hlstd{))}
+\hlstd{s4_stats} \hlkwb{<-} \hlstd{s4} \hlopt{%>%} \hlkwd{summarize}\hlstd{(}\hlkwc{Mean} \hlstd{=} \hlkwd{mean}\hlstd{(x),}
+                             \hlkwc{SD} \hlstd{=} \hlkwd{sd}\hlstd{(x),} \hlkwc{Skewness} \hlstd{=} \hlkwd{skewness}\hlstd{(x),}
+                             \hlstr{"Excess Kurtosis"} \hlstd{=} \hlkwd{kurtosis}\hlstd{(x))}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+  \textbf{Interpretation:}
+  \\ \textbf{Center:} The sample mean of a normal distribution is the balancing point of the distribution. In this case, this will be equal to around - 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{s4_stats}\hlopt{$}\hlstd{Mean}
+\end{alltt}
+\begin{verbatim}
+## [1] -0.004868836
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  \textbf{Spread:} The average distance from the sample mean is - 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{s4_stats}\hlopt{$}\hlstd{SD}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.9724235
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{s4_stats}\hlopt{$}\hlstd{Skewness}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.01798884
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  Since skewness is almost 0 (slightly greater), the distribution is almost symmetric. 
+  \\ Kurtosis describes how the peaked data is in relation to the Gaussian distribution (the bell-shaped curve). 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{s4_stats}\hlopt{$}\hlstd{`Excess Kurtosis`}
+\end{alltt}
+\begin{verbatim}
+## [1] -0.3858467
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  Since the excess kurtosis is almost 0 (slightly lesser), it indicates that the data is almost mesokurtic.
+  
+  \textbf{As the sample size increases, the distribution moves towards becoming more Normal - the mean tends to equal 0, the SD tends to equal 1, and both the skewness and excess kurtosis tend to equal 0.}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (c)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Generate a random sample of size $n=10$ for your two sets of parameter(s).
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{dat1} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlkwc{n} \hlstd{= obs[}\hlnum{1}\hlstd{],} \hlkwc{mean} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{sd} \hlstd{=} \hlnum{1}\hlstd{))}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
   Calculate the method of moments estimator(s) and maximum likelihood estimator(s).
-  In a $1 \times 2$ grid, plot a histogram of each set of data with (1) the method 
-  of moments estimated distribution, (2) the maximum likelihood estimated 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{library}\hlstd{(nleqslv)}
+\hlcom{#######################################################}
+\hlcom{# MOM estimator}
+\hlcom{#######################################################}
+\hlstd{norm.mom}\hlkwb{<-}\hlkwa{function}\hlstd{(}\hlkwc{par}\hlstd{,} \hlkwc{data}\hlstd{)\{}
+  \hlstd{mu} \hlkwb{<-} \hlstd{par[}\hlnum{1}\hlstd{]}
+  \hlstd{sigma} \hlkwb{<-} \hlstd{par[}\hlnum{2}\hlstd{]}
+
+  \hlstd{EX1} \hlkwb{<-} \hlstd{mu}               \hlcom{# Expected value of a normal distribution}
+  \hlstd{EX2} \hlkwb{<-} \hlstd{sigma}            \hlcom{# Variance of a normal distribution}
+
+  \hlstd{xbar1} \hlkwb{<-} \hlkwd{mean}\hlstd{(data)}
+  \hlstd{xbar2} \hlkwb{<-} \hlkwd{mean}\hlstd{(data}\hlopt{^}\hlnum{2}\hlstd{)}
+
+  \hlkwd{c}\hlstd{(EX1}\hlopt{-}\hlstd{xbar1, EX2}\hlopt{-}\hlstd{xbar2)}
+\hlstd{\}}
+
+\hlcom{# Entering the starting guess, the function(s) we want to solve for c(0, 0), }
+\hlcom{# and the dataframe a arguments of the non-linear equation solver}
+\hlstd{mom1} \hlkwb{<-} \hlkwd{nleqslv}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{1}\hlstd{),}\hlkwc{fn} \hlstd{= norm.mom,} \hlkwc{data} \hlstd{= dat1}\hlopt{$}\hlstd{x)}
+
+\hlcom{#######################################################}
+\hlcom{# MLE}
+\hlcom{#######################################################}
+\hlstd{norm.ll}\hlkwb{<-}\hlkwa{function}\hlstd{(}\hlkwc{par}\hlstd{,} \hlkwc{data}\hlstd{,} \hlkwc{neg}\hlstd{=T)\{}
+  \hlstd{mu} \hlkwb{<-} \hlstd{par[}\hlnum{1}\hlstd{]}
+  \hlstd{sigma} \hlkwb{<-} \hlstd{par[}\hlnum{2}\hlstd{]}
+  \hlstd{ll} \hlkwb{<-} \hlkwd{sum}\hlstd{(}\hlkwd{dnorm}\hlstd{(}\hlkwc{x}\hlstd{=data,} \hlkwc{mean}\hlstd{=mu,} \hlkwc{sd}\hlstd{=sigma,} \hlkwc{log} \hlstd{= T))}
+  \hlkwd{ifelse}\hlstd{(neg,} \hlopt{-}\hlstd{ll, ll)}
+  \hlcom{# Since the optim() function minimizes, we use neg because on multiplying by negative,     it will maximize}
+\hlstd{\}}
+
+\hlstd{mle1} \hlkwb{<-} \hlkwd{optim}\hlstd{(}\hlkwc{par} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{1}\hlstd{),} \hlkwc{fn} \hlstd{= norm.ll,} \hlkwc{data}\hlstd{=dat1}\hlopt{$}\hlstd{x)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+  In a $1 \times 2$ grid, plot a histogram of each set of data with (1) the method of moments estimated distribution, (2) the maximum likelihood estimated 
   distribution, and superimpose the true distribution in both.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{mom_dat1} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlkwc{n} \hlstd{= obs[}\hlnum{1}\hlstd{],} \hlkwc{mean} \hlstd{= mom1}\hlopt{$}\hlstd{x[}\hlnum{1}\hlstd{],} \hlkwc{sd} \hlstd{= mom1}\hlopt{$}\hlstd{x[}\hlnum{2}\hlstd{]))}
+\hlstd{mom1_p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=mom_dat1,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x))}\hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"blue"}\hlstd{,}
+                 \hlkwc{alpha} \hlstd{=} \hlnum{0.5}\hlstd{,} \hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=..density..))}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+} \hlkwd{geom_density}\hlstd{(}\hlkwc{alpha}\hlstd{=}\hlnum{.2}\hlstd{,} \hlkwc{fill}\hlstd{=}\hlstr{"purple"}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"Density"}\hlstd{)}\hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Method Of Moments (n = 10)"}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= dat1}\hlopt{$}\hlstd{x),} \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,}
+                 \hlkwc{fill} \hlstd{=} \hlstr{"green"}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.2}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_vline}\hlstd{(}\hlkwc{xintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat1}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)}
+
+\hlstd{mle_dat1} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlkwc{n} \hlstd{= obs[}\hlnum{1}\hlstd{],}
+                                 \hlkwc{mean} \hlstd{= mle1}\hlopt{$}\hlstd{par[}\hlnum{1}\hlstd{],} \hlkwc{sd} \hlstd{= mle1}\hlopt{$}\hlstd{par[}\hlnum{2}\hlstd{]))}
+\hlstd{mle1_p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=mle_dat1,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x))}\hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"blue"}\hlstd{,}
+                 \hlkwc{alpha} \hlstd{=} \hlnum{0.5}\hlstd{,} \hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=..density..))}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{geom_density}\hlstd{(}\hlkwc{alpha}\hlstd{=}\hlnum{.2}\hlstd{,} \hlkwc{fill}\hlstd{=}\hlstr{"purple"}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"Density"}\hlstd{)}\hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Maximum Likelihood Estimator (n = 10)"}\hlstd{)}  \hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= dat1}\hlopt{$}\hlstd{x,} \hlkwc{y}\hlstd{=..density..),}
+                 \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"green"}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.2}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_vline}\hlstd{(}\hlkwc{xintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat1}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)}
+
+\hlstd{mom1_p} \hlopt{+} \hlstd{mle1_p}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\begin{figure}[H]
+\begin{center}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-29-1} 
+\end{knitrout}
+	\caption{Cool caption!}
+\label{p2plot1} %we can now reference plot1
+\end{center}
+\end{figure}
+  
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{dat1_h} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=dat1,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x))}\hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"lightblue"}\hlstd{,}
+                 \hlkwc{alpha} \hlstd{=} \hlnum{0.5}\hlstd{,} \hlkwc{binwidth} \hlstd{=} \hlnum{0.2}\hlstd{,} \hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=..density..))}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{geom_density}\hlstd{(}\hlkwc{alpha}\hlstd{=}\hlnum{.2}\hlstd{,} \hlkwc{fill}\hlstd{=}\hlstr{"purple"}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"Density"}\hlstd{)}\hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Normal Distrubution (n = 10)"}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_vline}\hlstd{(}\hlkwc{xintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat1}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,}
+             \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)}
+
+\hlstd{dat1}\hlkwb{<-}\hlstd{dat1} \hlopt{%>%} \hlkwd{mutate}\hlstd{(}\hlkwc{n} \hlstd{=} \hlkwd{seq}\hlstd{(}\hlnum{1}\hlstd{,obs[}\hlnum{1}\hlstd{],}\hlnum{1}\hlstd{))}
+
+\hlstd{dat1_p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=dat1,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=n,} \hlkwc{y}\hlstd{=x))}\hlopt{+}
+  \hlkwd{geom_line}\hlstd{()}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat1}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"n"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Normal Distrubution (n = 10)"}\hlstd{)}
+
+\hlstd{dat1_h} \hlopt{+} \hlstd{dat1_p}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+  
+  \begin{figure}[H]
+\begin{center}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-30-1} 
+\end{knitrout}
+	\caption{Cool caption!}
+\label{p2plot2} %we can now reference plot1
+\end{center}
+\end{figure}
+  
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (d)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Generate a random sample of size $n=25$ for your two sets of parameter(s).
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{dat2} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlkwc{n} \hlstd{= obs[}\hlnum{2}\hlstd{],} \hlkwc{mean} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{sd} \hlstd{=} \hlnum{1}\hlstd{))}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
   Calculate the method of moments estimator(s) and maximum likelihood estimator(s). 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{mom2} \hlkwb{<-} \hlkwd{nleqslv}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{1}\hlstd{),}\hlkwc{fn} \hlstd{= norm.mom,} \hlkwc{data} \hlstd{= dat2}\hlopt{$}\hlstd{x)}
+\hlstd{mle2} \hlkwb{<-} \hlkwd{optim}\hlstd{(}\hlkwc{par} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{1}\hlstd{),} \hlkwc{fn} \hlstd{= norm.ll,} \hlkwc{data}\hlstd{=dat2}\hlopt{$}\hlstd{x)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
   In a $1 \times 2$ grid, plot a histogram of each set of data with (1) the method 
   of moments estimated distribution, (2) the maximum likelihood estimated distribution, 
   and superimpose the true distribution in both.
+  
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{mom_dat2} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlkwc{n} \hlstd{= obs[}\hlnum{2}\hlstd{],}
+                                 \hlkwc{mean} \hlstd{= mom2}\hlopt{$}\hlstd{x[}\hlnum{1}\hlstd{],} \hlkwc{sd} \hlstd{= mom2}\hlopt{$}\hlstd{x[}\hlnum{2}\hlstd{]))}
+\hlstd{mom2_p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=mom_dat2,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x))}\hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"blue"}\hlstd{,}
+                 \hlkwc{alpha} \hlstd{=} \hlnum{0.5}\hlstd{,} \hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=..density..))}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+} \hlkwd{geom_density}\hlstd{(}\hlkwc{alpha}\hlstd{=}\hlnum{.2}\hlstd{,} \hlkwc{fill}\hlstd{=}\hlstr{"purple"}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"Density"}\hlstd{)}\hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Method Of Moments (n = 25)"}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= dat2}\hlopt{$}\hlstd{x,} \hlkwc{y}\hlstd{=..density..),}
+                 \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"green"}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.2}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_vline}\hlstd{(}\hlkwc{xintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat2}\hlopt{$}\hlstd{x),}
+             \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)}
+
+\hlstd{mle_dat2} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlkwc{n} \hlstd{= obs[}\hlnum{2}\hlstd{],}
+                                 \hlkwc{mean} \hlstd{= mle2}\hlopt{$}\hlstd{par[}\hlnum{1}\hlstd{],} \hlkwc{sd} \hlstd{= mle2}\hlopt{$}\hlstd{par[}\hlnum{2}\hlstd{]))}
+\hlstd{mle2_p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=mle_dat2,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x))}\hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"blue"}\hlstd{,}
+                 \hlkwc{alpha} \hlstd{=} \hlnum{0.5}\hlstd{,} \hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=..density..))}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{geom_density}\hlstd{(}\hlkwc{alpha}\hlstd{=}\hlnum{.2}\hlstd{,} \hlkwc{fill}\hlstd{=}\hlstr{"purple"}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"Density"}\hlstd{)}\hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Maximum Likelihood Estimator (n = 25)"}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= dat2}\hlopt{$}\hlstd{x,} \hlkwc{y}\hlstd{=..density..),}
+                 \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"green"}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.2}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_vline}\hlstd{(}\hlkwc{xintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat2}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)}
+
+\hlstd{mom2_p} \hlopt{+} \hlstd{mle2_p}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+  \begin{figure}[H]
+\begin{center}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-33-1} 
+\end{knitrout}
+	\caption{Cool caption!}
+\label{p2plot3} %we can now reference plot1
+\end{center}
+\end{figure}
+
+  
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{dat2_h} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=dat2,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x))}\hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"lightblue"}\hlstd{,}
+                 \hlkwc{alpha} \hlstd{=} \hlnum{0.5}\hlstd{,} \hlkwc{binwidth} \hlstd{=} \hlnum{0.2}\hlstd{,}
+                 \hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=..density..))}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{geom_density}\hlstd{(}\hlkwc{alpha}\hlstd{=}\hlnum{.2}\hlstd{,} \hlkwc{fill}\hlstd{=}\hlstr{"purple"}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}\hlopt{+}
+  \hlkwd{xlab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+}
+  \hlkwd{ylab}\hlstd{(}\hlstr{"Density"}\hlstd{)}\hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Normal Distrubution (n = 25)"}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_vline}\hlstd{(}\hlkwc{xintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat2}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)}
+
+\hlstd{dat2} \hlkwb{<-}\hlstd{dat2} \hlopt{%>%} \hlkwd{mutate}\hlstd{(}\hlkwc{n} \hlstd{=} \hlkwd{seq}\hlstd{(}\hlnum{1}\hlstd{,obs[}\hlnum{2}\hlstd{],}\hlnum{1}\hlstd{))}
+\hlstd{dat2_p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=dat2,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=n,} \hlkwc{y}\hlstd{=x))}\hlopt{+}
+  \hlkwd{geom_line}\hlstd{()}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat2}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}\hlopt{+}
+  \hlkwd{xlab}\hlstd{(}\hlstr{"n"}\hlstd{)}\hlopt{+}
+  \hlkwd{ylab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Normal Distrubution (n = 25)"}\hlstd{)}
+
+\hlstd{dat2_h} \hlopt{+} \hlstd{dat2_p}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+  \begin{figure}[H]
+\begin{center}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-34-1} 
+\end{knitrout}
+	\caption{Cool caption!}
+\label{p2plot4} %we can now reference plot1
+\end{center}
+\end{figure}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (e)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Generate a random sample of size $n=100$ for your two sets of parameter(s). 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{dat3} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlkwc{n} \hlstd{= obs[}\hlnum{3}\hlstd{],} \hlkwc{mean} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{sd} \hlstd{=} \hlnum{1}\hlstd{))}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
   Calculate the method of moments estimator(s) and maximum likelihood estimator(s).
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{mom3} \hlkwb{<-} \hlkwd{nleqslv}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{1}\hlstd{),}\hlkwc{fn} \hlstd{= norm.mom,} \hlkwc{data} \hlstd{= dat3}\hlopt{$}\hlstd{x)}
+\hlstd{mle3} \hlkwb{<-} \hlkwd{optim}\hlstd{(}\hlkwc{par} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{1}\hlstd{),} \hlkwc{fn} \hlstd{= norm.ll,} \hlkwc{data}\hlstd{=dat3}\hlopt{$}\hlstd{x)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
   In a $1 \times 2$ grid, plot a histogram of each set of data with (1) the method 
   of moments estimated distribution, (2) the maximum likelihood estimated distribution,
   and superimpose the true distribution in both.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{mom_dat3} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlkwc{n} \hlstd{= obs[}\hlnum{3}\hlstd{],} \hlkwc{mean} \hlstd{= mom3}\hlopt{$}\hlstd{x[}\hlnum{1}\hlstd{],} \hlkwc{sd} \hlstd{= mom3}\hlopt{$}\hlstd{x[}\hlnum{2}\hlstd{]))}
+\hlstd{mom3_p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=mom_dat3,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x))}\hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,}
+                 \hlkwc{fill} \hlstd{=} \hlstr{"blue"}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.5}\hlstd{,} \hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=..density..))}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{geom_density}\hlstd{(}\hlkwc{alpha}\hlstd{=}\hlnum{.2}\hlstd{,} \hlkwc{fill}\hlstd{=}\hlstr{"purple"}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+}
+  \hlkwd{ylab}\hlstd{(}\hlstr{"Density"}\hlstd{)}\hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Method of Moments (n = 100)"}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= dat3}\hlopt{$}\hlstd{x,} \hlkwc{y}\hlstd{=..density..),}
+                 \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"green"}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.2}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_vline}\hlstd{(}\hlkwc{xintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat3}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)}
+
+\hlstd{mle_dat3} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlkwc{n} \hlstd{= obs[}\hlnum{3}\hlstd{],}
+                                 \hlkwc{mean} \hlstd{= mle3}\hlopt{$}\hlstd{par[}\hlnum{1}\hlstd{],} \hlkwc{sd} \hlstd{= mle3}\hlopt{$}\hlstd{par[}\hlnum{2}\hlstd{]))}
+\hlstd{mle3_p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=mle_dat3,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x))}\hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"blue"}\hlstd{,}
+                 \hlkwc{alpha} \hlstd{=} \hlnum{0.5}\hlstd{,} \hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=..density..))}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{geom_density}\hlstd{(}\hlkwc{alpha}\hlstd{=}\hlnum{.2}\hlstd{,} \hlkwc{fill}\hlstd{=}\hlstr{"purple"}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"Density"}\hlstd{)}\hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Maximum Likelihood Estimator (n = 100)"}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= dat3}\hlopt{$}\hlstd{x,} \hlkwc{y}\hlstd{=..density..),}
+                 \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"green"}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.2}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_vline}\hlstd{(}\hlkwc{xintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat3}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)}
+
+\hlstd{mom3_p} \hlopt{+} \hlstd{mle3_p}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+  
+  \begin{figure}[H]
+\begin{center}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-37-1} 
+\end{knitrout}
+	\caption{Cool caption!}
+\label{p2plot5} %we can now reference plot1
+\end{center}
+\end{figure}
+  
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{dat3_h} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=dat3,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x))}\hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"lightblue"}\hlstd{,}
+                 \hlkwc{alpha} \hlstd{=} \hlnum{0.5}\hlstd{,} \hlkwc{binwidth} \hlstd{=} \hlnum{0.2}\hlstd{,} \hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=..density..))}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{geom_density}\hlstd{(}\hlkwc{alpha}\hlstd{=}\hlnum{.2}\hlstd{,} \hlkwc{fill}\hlstd{=}\hlstr{"purple"}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"Density"}\hlstd{)}\hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Normal Distrubution (n = 100)"}\hlstd{)}
+
+\hlstd{dat3} \hlkwb{<-}\hlstd{dat3} \hlopt{%>%} \hlkwd{mutate}\hlstd{(}\hlkwc{n} \hlstd{=} \hlkwd{seq}\hlstd{(}\hlnum{1}\hlstd{,obs[}\hlnum{3}\hlstd{],}\hlnum{1}\hlstd{))}
+\hlstd{dat3_p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=dat3,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=n,} \hlkwc{y}\hlstd{=x))}\hlopt{+}
+  \hlkwd{geom_line}\hlstd{()}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat3}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"n"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Normal Distrubution (n = 100)"}\hlstd{)}
+
+\hlstd{dat3_h} \hlopt{+} \hlstd{dat3_p}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+  
+    \begin{figure}[H]
+\begin{center}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-38-1} 
+\end{knitrout}
+	\caption{Cool caption!}
+\label{p2plot6} %we can now reference plot1
+\end{center}
+\end{figure}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (f)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Generate a random sample of size $n=100$ for your two sets of parameter(s). 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{dat4} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlkwc{n} \hlstd{= obs[}\hlnum{4}\hlstd{],} \hlkwc{mean} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{sd} \hlstd{=} \hlnum{1}\hlstd{))}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
   Calculate the method of moments estimator(s) and maximum likelihood estimator(s). 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{mom4} \hlkwb{<-} \hlkwd{nleqslv}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{1}\hlstd{),}\hlkwc{fn} \hlstd{= norm.mom,} \hlkwc{data} \hlstd{= dat4}\hlopt{$}\hlstd{x)}
+\hlstd{mle4} \hlkwb{<-} \hlkwd{optim}\hlstd{(}\hlkwc{par} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{1}\hlstd{),} \hlkwc{fn} \hlstd{= norm.ll,} \hlkwc{data}\hlstd{=dat4}\hlopt{$}\hlstd{x)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
   In a $1 \times 2$ grid, plot a histogram of each set of data with (1) the method 
   of moments estimated distribution, (2) the maximum likelihood estimated distribution, 
   and superimpose the true distribution in both.
+  
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{mom_dat4} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlkwc{n} \hlstd{= obs[}\hlnum{4}\hlstd{],} \hlkwc{mean} \hlstd{= mom4}\hlopt{$}\hlstd{x[}\hlnum{1}\hlstd{],} \hlkwc{sd} \hlstd{= mom4}\hlopt{$}\hlstd{x[}\hlnum{2}\hlstd{]))}
+\hlstd{mom4_p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=mom_dat4,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x))}\hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"blue"}\hlstd{,}
+                 \hlkwc{alpha} \hlstd{=} \hlnum{0.5}\hlstd{,} \hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=..density..))}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{geom_density}\hlstd{(}\hlkwc{alpha}\hlstd{=}\hlnum{.2}\hlstd{,} \hlkwc{fill}\hlstd{=}\hlstr{"purple"}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"Density"}\hlstd{)}\hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Method of Moments (n = 1000)"}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= dat4}\hlopt{$}\hlstd{x,} \hlkwc{y}\hlstd{=..density..),}
+                 \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"green"}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.2}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_vline}\hlstd{(}\hlkwc{xintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat4}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)}
+
+\hlstd{mle_dat4} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlkwc{n} \hlstd{= obs[}\hlnum{4}\hlstd{],}
+                                 \hlkwc{mean} \hlstd{= mle4}\hlopt{$}\hlstd{par[}\hlnum{1}\hlstd{],} \hlkwc{sd} \hlstd{= mle4}\hlopt{$}\hlstd{par[}\hlnum{2}\hlstd{]))}
+\hlstd{mle4_p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=mle_dat4,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x))}\hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"blue"}\hlstd{,}
+                 \hlkwc{alpha} \hlstd{=} \hlnum{0.5}\hlstd{,} \hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=..density..))}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+} \hlkwd{geom_density}\hlstd{(}\hlkwc{alpha}\hlstd{=}\hlnum{.2}\hlstd{,} \hlkwc{fill}\hlstd{=}\hlstr{"purple"}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"Density"}\hlstd{)}\hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Maximum Likelihood Estimator (n = 1000)"}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_vline}\hlstd{(}\hlkwc{xintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat4}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,}
+             \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= dat4}\hlopt{$}\hlstd{x,} \hlkwc{y}\hlstd{=..density..),}
+                 \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"green"}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.2}\hlstd{)}
+
+\hlstd{mom4_p} \hlopt{+} \hlstd{mle4_p}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+  
+      \begin{figure}[H]
+\begin{center}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-41-1} 
+\end{knitrout}
+	\caption{Cool caption!}
+\label{p2plot7} %we can now reference plot1
+\end{center}
+\end{figure}
+  
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{dat4_h} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=dat4,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x))}\hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"lightblue"}\hlstd{,}
+                 \hlkwc{alpha} \hlstd{=} \hlnum{0.5}\hlstd{,} \hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=..density..))}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+} \hlkwd{geom_density}\hlstd{(}\hlkwc{alpha}\hlstd{=}\hlnum{.2}\hlstd{,} \hlkwc{fill}\hlstd{=}\hlstr{"purple"}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"Density"}\hlstd{)}\hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Normal Distrubution (n = 1000)"}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_vline}\hlstd{(}\hlkwc{xintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat4}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)}
+
+\hlstd{dat4} \hlkwb{<-}\hlstd{dat4} \hlopt{%>%} \hlkwd{mutate}\hlstd{(}\hlkwc{n} \hlstd{=} \hlkwd{seq}\hlstd{(}\hlnum{1}\hlstd{,obs[}\hlnum{4}\hlstd{],}\hlnum{1}\hlstd{))}
+\hlstd{dat4_p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=dat4,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=n,} \hlkwc{y}\hlstd{=x))}\hlopt{+}
+  \hlkwd{geom_line}\hlstd{()}\hlopt{+} \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat3}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"n"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+} \hlkwd{ggtitle}\hlstd{(}\hlstr{"Normal Distrubution (n = 1000)"}\hlstd{)}
+
+\hlstd{dat4_h} \hlopt{+} \hlstd{dat4_p}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+  
+\begin{figure}[H]
+\begin{center}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-42-1} 
+\end{knitrout}
+	\caption{Cool caption!}
+\label{p2plot8} %we can now reference plot1
+\end{center}
+\end{figure}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (g)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Comment on the results of parts (c)-(f). 
+  
+  Parts (c)-(f) illustrate the weak law of large numbers. As the sample size n increases, we see that both our computed estimators (MOM and MLE) tend to overlap more with their corresponding probability distributions - there is very less overlap when n = 10; however, at n = 1000, both the histograms are essentially superimposed on top of one another. Thus, as the sample size increases, our estimators do a better job at estimating the population statistics of the Normal distribution. We also notice that as the sample size increases, the sample mean gets closer to 0.
+  
 \end{enumerate}
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -582,7 +1265,7 @@ The R packages Tidyverse \citep{tidyverse} and Patchwork \citep{Patchwork} will 
   % an error because Sweave is expecting just a graph (not a graph + text)
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-7-1} 
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-44-1} 
 \end{knitrout}
     \caption{The CDF of the Bernoulli distribution for different probability parameters p}
     \label{P3fig_1} %we can now reference P3fig_1
@@ -632,7 +1315,7 @@ We observe the same characteristic of the Bernoulli distribution in Figure \ref{
   % an error because Sweave is expecting just a graph (not a graph + text)
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-8-1} 
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-45-1} 
 \end{knitrout}
     \caption{The CDF of the Bernoulli distribution for different probability parameters p}
     \label{P3fig_2} %we can now reference P3fig_1
