@@ -270,7 +270,7 @@ By comparing the values we received computationally to the values that we calcul
   In a $1 \times 2$ grid, plot a histogram (with bin size 1) of each set of data 
   with (1) the method of moments estimated distribution, (2) the maximum likelihood 
   estimated distribution, and superimpose the true distribution in both.
-<<>>=
+<<message=FALSE, warning=FALSE, error=FALSE>>=
 library(tidyverse)
 library(patchwork)
 
@@ -381,7 +381,8 @@ even.10 <- rbinom(n=10,        #number of observations
                     size=1,        #number of trials (size=1 for Bernoulli)
                     prob=.5)       #probability of success
 
-paste("MOM: ", MOM.bernoulli(uneven.10),"MLE: ", MLE.bernoulli(uneven.10))
+paste("MOM: ", MOM.bernoulli(uneven.10),
+      "MLE: ", MLE.bernoulli(uneven.10))
 @
 Plot is Given Below:
 <<p4plot1, eval=FALSE>>=
@@ -407,7 +408,8 @@ uneven.10 <- rbinom(n=10,        #number of observations
                     size=1,        #number of trials (size=1 for a Bernoulli distribution)
                     prob=.7)       #probability of success
 
-paste("MOM: ", MOM.bernoulli(uneven.10),"MLE: ", MLE.bernoulli(uneven.10))
+paste("MOM: ", MOM.bernoulli(uneven.10),
+      "MLE: ", MLE.bernoulli(uneven.10))
 @
 Plot is Given Below:
 <<p4plot2, eval=FALSE>>=
@@ -439,9 +441,8 @@ even.25 <- rbinom(n=25,        #number of observations
                   size=1,        #number of trials (size=1 for Bernoulli)
                   prob=.5)       #probability of success
 
-MOM.bernoulli(even.25)
-
-MLE.bernoulli(even.25)
+paste("MOM:", MOM.bernoulli(even.25), 
+      "MLE:", round(MLE.bernoulli(even.25),2))
 @
 Plot is Given Below:
 <<p4plot3, eval=FALSE>>=
@@ -465,9 +466,9 @@ uneven.25 <- rbinom(n=25,        #number of observations
                     size=1,        #number of trials (size=1 for Bernoulli)
                     prob=.7)       #probability of success
 
-MOM.bernoulli(uneven.25)
+paste("MOM:", MOM.bernoulli(uneven.25), 
+      "MLE:", round(MLE.bernoulli(uneven.25),2))
 
-MLE.bernoulli(uneven.25)
 @
 Plot is Given Below:
 <<p4plot4, eval=FALSE>>=
@@ -499,9 +500,8 @@ even.100 <- rbinom(n=100,        #number of observations
                   size=1,        #number of trials (size=1 for Bernoulli)
                   prob=.5)       #probability of success
 
-MOM.bernoulli(even.100)
-
-MLE.bernoulli(even.100)
+paste("MOM:", round(MOM.bernoulli(even.100),2), 
+      "MLE:", round(MLE.bernoulli(even.100), 2))
 @
 Plot is Given Below:
 <<p4plot5, eval=FALSE>>=
@@ -525,9 +525,9 @@ uneven.100 <- rbinom(n=100,        #number of observations
                     size=1,        #number of trials (size=1 for Bernoulli)
                     prob=.7)       #probability of success
 
-MOM.bernoulli(uneven.100)
+paste("MOM:", round(MOM.bernoulli(uneven.100),2), 
+      "MLE:", round(MLE.bernoulli(uneven.100), 2))
 
-MLE.bernoulli(uneven.100)
 @
 Plot is Given Below:
 <<p4plot6, eval=FALSE>>=
@@ -559,14 +559,27 @@ even.1000 <- rbinom(n=1000,        #number of observations
                   size=1,        #number of trials (size=1 for Bernoulli)
                   prob=.5)       #probability of success
 
-MOM.bernoulli(even.1000)
+paste("MOM:", round(MOM.bernoulli(even.1000),2), 
+      "MLE:", round(MLE.bernoulli(even.1000), 2))
 
-MLE.bernoulli(even.1000)
-
+@
+Plot is given below:
+<<p4plot7, eval=FALSE>>=
 bernoulli.plot(even.1000)
+@
+
+\begin{figure}[H]
+\begin{center}
+<<echo=FALSE, fig.dim=c(5.5,3.5), message=FALSE, warning=FALSE, error=FALSE>>=
+<<p4plot7>>
+@
+\caption{caption here}
+\label{p4plot7}%we can now reference P3fig_1
+\end{center}
+\end{figure}
 
 
-
+<<>>=
 uneven.1000 <- rbinom(n=1000,        #number of observations
                     size=1,        #number of trials (size=1 for Bernoulli)
                     prob=.7)       #probability of success
@@ -575,8 +588,24 @@ MOM.bernoulli(uneven.1000)
 
 MLE.bernoulli(uneven.1000)
 
+paste("MOM:", round(MOM.bernoulli(uneven.1000),2), 
+      "MLE:", round(MLE.bernoulli(uneven.1000), 2))
+
+@
+Plot is given below:
+<<p4plot8,eval=FALSE>>=
 bernoulli.plot(uneven.1000)
 @
+
+\begin{figure}[H]
+\begin{center}
+<<echo=FALSE, fig.dim=c(5.5,3.5), message=FALSE, warning=FALSE, error=FALSE>>=
+<<p4plot8>>
+@
+\caption{caption here}
+\label{p4plot8}%we can now reference P3fig_1
+\end{center}
+\end{figure}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (g)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
