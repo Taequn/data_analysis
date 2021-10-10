@@ -58,7 +58,33 @@ each other complete the homework in collaboration.
   To help, I've cited R \citep{R21} in parentheses here. \cite{R21} provides helpful 
   tools for the rest of the questions below. BibTeX citations are available through 
   Google Scholar by clicking the cite button below the article of  interest and 
-  selecting the BibTeX option.
+  selecting the BibTeX option.\\
+  \textbf{Solution:}\\
+  Our group has chosen to use a normal distribution for the \texttt{Q1} and \texttt{Q2}!\\
+  To start with, I will define what a normal distribution is. A continuous variable X has a normal distribution — with mean $\mu$ and $\sigma^2$ — X ~ N($\mu, \sigma^2)$, if it has the following properties:\\
+  		\begin{equation*}
+	\mu \in \mathbb{R}; \sigma \in \mathbb{R}^+
+	\tag{\textbf{Parameters}}
+	\end{equation*}
+	
+	\begin{equation*}
+	X = \{x:x\in\mathbb{R}\}
+	\tag{\textbf{Support}}
+	\end{equation*}
+  	
+  	\begin{equation*}
+	f_{X}({x|\mu,\sigma})=\frac{1}{\sigma\sqrt{2\pi}}e^\frac{-(x-\mu)^2}{2\sigma^2} \tag{\textbf{PDF}}\\
+	\end{equation*}
+	
+	\begin{equation*}
+	F_{X}({x|\mu,\sigma})=\int_{-\infty}^{\infty}\frac{1}{\sigma\sqrt{2\pi}}e^\frac{-(x-\mu)^2}{2\sigma^2} \tag{\textbf{CDF}}
+	\end{equation*}
+  
+  \textbf{Description:} Normal distribution is one of the most important distributions in the world of statistics, and it's used in many fields. The graph of this probability function is a symmetric, bell-shaped curved. Symmetry of this function implies that its mean is going to be equal to its median value. We are going to prove it later on. \\
+  \textbf{History:} One of the first major great discoveries in the field of statistics happened in 1713, as Jacob Bernoulli published his work on proving the Weak Law of Large Numbers. According to \cite{patel1996handbook}, initially normal distribution appeared in 1733 as an approximation to the probability for sums of binominally distributed quantities to lie between two values. \\
+  \textbf{Today:} According to \cite{ahsanullah2014normal}, normal distribution plays an important role in many applied problems in biology, economics, engineering, genetics, hydrology, mechanics, medicine, number theory, statistics, physics, psychology and so on. 
+  
+  
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (b)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -67,22 +93,22 @@ each other complete the homework in collaboration.
 	\textbf{Solution:}\\
 	Here's the equation of PDF for normal distribution!
 	\begin{equation*}
-	f_{X}({x|\mu,\sigma})=\frac{1}{\sigma\sqrt{2\pi}}\exp^\frac{-(x-\mu)^2}{2\sigma^2} \tag{\textbf{PDF}}
+	f_{X}({x|\mu,\sigma})=\frac{1}{\sigma\sqrt{2\pi}}e^\frac{-(x-\mu)^2}{2\sigma^2} \tag{\textbf{PDF}}
 	\end{equation*}
 	Now, let's prove that it's valid!\\
 	Since normal (or gaussian — whatever you prefer!) distribution is a continous probability distribution, it implies that the area under the curve is equal to 1 (or 100\%!). This statement takes its roots from the second Kolmogorov axiom that states that the entirety of sample space is equal to one.\\
 	Therefore, let's use CDF to prove that our PDF formula is going to return one! Since the support for normal distribution contain all rational numbers, our integral is going to be from negative infinity to positive infinity. 
 	\begin{equation*}
-	F_{X}({x|\mu,\sigma})=\int_{-\infty}^{\infty}\frac{1}{\sigma\sqrt{2\pi}}\exp^\frac{-(x-\mu)^2}{2\sigma^2} \tag{\textbf{CDF}}
+	F_{X}({x|\mu,\sigma})=\int_{-\infty}^{\infty}\frac{1}{\sigma\sqrt{2\pi}}e^\frac{-(x-\mu)^2}{2\sigma^2} \tag{\textbf{CDF}}
 	\end{equation*}
 	I am going to use \texttt{integrate()} function in order to compute this equation.
 	<<>>=
 	mean<-1 #mu
 	sd<-3 #sigma
-	func <- function(x){
-	  (1/(sd*sqrt(2*pi)))*exp((-(x-mean)^2)/(2*sd^2))
+	pdf <- function(x){
+	  (1/(sd*sqrt(2*pi)))*exp((-(x-mean)^2)/(2*sd^2)) #our PDF
 	}
-	integrate(func, -Inf, Inf)
+	integrate(pdf, -Inf, Inf) #CDF for total area under the curve
 	@
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -101,8 +127,8 @@ each other complete the homework in collaboration.
 	Let normal distribution be symmetric. If it's symmetric, then the statement $\mu=m$ holds true.\\
 	Therefore, the following equation should also hold true:
 	\begin{equation*}
-\int_{-\infty}^{\mu}\frac{1}{\sigma\sqrt{2\pi}}\exp^\frac{-(x-\mu)^2}{2\sigma^2}=
-\int_{\mu}^{\infty}\frac{1}{\sigma\sqrt{2\pi}}\exp^\frac{-(x-\mu)^2}{2\sigma^2}=
+\int_{-\infty}^{\mu}\frac{1}{\sigma\sqrt{2\pi}}e^\frac{-(x-\mu)^2}{2\sigma^2}=
+\int_{\mu}^{\infty}\frac{1}{\sigma\sqrt{2\pi}}e^\frac{-(x-\mu)^2}{2\sigma^2}=
 \frac{1}{2}
 \tag{\textbf{Assumption}}
 	\end{equation*}
@@ -129,29 +155,30 @@ It would appear that $\mu=m!$ Therefore, mean is equal to median within the norm
 	including the two sets you specified. What does changing the parameter(s) do 
 	to the shape of the PDF?\\
 	\textbf{Solution:}\\
-	Let's take various values and plot different PDFs! I am going to use QUOTE ggplot2 library for it!
+	Let's take various values and plot different PDFs! I am going to use \cite{ggplot2} library for it!
 \begin{figure}[H]
 \begin{center}
 	<<fig.dim=c(5,3.5)>>=
 	library(ggplot2)
 	plot.df <- data.frame(
-	  x=seq(-10, 10, 0.001),
-	  f1=dnorm(x=seq(-10, 10, 0.001), mean=1, sd=1),
-	  f2=dnorm(x=seq(-10, 10, 0.001), mean=-2, sd=4),
-	  f3=dnorm(x=seq(-10, 10, 0.001), mean=0, sd=5),
-	  f4=dnorm(x=seq(-10, 10, 0.001), mean=3, sd=10)
+	  x=seq(-15, 15, 0.001),
+	  f1=dnorm(x=seq(-15, 15, 0.001), mean=1, sd=1),
+	  f2=dnorm(x=seq(-15, 15, 0.001), mean=-2, sd=4),
+	  f3=dnorm(x=seq(-15, 15, 0.001), mean=0, sd=5),
+	  f4=dnorm(x=seq(-15, 15, 0.001), mean=3, sd=3)
 	)
 	
 	ggplot(plot.df, aes(x=x))+
 	  geom_line(aes(y=f1, color="m=1, sd=1"))+
 	  geom_line(aes(y=f2, color="m=-2, sd=4"))+
 	  geom_line(aes(y=f3, color="m=0, sd=5"))+
-	  geom_line(aes(y=f4, color="m=3, sd=10"))
+	  geom_line(aes(y=f4, color="m=3, sd=3"))
 	@
 \caption{Gaussian PDF with various sets of parameters}
-\label{plot1} %we can now reference plot1
+\label{plot1}
 \end{center}
 \end{figure}
+As we can see on Figure \ref{plot1}, changing our parameters does indeed change the graph we have. Changing the $\mu$ transforms graph to the right (if the mean is positive) and to the left (if the mean is negative). Changing $\sigma$ changes the kurtosis of the graph. Thus, distributions with lower value of $\sigma$ show higher peaks.
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (e)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -162,25 +189,27 @@ It would appear that $\mu=m!$ Therefore, mean is equal to median within the norm
 \begin{figure}[H]
 \begin{center}
 	<<fig.dim=c(5,3.5)>>=
-	library(ggplot2)
 	plot.df <- data.frame(
-	  x=seq(-10, 10, 0.001),
-	  f1=pnorm(q=seq(-10, 10, 0.001), mean=1, sd=1),
-	  f2=pnorm(q=seq(-10, 10, 0.001), mean=-2, sd=4),
-	  f3=pnorm(q=seq(-10, 10, 0.001), mean=0, sd=5),
-	  f4=pnorm(q=seq(-10, 10, 0.001), mean=3, sd=10)
+	  x=seq(-15, 15, 0.001),
+	  f1=pnorm(q=seq(-15, 15, 0.001), mean=1, sd=1),
+	  f2=pnorm(q=seq(-15, 15, 0.001), mean=-2, sd=4),
+	  f3=pnorm(q=seq(-15, 15, 0.001), mean=0, sd=5),
+	  f4=pnorm(q=seq(-15, 15, 0.001), mean=3, sd=3)
 	)
 	
 	ggplot(plot.df, aes(x=x))+
 	  geom_line(aes(y=f1, color="m=1, sd=1"))+
 	  geom_line(aes(y=f2, color="m=-2, sd=4"))+
 	  geom_line(aes(y=f3, color="m=0, sd=5"))+
-	  geom_line(aes(y=f4, color="m=3, sd=10"))
+	  geom_line(aes(y=f4, color="m=3, sd=3"))
 	@
+
 \caption{Gaussian CDF with various sets of parameters}
 \label{plot2} %we can now reference plot1
 \end{center}
-\end{figure} 
+\end{figure}
+
+We see that Figure \ref{plot2} is a graph of CDF function with different sets of parameters. This function shows the probability that a probability that a random variable X will take a value less than or equal to $x$. We can see that our PDF is valid, for when we went over all values of X, the probability is $1.00$ or 100\%. Changing the value of $\mu$ changes the position of a graph (moves it to the right or to the left), while the change in $\sigma$ increases the slope of the function: the higher the value of $\sigma$, the faster the function will go over all the values and reach 100\%.
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (f)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -189,10 +218,12 @@ It would appear that $\mu=m!$ Therefore, mean is equal to median within the norm
   of data and superimpose the true density function at the specified parameter 
   values. Interpret the results.\\
   \textbf{Solution:}\\
-  
-  <<>>=
+
+<<plot3, message=FALSE, eval=FALSE>>=
 	library(patchwork)
-	sample.df <- data.frame(x1=rnorm(10, mean=1, sd=1),
+	library(tidyverse)
+	
+	sample.df <- list(x1=rnorm(10, mean=1, sd=1),
 	                       x2=rnorm(25, mean=1, sd=1),
 	                       x3=rnorm(100, mean=1, sd=1),
 	                       x4=rnorm(1000, mean=1, sd=1),
@@ -201,62 +232,54 @@ It would appear that $\mu=m!$ Therefore, mean is equal to median within the norm
 	                       y3=rnorm(100, mean=-2, sd=4),
 	                       y4=rnorm(1000, mean=-2, sd=4))
 	
-	#first line
-	x1<-ggplot(sample.df, aes(x1))+
-	  geom_histogram(aes(y=..density..), bins=10,
-	                 color="black")+
-  geom_function(fun=dnorm, args = list(mean = 1, sd = 1),
-                color="red")
+	buildingPlot <- function(source, mu, sigma){
+	  df <- data.frame(value=source) #turning values from the list into a df
+	  colnames(df) <- "value" #changing the name of the column
+	  
+	  answer<-ggplot(df, aes(value))+
+	    geom_histogram(aes(y=..density..), bins=10,
+	                 color="black")+ #building a histogram
+	    geom_function(fun=dnorm, args = list(mean = mu, sd = sigma),
+                color="red")+ #superimposing the function
+	    labs(x="Value", y="Density")
+	  answer
+	}
 	
-	x2<-ggplot(sample.df, aes(x2))+
-	  geom_histogram(aes(y=..density..), bins=10,
-	                 color="black")+
-  geom_function(fun=dnorm, args = list(mean = 1, sd = 1),
-                color="red")
+	x1<-buildingPlot(sample.df[1], 1, 1)+labs(title="Sample=10",
+	                                          subtitle = "mean=1, sd=1")
+	x2<-buildingPlot(sample.df[2], 1, 1)+labs(title="Sample=25",
+	                                          subtitle = "mean=1, sd=1")
+	x3<-buildingPlot(sample.df[3], 1, 1)+labs(title="Sample=100",
+	                                          subtitle = "mean=1, sd=1")
+	x4<-buildingPlot(sample.df[4], 1, 1)+labs(title="Sample=1000",
+	                                          subtitle = "mean=1, sd=1")
 	
-	x3<-ggplot(sample.df, aes(x3))+
-	  geom_histogram(aes(y=..density..), bins=10,
-	                 color="black")+
-  geom_function(fun=dnorm, args = list(mean = 1, sd = 1),
-                color="red")
-	
-	x4<-ggplot(sample.df, aes(x4))+
-	  geom_histogram(aes(y=..density..), bins=10,
-	                 color="black")+
-  geom_function(fun=dnorm, args = list(mean = 1, sd = 1),
-                color="red")
-	
-	
-	#second line
-	y1<-ggplot(sample.df, aes(y1))+
-	  geom_histogram(aes(y=..density..), bins=10,
-	                 color="black")+
-  geom_function(fun=dnorm, args = list(mean = -2, sd = 4),
-                color="red")
-	
-	y2<-ggplot(sample.df, aes(y2))+
-	  geom_histogram(aes(y=..density..), bins=10,
-	                 color="black")+
-  geom_function(fun=dnorm, args = list(mean = -2, sd = 4),
-                color="red")
-	
-	y3<-ggplot(sample.df, aes(y3))+
-	  geom_histogram(aes(y=..density..), bins=10,
-	                 color="black")+
-  geom_function(fun=dnorm, args = list(mean = -2, sd = 4),
-                color="red")
-	
-	y4<-ggplot(sample.df, aes(y4))+
-	  geom_histogram(aes(y=..density..), bins=10,
-	                 color="black")+
-  geom_function(fun=dnorm, args = list(mean = -2, sd = 4),
-                color="red")
-
-	
+	y1<-buildingPlot(sample.df[5], -2, 4)+labs(title="Sample=10",
+	                                          subtitle = "mean=-2, sd=4")
+	y2<-buildingPlot(sample.df[6], -2, 4)+labs(title="Sample=25",
+	                                          subtitle = "mean=-2, sd=4")
+	y3<-buildingPlot(sample.df[7], -2, 4)+labs(title="Sample=100",
+	                                          subtitle = "mean=-2, sd=4")
+	y4<-buildingPlot(sample.df[8], -2, 4)+labs(title="Sample=1000",
+	                                          subtitle = "mean=-2, sd=4")
 	(x1|x2|x3|x4)/(y1|y2|y3|y4)
-	
-	
 	@
+
+\begin{figure}[H]
+\begin{center}
+<<echo=FALSE, fig.dim=c(7.5,5.5), message=FALSE, warning=FALSE, error=FALSE>>=
+<<plot3>>
+@
+	\caption{Histograms of each set of data with superimposed true density function}
+\label{plot3} %we can now reference plot1
+\end{center}
+\end{figure}
+As we can see, the bigger sample we have, the closer the resulting histogram is to the real density function that we built on our set of parameters. We can notice that it's particularly true for $n>30$.\\
+\begin{enumerate}
+  \item Our PDF is such a good fit for the data because we are using \texttt{rnorm()} function that randomly generates numbers for the normal distribution. 
+  \item A good fit can also be explained via Central Limit Theorem: as our sample enlarges, the distribution of our random variable follows a normal distribution.
+\end{enumerate}
+
 	\end{enumerate}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

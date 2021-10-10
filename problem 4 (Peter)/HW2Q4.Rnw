@@ -1,0 +1,418 @@
+\documentclass{article}
+\usepackage{amsmath} %This allows me to use the align functionality.
+                     %If you find yourself trying to replicate
+                     %something you found online, ensure you're
+                     %loading the necessary packages!
+\usepackage{amsfonts}%Math font
+\usepackage{graphicx}%For including graphics
+\usepackage{hyperref}%For Hyperlinks
+\hypersetup{colorlinks = true,citecolor=black}
+\usepackage{natbib}        %For the bibliography
+\bibliographystyle{apalike}%For the bibliography
+\usepackage[margin=1.0in]{geometry}
+\usepackage{float}
+\begin{document}
+\noindent \textbf{MA 354: Data Analysis -- Fall 2021 -- Due 10/8 at 5p}\\%\\ gives you a new line
+\noindent \textbf{Homework 2:}\vspace{1em}\\
+\emph{Complete the following opportunities to use what we've talked about in class. These questions will be graded for correctness, communication and succinctness. Ensure you show your work and explain your logic in a legible and refined submission.}\\\vspace{1em}
+%Comments -- anything after % is not put into the PDF
+
+The starting jobs will be applied in alphabetical order (last name) for question two.
+\begin{enumerate}
+  \item \textbf{Solver:} provide a solution, if possible, and reasoning for the solution. \textbf{Due to group 10/5 or earlier.}
+  \item \textbf{Code Checker:} provides a first check of the solver's worked solutions and ensures they are correct with a solid interpretation. 
+  \item \textbf{Checker} checks the solution for completeness, proposes and implements changes if agreed upon by the group. Provides a short paragraph summarizing the discussion of proposals and their reason for acceptance or non-acceptance.
+  \item \textbf{Double Checker} checks the solution for completeness, communication and polish. The Double Checker ensures that the solution is correct and highly polished for submission.
+\end{enumerate}
+
+\noindent For subsequent questions student roles will move down one position. The rolls change as follows.
+\begin{enumerate}
+  \item \textbf{Solver} $\Longrightarrow$ \textbf{Code Checker}
+  \item \textbf{Code Checker} $\Longrightarrow$ \textbf{Checker}
+  \item \textbf{Checker} $\Longrightarrow$ \textbf{Double Checker}
+  \item \textbf{Double Checker} $\Longrightarrow$ \textbf{Solver}
+\end{enumerate}
+While students have assigned jobs for each question I encourage students to help 
+each other complete the homework in collaboration.
+\newpage
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%  Question 4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Continue with the discrete distribution you selected for Question %\ref{Q3}.%
+\begin{enumerate}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (a)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Provide the mean, standard deviation, skewness, and kurtosis of the PMF. 
+  Ensure to interpret each.
+\\
+\\
+Bernoulli Distribution:
+\\
+
+
+
+PMF:
+
+\begin{align*}f\left(k;p\right) & =p^{k}\left(1-p\right)^{1-k} &  & \textrm{for \ensuremath{k\in\left\{ 0,1\right\} }}\end{align*}
+
+
+Mean:
+
+\[
+E(X)=p
+\]
+
+Standard Deviation:
+
+\[
+\sigma=\sqrt{p\left(1-p\right)}
+\]
+
+Skewness:
+
+\[
+\xi_{X}=\frac{\left(1-p\right)-p}{\sqrt{p\left(1-p\right)}}
+\]
+
+Kurtosis:
+
+\[
+\kappa_{Y}=3+\frac{1-6p\left(1-p\right)}{p\left(1-p\right)}
+\]\\
+\\
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (b)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=10, 25, 100$, and $1000$ for your 
+  two sets of parameter(s). Calculate the sample mean, standard deviation, 
+  skewness, and kurtosis. Interpret the results.
+<<>>=
+library(e1071)
+
+even.10 <- rbinom(n=10,          #number of observations
+              size=1,            #number of trials (size=1 for a Bernoulli distribution)
+              prob=.5)           #probability of success
+
+mean(even.10)                    #mean
+sd(even.10)                      #standard deviation
+skewness(even.10)                #skewness
+kurtosis(even.10)                #kurtosis
+
+
+
+even.25  <- rbinom(n=25,         #number of observations
+              size=1,            #number of trials (size=1 for a Bernoulli distribution)
+              prob=.5)           #probability of success
+
+mean(even.25)                    #mean
+sd(even.25)                      #standard deviation
+skewness(even.25)                #skewness
+kurtosis(even.25)                #kurtosis
+
+
+
+even.100 <- rbinom(n=100,        #number of observations
+              size=1,            #number of trials (size=1 for a Bernoulli distribution)
+              prob=.5)           #probability of success
+
+mean(even.100)                   #mean
+sd(even.100)                     #standard deviation
+skewness(even.100)               #skewness
+kurtosis(even.100)               #kurtosis
+
+
+
+even.1000 <- rbinom(n=1000,      #number of observations
+              size=1,            #number of trials (size=1 for a Bernoulli distribution)
+              prob=.5)           #probability of success
+
+mean(even.1000)                  #mean
+sd(even.1000)                    #standard deviation
+skewness(even.1000)              #skewness
+kurtosis(even.1000)              #kurtosis
+
+
+
+uneven.10 <- rbinom(n=10,        #number of observations
+                  size=1,        #number of trials (size=1 for a Bernoulli distribution)
+                  prob=.7)       #probability of success
+
+mean(uneven.10)                  #mean
+sd(uneven.10)                    #standard deviation
+skewness(uneven.10)              #skewness
+kurtosis(uneven.10)              #kurtosis
+
+
+
+uneven.25  <- rbinom(n=25,       #number of observations
+                   size=1,       #number of trials (size=1 for a Bernoulli distribution)
+                   prob=.7)      #probability of success
+
+mean(uneven.25)                  #mean
+sd(uneven.25)                    #standard deviation
+skewness(uneven.25)              #skewness
+kurtosis(uneven.25)              #kurtosis
+
+
+
+uneven.100 <- rbinom(n=100,      #number of observations
+                   size=1,       #number of trials (size=1 for a Bernoulli distribution)
+                   prob=.7)      #probability of success
+
+mean(uneven.100)                 #mean
+sd(uneven.100)                   #standard deviation
+skewness(uneven.100)             #skewness
+kurtosis(uneven.100)             #kurtosis
+
+
+
+uneven.1000 <- rbinom(n=1000,    #number of observations
+                    size=1,      #number of trials (size=1 for a Bernoulli distribution)
+                    prob=.7)     #probability of success
+
+mean(uneven.1000)                #mean
+sd(uneven.1000)                  #standard deviation
+skewness(uneven.1000)            #skewness
+kurtosis(uneven.1000)            #kurtosis
+@
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (c)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=10$ for your two sets of parameter(s).
+  Calculate the method of moments estimator(s) and maximum likelihood estimator(s).
+  In a $1 \times 2$ grid, plot a histogram (with bin size 1) of each set of data 
+  with (1) the method of moments estimated distribution, (2) the maximum likelihood 
+  estimated distribution, and superimpose the true distribution in both.
+<<>>=
+library(ggplot2)
+
+second.moment <- function(data, x.bar){  #function to find the second moment
+  temp = 0
+  for(i in data){
+    temp = temp + (i - x.bar)^2
+  }
+  return (temp/length(data))
+}
+
+MOM.bernoulli <- function(data){          #function to find the MOM Estimator for p in a Bernoulli distribution
+  mu.hat <- mean(data)
+  var.hat <- second.moment(data,mu.hat)
+  p.hat <- (mu.hat-var.hat)/mu.hat
+  return(p.hat)
+}
+
+# Negative of the Likelihood function
+bernoulliLogLik.neg <- function(par, data){
+  -sum(dbinom(x=data, prob=par, size=1, log=TRUE))} #Sum is negative, as we are looking for a min with optim
+
+MLE.bernoulli <- function(data){
+  MLE <- optim(par = .5,               # best guess for the parameter
+               fn = bernoulliLogLik.neg,   # function to minimize
+               data = data,       # data (an argument to fn)
+               method = "Brent",       # required for univariate optimization
+               lower = 0,              # lowest possible lambda
+               upper = 1)              # reasonable upper bound
+  
+  # Note that our mle is hat(lambda) = xbar 
+  return(MLE$par)
+}
+
+bernoulli.plot <- function(data){
+  
+  dfActual <- data.frame(matrix(nrow = 2, ncol = 2))
+  colnames(dfActual) <- c("Prop","Value")
+  rownames(dfActual) <- c("0","1")
+  
+  ActualTab <- as.data.frame(data) %>% group_by(data) %>%
+    summarize(count = n()) # Calculate the counts
+  
+  dfActual[1,1] <- prop.table(ActualTab$count)[1]
+  dfActual[2,1] <- prop.table(ActualTab$count)[2]
+  dfActual[1,2] <- 0
+  dfActual[2,2] <- 1
+  
+  
+  dfEstimate <- data.frame(matrix(nrow = 2, ncol = 2))
+  colnames(dfEstimate) <- c("Prop","Value")
+  rownames(dfEstimate) <- c("0","1")
+  
+  EstimateTab <- as.data.frame(data) %>% group_by(data) %>%
+    summarize(count = n()) # Calculate the counts
+  
+  dfEstimate[1,1] <- 1-MOM.bernoulli(data)
+  dfEstimate[2,1] <- MOM.bernoulli(data)
+  dfEstimate[1,2] <- 0
+  dfEstimate[2,2] <- 1
+  
+  
+  p1 <- ggplot(mapping = aes(y=Prop, x=Value)) +
+    geom_col(data = dfActual, position = "dodge", fill = "lightblue") +
+    geom_col(data = dfEstimate, aes(group = Value),
+             fill = "black", width = 0.01, position = position_dodge(width = 0.9))
+  
+  dfActual <- data.frame(matrix(nrow = 2, ncol = 2))
+  colnames(dfActual) <- c("Prop","Value")
+  rownames(dfActual) <- c("0","1")
+  
+  ActualTab <- as.data.frame(data) %>% group_by(data) %>%
+    summarize(count = n()) # Calculate the counts
+  
+  dfActual[1,1] <- prop.table(ActualTab$count)[1]
+  dfActual[2,1] <- prop.table(ActualTab$count)[2]
+  dfActual[1,2] <- 0
+  dfActual[2,2] <- 1
+  
+  
+  dfEstimate <- data.frame(matrix(nrow = 2, ncol = 2))
+  colnames(dfEstimate) <- c("Prop","Value")
+  rownames(dfEstimate) <- c("0","1")
+  
+  EstimateTab <- as.data.frame(data) %>% group_by(data) %>%
+    summarize(count = n()) # Calculate the counts
+  
+  dfEstimate[1,1] <- 1-MLE.bernoulli(data)
+  dfEstimate[2,1] <- MLE.bernoulli(data)
+  dfEstimate[1,2] <- 0
+  dfEstimate[2,2] <- 1
+  
+  
+  p2 <- ggplot(mapping = aes(y=Prop, x=Value)) +
+    geom_col(data = dfActual, position = "dodge", fill = "lightblue") +
+    geom_col(data = dfEstimate, aes(group = Value),
+             fill = "black", width = 0.01, position = position_dodge(width = 0.9))
+  
+  return(p1+p2)
+  
+  
+  
+}
+
+
+even.10 <- rbinom(n=10,        #number of observations
+                    size=1,        #number of trials (size=1 for a Bernoulli distribution)
+                    prob=.5)       #probability of success
+
+MOM.bernoulli(even.10)
+
+MLE.bernoulli(even.10)
+
+bernoulli.plot(even.10)
+
+
+
+uneven.10 <- rbinom(n=10,        #number of observations
+                    size=1,        #number of trials (size=1 for a Bernoulli distribution)
+                    prob=.7)       #probability of success
+
+MOM.bernoulli(uneven.10)
+
+MLE.bernoulli(uneven.10)
+
+bernoulli.plot(uneven.10)
+@
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (d)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=25$ for your two sets of parameter(s). 
+  Calculate the method of moments estimator(s) and maximum likelihood estimator(s).
+  In a $1 \times 2$ grid, plot a histogram (with bin size 1) of each set of data 
+  with (1) the method of moments estimated distribution, (2) the maximum likelihood 
+  estimated distribution, and superimpose the true distribution in both.
+<<>>=
+even.25 <- rbinom(n=25,        #number of observations
+                  size=1,        #number of trials (size=1 for a Bernoulli distribution)
+                  prob=.5)       #probability of success
+
+MOM.bernoulli(even.25)
+
+MLE.bernoulli(even.25)
+
+bernoulli.plot(even.25)
+
+
+
+uneven.25 <- rbinom(n=25,        #number of observations
+                    size=1,        #number of trials (size=1 for a Bernoulli distribution)
+                    prob=.7)       #probability of success
+
+MOM.bernoulli(uneven.25)
+
+MLE.bernoulli(uneven.25)
+
+bernoulli.plot(uneven.25)
+@
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (e)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=100$ for your two sets of parameter(s).
+  Calculate the method of moments estimator(s) and maximum likelihood estimator(s). 
+  In a $1 \times 2$ grid, plot a histogram (with bin size 1) of each set of data 
+  with (1) the method of moments estimated distribution, (2) the maximum likelihood
+  estimated distribution, and superimpose the true distribution in both.
+<<>>=
+even.100 <- rbinom(n=100,        #number of observations
+                  size=1,        #number of trials (size=1 for a Bernoulli distribution)
+                  prob=.5)       #probability of success
+
+MOM.bernoulli(even.100)
+
+MLE.bernoulli(even.100)
+
+bernoulli.plot(even.100)
+
+
+
+uneven.100 <- rbinom(n=100,        #number of observations
+                    size=1,        #number of trials (size=1 for a Bernoulli distribution)
+                    prob=.7)       #probability of success
+
+MOM.bernoulli(uneven.100)
+
+MLE.bernoulli(uneven.100)
+
+bernoulli.plot(uneven.100)
+@
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (f)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=100$ for your two sets of parameter(s).
+  Calculate the method of moments estimator(s) and maximum likelihood estimator(s).
+  In a $1 \times 2$ grid, plot a histogram (with bin size 1) of each set of data 
+  with (1) the method of moments estimated distribution, (2) the maximum likelihood
+  estimated distribution, and superimpose the true distribution in both.
+<<>>=
+even.1000 <- rbinom(n=1000,        #number of observations
+                  size=1,        #number of trials (size=1 for a Bernoulli distribution)
+                  prob=.5)       #probability of success
+
+MOM.bernoulli(even.1000)
+
+MLE.bernoulli(even.1000)
+
+bernoulli.plot(even.1000)
+
+
+
+uneven.1000 <- rbinom(n=1000,        #number of observations
+                    size=1,        #number of trials (size=1 for a Bernoulli distribution)
+                    prob=.7)       #probability of success
+
+MOM.bernoulli(uneven.1000)
+
+MLE.bernoulli(uneven.1000)
+
+bernoulli.plot(uneven.1000)
+@
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (g)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Comment on the results of parts (c)-(f). 
+\end{enumerate}
+\end{enumerate}%End overall enumerate
+\newpage
+\bibliography{bib}
+\end{document}

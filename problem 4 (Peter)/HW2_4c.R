@@ -33,57 +33,67 @@ MLE.bernoulli <- function(data){
 
 bernoulli.plot <- function(data){
   
-  dfData <- data.frame(matrix(nrow = 4, ncol = 3))
-  colnames(dfData) <- c("Prop","Status","Value")
-  rownames(dfData) <- c("Actual 0s","Actual 1s","Estimated 0s","Estimated 1s")
+  dfActual <- data.frame(matrix(nrow = 2, ncol = 2))
+  colnames(dfActual) <- c("Prop","Value")
+  rownames(dfActual) <- c("0","1")
   
-  dfActual <- as.data.frame(data) %>% group_by(data) %>%
+  ActualTab <- as.data.frame(data) %>% group_by(data) %>%
     summarize(count = n()) # Calculate the counts
   
-  dfData[1,1] <- prop.table(dfActual$count)[1]
-  dfData[2,1] <- prop.table(dfActual$count)[2]
-  dfData[1,2] <- "Actual"
-  dfData[2,2] <- "Actual"
-  dfData[1,3] <- 0
-  dfData[2,3] <- 1
-  
-  dfData[3,1] <- 1-MOM.bernoulli(data)
-  dfData[4,1] <- MOM.bernoulli(data)
-  dfData[3,2] <- "MOM"
-  dfData[4,2] <- "MOM"
-  dfData[3,3] <- 0
-  dfData[4,3] <- 1
+  dfActual[1,1] <- prop.table(ActualTab$count)[1]
+  dfActual[2,1] <- prop.table(ActualTab$count)[2]
+  dfActual[1,2] <- 0
+  dfActual[2,2] <- 1
   
   
-  p1 <- ggplot(dfData, aes(fill=Status, y=Prop, x=Value)) +
-    geom_bar(position="dodge", stat="identity") +
-    ylab("Probability") + xlab("Observations")
+  dfEstimate <- data.frame(matrix(nrow = 2, ncol = 2))
+  colnames(dfEstimate) <- c("Prop","Value")
+  rownames(dfEstimate) <- c("0","1")
   
-  dfData <- data.frame(matrix(nrow = 4, ncol = 3))
-  colnames(dfData) <- c("Prop","Status","Value")
-  rownames(dfData) <- c("Actual 0s","Actual 1s","Estimated 0s","Estimated 1s")
-  
-  dfActual <- as.data.frame(data) %>% group_by(data) %>%
+  EstimateTab <- as.data.frame(data) %>% group_by(data) %>%
     summarize(count = n()) # Calculate the counts
   
-  dfData[1,1] <- prop.table(dfActual$count)[1]
-  dfData[2,1] <- prop.table(dfActual$count)[2]
-  dfData[1,2] <- "Actual"
-  dfData[2,2] <- "Actual"
-  dfData[1,3] <- 0
-  dfData[2,3] <- 1
-  
-  dfData[3,1] <- 1-MLE.bernoulli(data)
-  dfData[4,1] <- MLE.bernoulli(data)
-  dfData[3,2] <- "MLE"
-  dfData[4,2] <- "MLE"
-  dfData[3,3] <- 0
-  dfData[4,3] <- 1
+  dfEstimate[1,1] <- 1-MOM.bernoulli(data)
+  dfEstimate[2,1] <- MOM.bernoulli(data)
+  dfEstimate[1,2] <- 0
+  dfEstimate[2,2] <- 1
   
   
-  p2 <- ggplot(dfData, aes(fill=Status, y=Prop, x=Value)) +
-    geom_bar(position="dodge", stat="identity") +
-    ylab("Probability") + xlab("Observations")
+  p1 <- ggplot(mapping = aes(y=Prop, x=Value)) +
+    geom_col(data = dfActual, position = "dodge", fill = "lightblue") +
+    geom_col(data = dfEstimate, aes(group = Value),
+             fill = "black", width = 0.01, position = position_dodge(width = 0.9))
+  
+  dfActual <- data.frame(matrix(nrow = 2, ncol = 2))
+  colnames(dfActual) <- c("Prop","Value")
+  rownames(dfActual) <- c("0","1")
+  
+  ActualTab <- as.data.frame(data) %>% group_by(data) %>%
+    summarize(count = n()) # Calculate the counts
+  
+  dfActual[1,1] <- prop.table(ActualTab$count)[1]
+  dfActual[2,1] <- prop.table(ActualTab$count)[2]
+  dfActual[1,2] <- 0
+  dfActual[2,2] <- 1
+  
+  
+  dfEstimate <- data.frame(matrix(nrow = 2, ncol = 2))
+  colnames(dfEstimate) <- c("Prop","Value")
+  rownames(dfEstimate) <- c("0","1")
+  
+  EstimateTab <- as.data.frame(data) %>% group_by(data) %>%
+    summarize(count = n()) # Calculate the counts
+  
+  dfEstimate[1,1] <- 1-MLE.bernoulli(data)
+  dfEstimate[2,1] <- MLE.bernoulli(data)
+  dfEstimate[1,2] <- 0
+  dfEstimate[2,2] <- 1
+  
+  
+  p2 <- ggplot(mapping = aes(y=Prop, x=Value)) +
+    geom_col(data = dfActual, position = "dodge", fill = "lightblue") +
+    geom_col(data = dfEstimate, aes(group = Value),
+             fill = "black", width = 0.01, position = position_dodge(width = 0.9))
   
   return(p1+p2)
   
