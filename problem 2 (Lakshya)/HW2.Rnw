@@ -128,7 +128,9 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
   <<>>=
   s1 <- data.frame(x = rnorm(n = obs[1], mean = 0, sd = 1))
   s1_stats <- s1 %>% 
-summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" = kurtosis(x))
+summarize(Mean = mean(x), SD = sd(x), 
+          Skewness = skewness(x), 
+          "Excess Kurtosis" = kurtosis(x))
   s1_stats
   @
   \textbf{Interpretation:}
@@ -152,7 +154,9 @@ summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" 
   Since the excess kurtosis < 0, it indicates that the data is platykurtic. 
   <<>>=
   s2 <- data.frame(x = rnorm(n = obs[2], mean = 0, sd = 1))
-  s2_stats <- s2 %>% summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" = kurtosis(x))
+  s2_stats <- s2 %>% summarize(Mean = mean(x), 
+                               SD = sd(x), Skewness = skewness(x),
+                               "Excess Kurtosis" = kurtosis(x))
   s2_stats
   @
   \textbf{Interpretation:}
@@ -176,7 +180,9 @@ summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" 
   Since the excess kurtosis < 0, it indicates that the data is platykurtic. However, note that the excess kurtosis for this sample is closer to 0 than s1. 
   <<>>=
   s3 <- data.frame(x = rnorm(n = obs[3], mean = 0, sd = 1))
-  s3_stats <- s3 %>% summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" = kurtosis(x))
+  s3_stats <- s3 %>% summarize(Mean = mean(x), SD = sd(x), 
+                               Skewness = skewness(x), 
+                               "Excess Kurtosis" = kurtosis(x))
   s3_stats
   @
   \textbf{Interpretation:}
@@ -200,7 +206,9 @@ summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" 
   Since the excess kurtosis < 0, it indicates that the data is platykurtic. However, note that the excess kurtosis for this sample is closer to 0 than s2. 
   <<>>=
   s4 <- data.frame(x = rnorm(n = obs[4], mean = 0, sd = 1))
-  s4_stats <- s4 %>% summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" = kurtosis(x))
+  s4_stats <- s4 %>% summarize(Mean = mean(x), 
+                               SD = sd(x), Skewness = skewness(x),
+                               "Excess Kurtosis" = kurtosis(x))
   @
   \textbf{Interpretation:}
   \\ \textbf{Center:} The sample mean of a normal distribution is the balancing point of the distribution. In this case, this will be equal to around - 
@@ -268,33 +276,42 @@ summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" 
   @
   In a $1 \times 2$ grid, plot a histogram of each set of data with (1) the method of moments estimated distribution, (2) the maximum likelihood estimated 
   distribution, and superimpose the true distribution in both.
-  <<>>=
+  <<message=FALSE>>=
   mom_dat1 <- data.frame(x = rnorm(n = obs[1], mean = mom1$x[1], sd = mom1$x[2]))
   mom1_p <- ggplot(data=mom_dat1, aes(x=x))+ 
-    geom_histogram(color="black", fill = "blue", alpha = 0.5, aes(y=..density..))+ 
+    geom_histogram(color="black", fill = "blue", 
+                   alpha = 0.5, aes(y=..density..))+ 
     geom_hline(yintercept=0)+ geom_density(alpha=.2, fill="purple") + 
     theme_bw()+ xlab("x")+ ylab("Density")+ 
     ggtitle("Method Of Moments (n = 10)") + 
-    geom_histogram(aes(x = dat1$x), color="black", fill = "green", alpha = 0.2) + 
+    geom_histogram(aes(x = dat1$x), color="black", 
+                   fill = "green", alpha = 0.2) + 
     geom_vline(xintercept = mean(dat1$x), alpha=0.35, color="red",size=1)
   
-  mle_dat1 <- data.frame(x = rnorm(n = obs[1], mean = mle1$par[1], sd = mle1$par[2]))
-  mle1_p <- ggplot(data=mle_dat1, aes(x=x))+ geom_histogram(color="black", fill = "blue", alpha = 0.5, aes(y=..density..))+ 
-    geom_hline(yintercept=0)+ geom_density(alpha=.2, fill="purple") + 
+  mle_dat1 <- data.frame(x = rnorm(n = obs[1], 
+                                   mean = mle1$par[1], sd = mle1$par[2]))
+  mle1_p <- ggplot(data=mle_dat1, aes(x=x))+ 
+    geom_histogram(color="black", fill = "blue", 
+                   alpha = 0.5, aes(y=..density..))+ 
+    geom_hline(yintercept=0)+ 
+    geom_density(alpha=.2, fill="purple") + 
     theme_bw()+ xlab("x")+ ylab("Density")+ 
     ggtitle("Maximum Likelihood Estimator (n = 10)")  + 
-    geom_histogram(aes(x = dat1$x, y=..density..), color="black", fill = "green", alpha = 0.2) + 
+    geom_histogram(aes(x = dat1$x, y=..density..), 
+                   color="black", fill = "green", alpha = 0.2) + 
     geom_vline(xintercept = mean(dat1$x), alpha=0.35, color="red",size=1)
   
   mom1_p + mle1_p
   
   dat1_h <- ggplot(data=dat1, aes(x=x))+ 
-    geom_histogram(color="black", fill = "lightblue", alpha = 0.5, binwidth = 0.2, aes(y=..density..))+ 
+    geom_histogram(color="black", fill = "lightblue", 
+                   alpha = 0.5, binwidth = 0.2, aes(y=..density..))+ 
     geom_hline(yintercept=0)+ 
     geom_density(alpha=.2, fill="purple") + 
     theme_bw()+ xlab("x")+ ylab("Density")+ 
     ggtitle("Normal Distrubution (n = 10)") + 
-    geom_vline(xintercept = mean(dat1$x), alpha=0.35, color="red",size=1)
+    geom_vline(xintercept = mean(dat1$x), alpha=0.35, 
+               color="red",size=1)
   
   dat1<-dat1 %>% mutate(n = seq(1,obs[1],1)) 
   
@@ -302,7 +319,8 @@ summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" 
     geom_line()+ 
     geom_hline(yintercept=0)+ 
     geom_hline(yintercept = mean(dat1$x), alpha=0.35, color="red",size=1) + 
-    theme_bw()+ xlab("n")+ ylab("x")+ ggtitle("Normal Distrubution (n = 10)")
+    theme_bw()+ xlab("n")+ ylab("x")+
+    ggtitle("Normal Distrubution (n = 10)")
   
   dat1_h + dat1_p
   @
@@ -321,31 +339,56 @@ summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" 
   In a $1 \times 2$ grid, plot a histogram of each set of data with (1) the method 
   of moments estimated distribution, (2) the maximum likelihood estimated distribution, 
   and superimpose the true distribution in both.
-  <<>>=
-  mom_dat2 <- data.frame(x = rnorm(n = obs[2], mean = mom2$x[1], sd = mom2$x[2]))
-  mom2_p <- ggplot(data=mom_dat2, aes(x=x))+ geom_histogram(color="black", fill = "blue", alpha = 0.5, aes(y=..density..))+ 
+  <<message=FALSE>>=
+  mom_dat2 <- data.frame(x = rnorm(n = obs[2], 
+                                   mean = mom2$x[1], sd = mom2$x[2]))
+  mom2_p <- ggplot(data=mom_dat2, aes(x=x))+ 
+    geom_histogram(color="black", fill = "blue", 
+                   alpha = 0.5, aes(y=..density..))+ 
     geom_hline(yintercept=0)+ geom_density(alpha=.2, fill="purple") + 
-    theme_bw()+ xlab("x")+ ylab("Density")+ ggtitle("Method Of Moments (n = 25)") + 
-    geom_histogram(aes(x = dat2$x, y=..density..), color="black", fill = "green", alpha = 0.2) + 
-    geom_vline(xintercept = mean(dat2$x), alpha=0.35, color="red",size=1)
+    theme_bw()+ xlab("x")+ ylab("Density")+ 
+    ggtitle("Method Of Moments (n = 25)") + 
+    geom_histogram(aes(x = dat2$x, y=..density..), 
+                   color="black", fill = "green", alpha = 0.2) + 
+    geom_vline(xintercept = mean(dat2$x),
+               alpha=0.35, color="red",size=1)
   
-  mle_dat2 <- data.frame(x = rnorm(n = obs[2], mean = mle2$par[1], sd = mle2$par[2]))
+  mle_dat2 <- data.frame(x = rnorm(n = obs[2], 
+                                   mean = mle2$par[1], sd = mle2$par[2]))
   mle2_p <- ggplot(data=mle_dat2, aes(x=x))+ 
-    geom_histogram(color="black", fill = "blue", alpha = 0.5, aes(y=..density..))+ 
-    geom_hline(yintercept=0)+ geom_density(alpha=.2, fill="purple") + 
-    theme_bw()+ xlab("x")+ ylab("Density")+ ggtitle("Maximum Likelihood Estimator (n = 25)") + 
-    geom_histogram(aes(x = dat2$x, y=..density..), color="black", fill = "green", alpha = 0.2) + 
+    geom_histogram(color="black", fill = "blue", 
+                   alpha = 0.5, aes(y=..density..))+ 
+    geom_hline(yintercept=0)+ 
+    geom_density(alpha=.2, fill="purple") + 
+    theme_bw()+ xlab("x")+ ylab("Density")+ 
+    ggtitle("Maximum Likelihood Estimator (n = 25)") + 
+    geom_histogram(aes(x = dat2$x, y=..density..), 
+                   color="black", fill = "green", alpha = 0.2) + 
     geom_vline(xintercept = mean(dat2$x), alpha=0.35, color="red",size=1)
   
   mom2_p + mle2_p
   
-  dat2_h <- ggplot(data=dat2, aes(x=x))+ geom_histogram(color="black", fill = "lightblue", alpha = 0.5, binwidth = 0.2, aes(y=..density..))+ geom_hline(yintercept=0)+ geom_density(alpha=.2, fill="purple") + theme_bw()+ xlab("x")+ ylab("Density")+ ggtitle("Normal Distrubution (n = 25)") + geom_vline(xintercept = mean(dat2$x), alpha=0.35, color="red",size=1)
+  dat2_h <- ggplot(data=dat2, aes(x=x))+ 
+    geom_histogram(color="black", fill = "lightblue", 
+                   alpha = 0.5, binwidth = 0.2, 
+                   aes(y=..density..))+ 
+    geom_hline(yintercept=0)+ 
+    geom_density(alpha=.2, fill="purple") + 
+    theme_bw()+
+    xlab("x")+
+    ylab("Density")+ 
+    ggtitle("Normal Distrubution (n = 25)") + 
+    geom_vline(xintercept = mean(dat2$x), alpha=0.35, color="red",size=1)
   
   dat2 <-dat2 %>% mutate(n = seq(1,obs[2],1)) 
   dat2_p <- ggplot(data=dat2, aes(x=n, y=x))+ 
-    geom_line()+ geom_hline(yintercept=0)+ 
+    geom_line()+ 
+    geom_hline(yintercept=0)+ 
     geom_hline(yintercept = mean(dat2$x), alpha=0.35, color="red",size=1) + 
-    theme_bw()+ xlab("n")+ ylab("x")+ ggtitle("Normal Distrubution (n = 25)")
+    theme_bw()+ 
+    xlab("n")+ 
+    ylab("x")+ 
+    ggtitle("Normal Distrubution (n = 25)")
   
   dat2_h + dat2_p
   @
@@ -364,38 +407,50 @@ summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" 
   In a $1 \times 2$ grid, plot a histogram of each set of data with (1) the method 
   of moments estimated distribution, (2) the maximum likelihood estimated distribution,
   and superimpose the true distribution in both.
-  <<>>=
+  <<message=FALSE>>=
   mom_dat3 <- data.frame(x = rnorm(n = obs[3], mean = mom3$x[1], sd = mom3$x[2]))
   mom3_p <- ggplot(data=mom_dat3, aes(x=x))+ 
-    geom_histogram(color="black", fill = "blue", alpha = 0.5, aes(y=..density..))+ 
+    geom_histogram(color="black", 
+                   fill = "blue", alpha = 0.5, aes(y=..density..))+ 
     geom_hline(yintercept=0)+ 
     geom_density(alpha=.2, fill="purple") + 
     theme_bw()+ xlab("x")+ 
-    ylab("Density")+ ggtitle("Method of Moments (n = 100)") + 
-    geom_histogram(aes(x = dat3$x, y=..density..), color="black", fill = "green", alpha = 0.2) + 
+    ylab("Density")+ 
+    ggtitle("Method of Moments (n = 100)") + 
+    geom_histogram(aes(x = dat3$x, y=..density..), 
+                   color="black", fill = "green", alpha = 0.2) + 
     geom_vline(xintercept = mean(dat3$x), alpha=0.35, color="red",size=1)
   
-  mle_dat3 <- data.frame(x = rnorm(n = obs[3], mean = mle3$par[1], sd = mle3$par[2]))
+  mle_dat3 <- data.frame(x = rnorm(n = obs[3],
+                                   mean = mle3$par[1], sd = mle3$par[2]))
   mle3_p <- ggplot(data=mle_dat3, aes(x=x))+ 
-    geom_histogram(color="black", fill = "blue", alpha = 0.5, aes(y=..density..))+ 
+    geom_histogram(color="black", fill = "blue", 
+                   alpha = 0.5, aes(y=..density..))+ 
     geom_hline(yintercept=0)+ 
     geom_density(alpha=.2, fill="purple") + 
     theme_bw()+ xlab("x")+ ylab("Density")+ 
     ggtitle("Maximum Likelihood Estimator (n = 100)") + 
-    geom_histogram(aes(x = dat3$x, y=..density..), color="black", fill = "green", alpha = 0.2) + 
+    geom_histogram(aes(x = dat3$x, y=..density..), 
+                   color="black", fill = "green", alpha = 0.2) + 
     geom_vline(xintercept = mean(dat3$x), alpha=0.35, color="red",size=1)
   
   mom3_p + mle3_p
   
   dat3_h <- ggplot(data=dat3, aes(x=x))+ 
-    geom_histogram(color="black", fill = "lightblue", alpha = 0.5, binwidth = 0.2, aes(y=..density..))+ 
-    geom_hline(yintercept=0)+ geom_density(alpha=.2, fill="purple") + 
-    theme_bw()+ xlab("x")+ ylab("Density")+ ggtitle("Normal Distrubution (n = 100)")
+    geom_histogram(color="black", fill = "lightblue", 
+                   alpha = 0.5, binwidth = 0.2, aes(y=..density..))+ 
+    geom_hline(yintercept=0)+ 
+    geom_density(alpha=.2, fill="purple") + 
+    theme_bw()+ xlab("x")+ ylab("Density")+ 
+    ggtitle("Normal Distrubution (n = 100)")
   
   dat3 <-dat3 %>% mutate(n = seq(1,obs[3],1)) 
-  dat3_p <- ggplot(data=dat3, aes(x=n, y=x))+ geom_line()+ 
-    geom_hline(yintercept=0)+ geom_hline(yintercept = mean(dat3$x), alpha=0.35, color="red",size=1) + 
-    theme_bw()+ xlab("n")+ ylab("x")+ ggtitle("Normal Distrubution (n = 100)")
+  dat3_p <- ggplot(data=dat3, aes(x=n, y=x))+ 
+    geom_line()+ 
+    geom_hline(yintercept=0)+ 
+    geom_hline(yintercept = mean(dat3$x), alpha=0.35, color="red",size=1) + 
+    theme_bw()+ xlab("n")+ ylab("x")+ 
+    ggtitle("Normal Distrubution (n = 100)")
   
   dat3_h + dat3_p
   @
@@ -414,29 +469,40 @@ summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" 
   In a $1 \times 2$ grid, plot a histogram of each set of data with (1) the method 
   of moments estimated distribution, (2) the maximum likelihood estimated distribution, 
   and superimpose the true distribution in both.
-  <<>>=
+  <<message=FALSE>>=
   mom_dat4 <- data.frame(x = rnorm(n = obs[4], mean = mom4$x[1], sd = mom4$x[2]))
   mom4_p <- ggplot(data=mom_dat4, aes(x=x))+ 
-    geom_histogram(color="black", fill = "blue", alpha = 0.5, aes(y=..density..))+ 
-    geom_hline(yintercept=0)+ geom_density(alpha=.2, fill="purple") + 
-    theme_bw()+ xlab("x")+ ylab("Density")+ ggtitle("Method of Moments (n = 1000)") + 
-    geom_histogram(aes(x = dat4$x, y=..density..), color="black", fill = "green", alpha = 0.2) + 
+    geom_histogram(color="black", fill = "blue",
+                   alpha = 0.5, aes(y=..density..))+ 
+    geom_hline(yintercept=0)+ 
+    geom_density(alpha=.2, fill="purple") + 
+    theme_bw()+ xlab("x")+ ylab("Density")+ 
+    ggtitle("Method of Moments (n = 1000)") + 
+    geom_histogram(aes(x = dat4$x, y=..density..), 
+                   color="black", fill = "green", alpha = 0.2) + 
     geom_vline(xintercept = mean(dat4$x), alpha=0.35, color="red",size=1)
   
-  mle_dat4 <- data.frame(x = rnorm(n = obs[4], mean = mle4$par[1], sd = mle4$par[2]))
+  mle_dat4 <- data.frame(x = rnorm(n = obs[4],
+                                   mean = mle4$par[1], sd = mle4$par[2]))
   mle4_p <- ggplot(data=mle_dat4, aes(x=x))+ 
-    geom_histogram(color="black", fill = "blue", alpha = 0.5, aes(y=..density..))+ 
+    geom_histogram(color="black", fill = "blue", 
+                   alpha = 0.5, aes(y=..density..))+ 
     geom_hline(yintercept=0)+ geom_density(alpha=.2, fill="purple") + 
     theme_bw()+ xlab("x")+ ylab("Density")+ 
     ggtitle("Maximum Likelihood Estimator (n = 1000)") + 
-    geom_vline(xintercept = mean(dat4$x), alpha=0.35, color="red",size=1) + 
-    geom_histogram(aes(x = dat4$x, y=..density..), color="black", fill = "green", alpha = 0.2)
+    geom_vline(xintercept = mean(dat4$x), alpha=0.35, 
+               color="red",size=1) + 
+    geom_histogram(aes(x = dat4$x, y=..density..), 
+                   color="black", fill = "green", alpha = 0.2)
   
   mom4_p + mle4_p
   
   dat4_h <- ggplot(data=dat4, aes(x=x))+ 
-    geom_histogram(color="black", fill = "lightblue", alpha = 0.5, aes(y=..density..))+ 
-    geom_hline(yintercept=0)+ geom_density(alpha=.2, fill="purple") + theme_bw()+ xlab("x")+ ylab("Density")+ ggtitle("Normal Distrubution (n = 1000)") + 
+    geom_histogram(color="black", fill = "lightblue", 
+                   alpha = 0.5, aes(y=..density..))+ 
+    geom_hline(yintercept=0)+ geom_density(alpha=.2, fill="purple") + 
+    theme_bw()+ xlab("x")+ ylab("Density")+ 
+    ggtitle("Normal Distrubution (n = 1000)") + 
     geom_vline(xintercept = mean(dat4$x), alpha=0.35, color="red",size=1)
   
   dat4 <-dat4 %>% mutate(n = seq(1,obs[4],1)) 
