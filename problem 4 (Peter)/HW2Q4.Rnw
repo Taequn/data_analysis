@@ -65,24 +65,34 @@ Mean:
 \[
 E(X)=p
 \]
-
+\\
+The mean represents the average or typical value that we would expect to see in a data set.\\
+\\
 Standard Deviation:
 
 \[
 \sigma=\sqrt{p\left(1-p\right)}
 \]
-
+\\
+The standard deviation tells us how much the data in our data set varies from the mean. Data sets with lower standard deviations will have their data points grouped more tightly together, while data sets with higher standard deviations will have their data points more spread out.\\
+\\
 Skewness:
 
 \[
 \xi_{X}=\frac{\left(1-p\right)-p}{\sqrt{p\left(1-p\right)}}
 \]
-
+\\
+The skewness tells us how symmetrical the data will be. If our data is positively or right-skewed, that means there will be a large grouping of data towards the left side of our distribution, with a long tail extending out to the right. Conversely, negatively or left-skewed data means there will be a large grouping of data towards the right side of our distribution, with a long tail extending out to the left. \\
+\\
 Kurtosis:
 
 \[
 \kappa_{Y}=3+\frac{1-6p\left(1-p\right)}{p\left(1-p\right)}
-\]\\
+\]
+\\
+The kurtosis is used to tell us how thick or thin the peak and tails of our data distribution are. A data set with kurtosis greater than 3 will have a distribution that has thicker tails and a thinner peak. Conversely, a data set with kurtosis less than 3 will have thinner tails and a thicker peak.\\
+\\
+\\
 \\
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (b)
@@ -179,6 +189,79 @@ sd(uneven.1000)                  #standard deviation
 skewness(uneven.1000)            #skewness
 kurtosis(uneven.1000)            #kurtosis
 @
+Calculated Mean, Standard Deviation, Skewness and Kurtosis:
+
+\[
+\]
+
+For $p=.5$:
+
+\[
+\]
+
+Mean:
+
+\[
+E(X)=.5
+\]
+
+Standard Deviation:
+
+\begin{align*}\sigma & =\sqrt{.5\left(1-.5\right)}\\
+\\
+ & =.5
+\end{align*}
+
+Skewness:
+
+\begin{align*}\xi_{X} & =\frac{\left(1-.5\right)-.5}{\sqrt{.5\left(1-.5\right)}}\\
+\\
+ & =0
+\end{align*}
+
+Kurtosis:
+
+\begin{align*}\kappa_{Y} & =3+\frac{1-6\left(.5\right)\left(1-.5\right)}{.5\left(1-.5\right)}\\
+\\
+ & =1
+\end{align*}
+
+\[
+\]
+
+For $p=.7$:
+
+\[
+\]
+
+Mean:
+
+\[
+E(X)=.7
+\]
+
+Standard Deviation:
+
+\begin{align*}\sigma & =\sqrt{.7\left(1-.7\right)}\\
+\\
+ & \approx.45825
+\end{align*}
+
+Skewness:
+
+\begin{align*}\xi_{X} & =\frac{\left(1-.7\right)-.7}{\sqrt{.7\left(1-.7\right)}}\\
+\\
+ & \approx-.87287
+\end{align*}
+
+Kurtosis:
+
+\begin{align*}\kappa_{Y} & =3+\frac{1-6\left(.7\right)\left(1-.7\right)}{.7\left(1-.7\right)}\\
+\\
+ & \approx1.76190
+\end{align*}\\
+By comparing the values we received computationally to the values that we calculated we can see that as our random sample size $n$ increases, the computational values that we received for our mean, standard deviation, skewness, and kurtosis tended to approach the actual values for the distribution that we calculated.\\
+\\
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (c)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -188,7 +271,7 @@ kurtosis(uneven.1000)            #kurtosis
   with (1) the method of moments estimated distribution, (2) the maximum likelihood 
   estimated distribution, and superimpose the true distribution in both.
 <<>>=
-library(ggplot2)
+library(tidyverse)
 
 second.moment <- function(data, x.bar){  #function to find the second moment
   temp = 0
@@ -411,6 +494,10 @@ bernoulli.plot(uneven.1000)
   %%%%%%%%%  Part (g)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Comment on the results of parts (c)-(f). 
+  \\
+  \\
+  From the plots in the results of parts (c)-(f), we can see that both the Method of Moments estimator and the Maximum Likelihood Estimator were able to provide a perfect estimate for the parameter $p$ regardless of our random sample size $n$. Therefore, I feel it is reasonable to conclude that using larger random sample sizes to find the MOM and MLE of a Bernoulli distribution is unnecessary.  \\
+  \\
 \end{enumerate}
 \end{enumerate}%End overall enumerate
 \newpage
