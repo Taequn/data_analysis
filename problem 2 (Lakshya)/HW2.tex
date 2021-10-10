@@ -185,12 +185,12 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
 \begin{alltt}
 \hlstd{s1} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlkwc{n} \hlstd{= obs[}\hlnum{1}\hlstd{],} \hlkwc{mean} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{sd} \hlstd{=} \hlnum{1}\hlstd{))}
 \hlstd{s1_stats} \hlkwb{<-} \hlstd{s1} \hlopt{%>%}
-  \hlkwd{summarize}\hlstd{(}\hlkwc{Mean} \hlstd{=} \hlkwd{mean}\hlstd{(x),} \hlkwc{SD} \hlstd{=} \hlkwd{sd}\hlstd{(x),} \hlkwc{Skewness} \hlstd{=} \hlkwd{skewness}\hlstd{(x),} \hlstr{"Excess Kurtosis"} \hlstd{=} \hlkwd{kurtosis}\hlstd{(x))}
+\hlkwd{summarize}\hlstd{(}\hlkwc{Mean} \hlstd{=} \hlkwd{mean}\hlstd{(x),} \hlkwc{SD} \hlstd{=} \hlkwd{sd}\hlstd{(x),} \hlkwc{Skewness} \hlstd{=} \hlkwd{skewness}\hlstd{(x),} \hlstr{"Excess Kurtosis"} \hlstd{=} \hlkwd{kurtosis}\hlstd{(x))}
 \hlstd{s1_stats}
 \end{alltt}
 \begin{verbatim}
-##         Mean        SD  Skewness Excess Kurtosis
-## 1 -0.2891175 0.7894614 0.8377559      -0.1875298
+##          Mean        SD Skewness Excess Kurtosis
+## 1 -0.01992563 0.8672241 0.507133      -0.6302502
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -202,7 +202,7 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
 \hlstd{s1_stats}\hlopt{$}\hlstd{Mean}
 \end{alltt}
 \begin{verbatim}
-## [1] -0.2891175
+## [1] -0.01992563
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -213,7 +213,7 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
 \hlstd{s1_stats}\hlopt{$}\hlstd{SD}
 \end{alltt}
 \begin{verbatim}
-## [1] 0.7894614
+## [1] 0.8672241
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -224,7 +224,7 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
 \hlstd{s1_stats}\hlopt{$}\hlstd{Skewness}
 \end{alltt}
 \begin{verbatim}
-## [1] 0.8377559
+## [1] 0.507133
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -236,7 +236,7 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
 \hlstd{s1_stats}\hlopt{$}\hlstd{`Excess Kurtosis`}
 \end{alltt}
 \begin{verbatim}
-## [1] -0.1875298
+## [1] -0.6302502
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -249,8 +249,8 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
 \hlstd{s2_stats}
 \end{alltt}
 \begin{verbatim}
-##         Mean       SD   Skewness Excess Kurtosis
-## 1 -0.1022959 1.157837 -0.4381694      -0.6596139
+##         Mean        SD   Skewness Excess Kurtosis
+## 1 0.08055324 0.9909995 -0.2112894      -0.7343354
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -262,7 +262,7 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
 \hlstd{s2_stats}\hlopt{$}\hlstd{Mean}
 \end{alltt}
 \begin{verbatim}
-## [1] -0.1022959
+## [1] 0.08055324
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -273,7 +273,7 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
 \hlstd{s2_stats}\hlopt{$}\hlstd{SD}
 \end{alltt}
 \begin{verbatim}
-## [1] 1.157837
+## [1] 0.9909995
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -284,7 +284,7 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
 \hlstd{s2_stats}\hlopt{$}\hlstd{Skewness}
 \end{alltt}
 \begin{verbatim}
-## [1] -0.4381694
+## [1] -0.2112894
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -296,7 +296,7 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
 \hlstd{s2_stats}\hlopt{$}\hlstd{`Excess Kurtosis`}
 \end{alltt}
 \begin{verbatim}
-## [1] -0.6596139
+## [1] -0.7343354
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -309,8 +309,8 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
 \hlstd{s3_stats}
 \end{alltt}
 \begin{verbatim}
-##         Mean       SD   Skewness Excess Kurtosis
-## 1 -0.1078957 1.001425 -0.1934592     -0.05901574
+##         Mean      SD  Skewness Excess Kurtosis
+## 1 -0.1492968 1.05877 0.3074247       0.3666771
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -322,7 +322,7 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
 \hlstd{s3_stats}\hlopt{$}\hlstd{Mean}
 \end{alltt}
 \begin{verbatim}
-## [1] -0.1078957
+## [1] -0.1492968
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -333,7 +333,7 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
 \hlstd{s3_stats}\hlopt{$}\hlstd{SD}
 \end{alltt}
 \begin{verbatim}
-## [1] 1.001425
+## [1] 1.05877
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -344,7 +344,7 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
 \hlstd{s3_stats}\hlopt{$}\hlstd{Skewness}
 \end{alltt}
 \begin{verbatim}
-## [1] -0.1934592
+## [1] 0.3074247
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -356,7 +356,7 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
 \hlstd{s3_stats}\hlopt{$}\hlstd{`Excess Kurtosis`}
 \end{alltt}
 \begin{verbatim}
-## [1] -0.05901574
+## [1] 0.3666771
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -377,7 +377,7 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
 \hlstd{s4_stats}\hlopt{$}\hlstd{Mean}
 \end{alltt}
 \begin{verbatim}
-## [1] -0.0180137
+## [1] -0.04966334
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -388,7 +388,7 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
 \hlstd{s4_stats}\hlopt{$}\hlstd{SD}
 \end{alltt}
 \begin{verbatim}
-## [1] 0.9640693
+## [1] 1.039861
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -399,7 +399,7 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
 \hlstd{s4_stats}\hlopt{$}\hlstd{Skewness}
 \end{alltt}
 \begin{verbatim}
-## [1] 0.0620886
+## [1] 0.07596262
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -411,7 +411,7 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
 \hlstd{s4_stats}\hlopt{$}\hlstd{`Excess Kurtosis`}
 \end{alltt}
 \begin{verbatim}
-## [1] 0.1202453
+## [1] 0.03989065
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -498,10 +498,21 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
 {\ttfamily\noindent\itshape\color{messagecolor}{\#\# `stat\_bin()` using `bins = 30`. Pick better value with `binwidth`.\\\#\# `stat\_bin()` using `bins = 30`. Pick better value with `binwidth`.\\\#\# `stat\_bin()` using `bins = 30`. Pick better value with `binwidth`.\\\#\# `stat\_bin()` using `bins = 30`. Pick better value with `binwidth`.}}\end{kframe}
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-24-1} 
 \begin{kframe}\begin{alltt}
-\hlstd{dat1_h} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=dat1,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x))}\hlopt{+} \hlkwd{geom_histogram}\hlstd{(}\hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"lightblue"}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.5}\hlstd{,} \hlkwc{binwidth} \hlstd{=} \hlnum{0.2}\hlstd{,} \hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=..density..))}\hlopt{+} \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+} \hlkwd{geom_density}\hlstd{(}\hlkwc{alpha}\hlstd{=}\hlnum{.2}\hlstd{,} \hlkwc{fill}\hlstd{=}\hlstr{"purple"}\hlstd{)} \hlopt{+} \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"Density"}\hlstd{)}\hlopt{+} \hlkwd{ggtitle}\hlstd{(}\hlstr{"Normal Distrubution (n = 10)"}\hlstd{)} \hlopt{+} \hlkwd{geom_vline}\hlstd{(}\hlkwc{xintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat1}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)}
+\hlstd{dat1_h} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=dat1,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x))}\hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"lightblue"}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.5}\hlstd{,} \hlkwc{binwidth} \hlstd{=} \hlnum{0.2}\hlstd{,} \hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=..density..))}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{geom_density}\hlstd{(}\hlkwc{alpha}\hlstd{=}\hlnum{.2}\hlstd{,} \hlkwc{fill}\hlstd{=}\hlstr{"purple"}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"Density"}\hlstd{)}\hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Normal Distrubution (n = 10)"}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_vline}\hlstd{(}\hlkwc{xintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat1}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)}
 
 \hlstd{dat1}\hlkwb{<-}\hlstd{dat1} \hlopt{%>%} \hlkwd{mutate}\hlstd{(}\hlkwc{n} \hlstd{=} \hlkwd{seq}\hlstd{(}\hlnum{1}\hlstd{,obs[}\hlnum{1}\hlstd{],}\hlnum{1}\hlstd{))}
-\hlstd{dat1_p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=dat1,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=n,} \hlkwc{y}\hlstd{=x))}\hlopt{+} \hlkwd{geom_line}\hlstd{()}\hlopt{+} \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+} \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat1}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)} \hlopt{+} \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"n"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+} \hlkwd{ggtitle}\hlstd{(}\hlstr{"Normal Distrubution (n = 10)"}\hlstd{)}
+
+\hlstd{dat1_p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=dat1,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=n,} \hlkwc{y}\hlstd{=x))}\hlopt{+}
+  \hlkwd{geom_line}\hlstd{()}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat1}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"n"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+} \hlkwd{ggtitle}\hlstd{(}\hlstr{"Normal Distrubution (n = 10)"}\hlstd{)}
 
 \hlstd{dat1_h} \hlopt{+} \hlstd{dat1_p}
 \end{alltt}

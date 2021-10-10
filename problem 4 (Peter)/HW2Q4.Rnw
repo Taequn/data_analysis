@@ -272,6 +272,7 @@ By comparing the values we received computationally to the values that we calcul
   estimated distribution, and superimpose the true distribution in both.
 <<>>=
 library(tidyverse)
+library(patchwork)
 
 second.moment <- function(data, x.bar){  #function to find the second moment
   temp = 0
@@ -370,11 +371,10 @@ bernoulli.plot <- function(data){
   
   return(p1+p2)
   
-  
-  
 }
+@
 
-
+<<p4plot1, eval=FALSE>>=
 even.10 <- rbinom(n=10,        #number of observations
                     size=1,        #number of trials (size=1 for a Bernoulli distribution)
                     prob=.5)       #probability of success
@@ -384,9 +384,23 @@ MOM.bernoulli(even.10)
 MLE.bernoulli(even.10)
 
 bernoulli.plot(even.10)
+@
 
+\begin{figure}[H]
+  \begin{center}
+  % This code is evaluated, but not printed
+  % note below I use message=FALSE and warning=FALSE to surpress what's printed
+  % when running library(ggmap) or library(patchwork) which would otherwise cause
+  % an error because Sweave is expecting just a graph (not a graph + text)
+<<echo=FALSE, fig.dim=c(7.5,5.5), message=FALSE, warning=FALSE, error=FALSE>>=
+<<p4plot1>>
+@
+    \caption{caption here}
+    \label{p4plot1}%we can now reference P3fig_1
+  \end{center}
+\end{figure}
 
-
+<<>>=
 uneven.10 <- rbinom(n=10,        #number of observations
                     size=1,        #number of trials (size=1 for a Bernoulli distribution)
                     prob=.7)       #probability of success
@@ -446,9 +460,9 @@ MOM.bernoulli(even.100)
 MLE.bernoulli(even.100)
 
 bernoulli.plot(even.100)
+@
 
-
-
+<<>>=
 uneven.100 <- rbinom(n=100,        #number of observations
                     size=1,        #number of trials (size=1 for a Bernoulli distribution)
                     prob=.7)       #probability of success

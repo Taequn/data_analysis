@@ -128,7 +128,7 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
   <<>>=
   s1 <- data.frame(x = rnorm(n = obs[1], mean = 0, sd = 1))
   s1_stats <- s1 %>% 
-    summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" = kurtosis(x))
+summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" = kurtosis(x))
   s1_stats
   @
   \textbf{Interpretation:}
@@ -288,10 +288,21 @@ The population skewness of the PDF is 0, which indicates that the Normal distrib
   
   mom1_p + mle1_p
   
-  dat1_h <- ggplot(data=dat1, aes(x=x))+ geom_histogram(color="black", fill = "lightblue", alpha = 0.5, binwidth = 0.2, aes(y=..density..))+ geom_hline(yintercept=0)+ geom_density(alpha=.2, fill="purple") + theme_bw()+ xlab("x")+ ylab("Density")+ ggtitle("Normal Distrubution (n = 10)") + geom_vline(xintercept = mean(dat1$x), alpha=0.35, color="red",size=1)
+  dat1_h <- ggplot(data=dat1, aes(x=x))+ 
+    geom_histogram(color="black", fill = "lightblue", alpha = 0.5, binwidth = 0.2, aes(y=..density..))+ 
+    geom_hline(yintercept=0)+ 
+    geom_density(alpha=.2, fill="purple") + 
+    theme_bw()+ xlab("x")+ ylab("Density")+ 
+    ggtitle("Normal Distrubution (n = 10)") + 
+    geom_vline(xintercept = mean(dat1$x), alpha=0.35, color="red",size=1)
   
   dat1<-dat1 %>% mutate(n = seq(1,obs[1],1)) 
-  dat1_p <- ggplot(data=dat1, aes(x=n, y=x))+ geom_line()+ geom_hline(yintercept=0)+ geom_hline(yintercept = mean(dat1$x), alpha=0.35, color="red",size=1) + theme_bw()+ xlab("n")+ ylab("x")+ ggtitle("Normal Distrubution (n = 10)")
+  
+  dat1_p <- ggplot(data=dat1, aes(x=n, y=x))+ 
+    geom_line()+ 
+    geom_hline(yintercept=0)+ 
+    geom_hline(yintercept = mean(dat1$x), alpha=0.35, color="red",size=1) + 
+    theme_bw()+ xlab("n")+ ylab("x")+ ggtitle("Normal Distrubution (n = 10)")
   
   dat1_h + dat1_p
   @
