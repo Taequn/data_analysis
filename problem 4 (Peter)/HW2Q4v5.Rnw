@@ -1,0 +1,592 @@
+\documentclass{article}
+\usepackage{amsmath} %This allows me to use the align functionality.
+                     %If you find yourself trying to replicate
+                     %something you found online, ensure you're
+                     %loading the necessary packages!
+\usepackage{amsfonts}%Math font
+\usepackage{graphicx}%For including graphics
+\usepackage{hyperref}%For Hyperlinks
+\hypersetup{colorlinks = true,citecolor=black}
+\usepackage{natbib}        %For the bibliography
+\bibliographystyle{apalike}%For the bibliography
+\usepackage[margin=1.0in]{geometry}
+\usepackage{float}
+\begin{document}
+\noindent \textbf{MA 354: Data Analysis -- Fall 2021 -- Due 10/8 at 5p}\\%\\ gives you a new line
+\noindent \textbf{Homework 2:}\vspace{1em}\\
+\emph{Complete the following opportunities to use what we've talked about in class. These questions will be graded for correctness, communication and succinctness. Ensure you show your work and explain your logic in a legible and refined submission.}\\\vspace{1em}
+%Comments -- anything after % is not put into the PDF
+
+The starting jobs will be applied in alphabetical order (last name) for question two.
+\begin{enumerate}
+  \item \textbf{Solver:} provide a solution, if possible, and reasoning for the solution. \textbf{Due to group 10/5 or earlier.}
+  \item \textbf{Code Checker:} provides a first check of the solver's worked solutions and ensures they are correct with a solid interpretation. 
+  \item \textbf{Checker} checks the solution for completeness, proposes and implements changes if agreed upon by the group. Provides a short paragraph summarizing the discussion of proposals and their reason for acceptance or non-acceptance.
+  \item \textbf{Double Checker} checks the solution for completeness, communication and polish. The Double Checker ensures that the solution is correct and highly polished for submission.
+\end{enumerate}
+
+\noindent For subsequent questions student roles will move down one position. The rolls change as follows.
+\begin{enumerate}
+  \item \textbf{Solver} $\Longrightarrow$ \textbf{Code Checker}
+  \item \textbf{Code Checker} $\Longrightarrow$ \textbf{Checker}
+  \item \textbf{Checker} $\Longrightarrow$ \textbf{Double Checker}
+  \item \textbf{Double Checker} $\Longrightarrow$ \textbf{Solver}
+\end{enumerate}
+While students have assigned jobs for each question I encourage students to help 
+each other complete the homework in collaboration.
+\newpage
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%  Question 4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Continue with the discrete distribution you selected for Question %\ref{Q3}.%
+\begin{enumerate}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (a)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Provide the mean, standard deviation, skewness, and kurtosis of the PMF. 
+  Ensure to interpret each.
+\\
+\\
+Bernoulli Distribution:
+\\
+
+
+
+PMF:
+
+\begin{align*}f\left(k;p\right) & =p^{k}\left(1-p\right)^{1-k} &  & \textrm{for \ensuremath{k\in\left\{ 0,1\right\} }}\end{align*}
+
+
+Mean:
+
+\[
+E(X)=p
+\]
+\\
+The mean represents the average or typical value that we would expect to see in a data set.\\
+\\
+Standard Deviation:
+
+\[
+\sigma=\sqrt{p\left(1-p\right)}
+\]
+\\
+The standard deviation tells us how much the data in our data set varies from the mean. Data sets with lower standard deviations will have their data points grouped more tightly together, while data sets with higher standard deviations will have their data points more spread out.\\
+\\
+Skewness:
+
+\[
+\xi_{X}=\frac{\left(1-p\right)-p}{\sqrt{p\left(1-p\right)}}
+\]
+\\
+The skewness tells us how symmetrical the data will be. If our data is positively or right-skewed, that means there will be a large grouping of data towards the left side of our distribution, with a long tail extending out to the right. Conversely, negatively or left-skewed data means there will be a large grouping of data towards the right side of our distribution, with a long tail extending out to the left. \\
+\\
+Kurtosis:
+
+\[
+\kappa_{Y}=3+\frac{1-6p\left(1-p\right)}{p\left(1-p\right)}
+\]
+\\
+The kurtosis is used to tell us how thick or thin the peak and tails of our data distribution are. A data set with kurtosis greater than 3 will have a distribution that has thicker tails and a thinner peak. Conversely, a data set with kurtosis less than 3 will have thinner tails and a thicker peak.\\
+\\
+\\
+\\
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (b)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=10, 25, 100$, and $1000$ for your 
+  two sets of parameter(s). Calculate the sample mean, standard deviation, 
+  skewness, and kurtosis. Interpret the results.
+<<>>=
+library(e1071)
+
+even.10 <- rbinom(n=10,          #number of observations
+              size=1,            #number of trials (size=1 for Bernoulli)
+              prob=.5)           #probability of success
+
+mean(even.10)                    #mean
+sd(even.10)                      #standard deviation
+skewness(even.10)                #skewness
+kurtosis(even.10)+3              #kurtosis
+
+
+
+even.25  <- rbinom(n=25,         #number of observations
+              size=1,            #number of trials (size=1 for Bernoulli)
+              prob=.5)           #probability of success
+
+mean(even.25)                    #mean
+sd(even.25)                      #standard deviation
+skewness(even.25)                #skewness
+kurtosis(even.25)+3              #kurtosis
+
+
+
+even.100 <- rbinom(n=100,        #number of observations
+              size=1,            #number of trials (size=1 for Bernoulli)
+              prob=.5)           #probability of success
+
+mean(even.100)                   #mean
+sd(even.100)                     #standard deviation
+skewness(even.100)               #skewness
+kurtosis(even.100)+3             #kurtosis
+
+
+
+even.1000 <- rbinom(n=1000,      #number of observations
+              size=1,            #number of trials (size=1 for Bernoulli)
+              prob=.5)           #probability of success
+
+mean(even.1000)                  #mean
+sd(even.1000)                    #standard deviation
+skewness(even.1000)              #skewness
+kurtosis(even.1000)+3            #kurtosis
+
+
+
+uneven.10 <- rbinom(n=10,        #number of observations
+                  size=1,        #number of trials (size=1 for Bernoulli)
+                  prob=.7)       #probability of success
+
+mean(uneven.10)                  #mean
+sd(uneven.10)                    #standard deviation
+skewness(uneven.10)              #skewness
+kurtosis(uneven.10)+3            #kurtosis
+
+
+
+uneven.25  <- rbinom(n=25,       #number of observations
+                   size=1,       #number of trials (size=1 for Bernoulli)
+                   prob=.7)      #probability of success
+
+mean(uneven.25)                  #mean
+sd(uneven.25)                    #standard deviation
+skewness(uneven.25)              #skewness
+kurtosis(uneven.25)+3            #kurtosis
+
+
+
+uneven.100 <- rbinom(n=100,      #number of observations
+                   size=1,       #number of trials (size=1 for Bernoulli)
+                   prob=.7)      #probability of success
+
+mean(uneven.100)                 #mean
+sd(uneven.100)                   #standard deviation
+skewness(uneven.100)             #skewness
+kurtosis(uneven.100)+3           #kurtosis
+
+
+
+uneven.1000 <- rbinom(n=1000,    #number of observations
+                    size=1,      #number of trials (size=1 for Bernoulli)
+                    prob=.7)     #probability of success
+
+mean(uneven.1000)                #mean
+sd(uneven.1000)                  #standard deviation
+skewness(uneven.1000)            #skewness
+kurtosis(uneven.1000)+3          #kurtosis
+@
+Calculated Mean, Standard Deviation, Skewness and Kurtosis:
+
+\[
+\]
+
+For $p=.5$:
+
+\[
+\]
+
+Mean:
+
+\[
+E(X)=.5
+\]
+
+Standard Deviation:
+
+\begin{align*}\sigma & =\sqrt{.5\left(1-.5\right)}\\
+\\
+ & =.5
+\end{align*}
+
+Skewness:
+
+\begin{align*}\xi_{X} & =\frac{\left(1-.5\right)-.5}{\sqrt{.5\left(1-.5\right)}}\\
+\\
+ & =0
+\end{align*}
+
+Kurtosis:
+
+\begin{align*}\kappa_{Y} & =3+\frac{1-6\left(.5\right)\left(1-.5\right)}{.5\left(1-.5\right)}\\
+\\
+ & =1
+\end{align*}
+
+\[
+\]
+
+For $p=.7$:
+
+\[
+\]
+
+Mean:
+
+\[
+E(X)=.7
+\]
+
+Standard Deviation:
+
+\begin{align*}\sigma & =\sqrt{.7\left(1-.7\right)}\\
+\\
+ & \approx.45825
+\end{align*}
+
+Skewness:
+
+\begin{align*}\xi_{X} & =\frac{\left(1-.7\right)-.7}{\sqrt{.7\left(1-.7\right)}}\\
+\\
+ & \approx-.87287
+\end{align*}
+
+Kurtosis:
+
+\begin{align*}\kappa_{Y} & =3+\frac{1-6\left(.7\right)\left(1-.7\right)}{.7\left(1-.7\right)}\\
+\\
+ & \approx1.76190
+\end{align*}\\
+By comparing the values we received computationally to the values that we calculated we can see that as our random sample size $n$ increases, the computational values that we received for our mean, standard deviation, skewness, and kurtosis tended to approach the actual values for the distribution that we calculated.\\
+\\
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (c)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=10$ for your two sets of parameter(s).
+  Calculate the method of moments estimator(s) and maximum likelihood estimator(s).
+  In a $1 \times 2$ grid, plot a histogram (with bin size 1) of each set of data 
+  with (1) the method of moments estimated distribution, (2) the maximum likelihood 
+  estimated distribution, and superimpose the true distribution in both.
+<<>>=
+library(tidyverse)
+library(patchwork)
+
+second.moment <- function(data, x.bar){  #function to find the second moment
+  temp = 0
+  for(i in data){
+    temp = temp + (i - x.bar)^2
+  }
+  return (temp/length(data))
+}
+
+MOM.bernoulli <- function(data){          #function to find the MOM Estimator for p in a Bernoulli distribution
+  mu.hat <- mean(data)
+  var.hat <- second.moment(data,mu.hat)
+  p.hat <- (mu.hat-var.hat)/mu.hat
+  return(p.hat)
+}
+
+# Negative of the Likelihood function
+bernoulliLogLik.neg <- function(par, data){
+  -sum(dbinom(x=data, prob=par, size=1, log=TRUE))} #Sum is negative, as we are looking for a min with optim
+
+MLE.bernoulli <- function(data){
+  MLE <- optim(par = .5,               # best guess for the parameter
+               fn = bernoulliLogLik.neg,   # function to minimize
+               data = data,       # data (an argument to fn)
+               method = "Brent",       # required for univariate optimization
+               lower = 0,              # lowest possible lambda
+               upper = 1)              # reasonable upper bound
+  
+  # Note that our mle is hat(lambda) = xbar 
+  return(MLE$par)
+}
+
+bernoulli.plot <- function(data){
+  
+  dfActual <- data.frame(matrix(nrow = 2, ncol = 2))
+  colnames(dfActual) <- c("Prop","Value")
+  rownames(dfActual) <- c("0","1")
+  
+  ActualTab <- as.data.frame(data) %>% group_by(data) %>%
+    summarize(count = n()) # Calculate the counts
+  
+  dfActual[1,1] <- prop.table(ActualTab$count)[1]
+  dfActual[2,1] <- prop.table(ActualTab$count)[2]
+  dfActual[1,2] <- 0
+  dfActual[2,2] <- 1
+  
+  
+  dfEstimate <- data.frame(matrix(nrow = 2, ncol = 2))
+  colnames(dfEstimate) <- c("Prop","Value")
+  rownames(dfEstimate) <- c("0","1")
+  
+  EstimateTab <- as.data.frame(data) %>% group_by(data) %>%
+    summarize(count = n()) # Calculate the counts
+  
+  dfEstimate[1,1] <- 1-MOM.bernoulli(data)
+  dfEstimate[2,1] <- MOM.bernoulli(data)
+  dfEstimate[1,2] <- 0
+  dfEstimate[2,2] <- 1
+  
+  
+  p1 <- ggplot(mapping = aes(y=Prop, x=Value)) +
+    geom_col(data = dfActual, position = "dodge", fill = "lightblue") +
+    geom_col(data = dfEstimate, aes(group = Value),
+             fill = "black", width = 0.01, position = position_dodge(width = 0.9))+
+    ggtitle("MOM")
+  
+  dfActual <- data.frame(matrix(nrow = 2, ncol = 2))
+  colnames(dfActual) <- c("Prop","Value")
+  rownames(dfActual) <- c("0","1")
+  
+  ActualTab <- as.data.frame(data) %>% group_by(data) %>%
+    summarize(count = n()) # Calculate the counts
+  
+  dfActual[1,1] <- prop.table(ActualTab$count)[1]
+  dfActual[2,1] <- prop.table(ActualTab$count)[2]
+  dfActual[1,2] <- 0
+  dfActual[2,2] <- 1
+  
+  
+  dfEstimate <- data.frame(matrix(nrow = 2, ncol = 2))
+  colnames(dfEstimate) <- c("Prop","Value")
+  rownames(dfEstimate) <- c("0","1")
+  
+  EstimateTab <- as.data.frame(data) %>% group_by(data) %>%
+    summarize(count = n()) # Calculate the counts
+  
+  dfEstimate[1,1] <- 1-MLE.bernoulli(data)
+  dfEstimate[2,1] <- MLE.bernoulli(data)
+  dfEstimate[1,2] <- 0
+  dfEstimate[2,2] <- 1
+  
+  
+  p2 <- ggplot(mapping = aes(y=Prop, x=Value)) +
+    geom_col(data = dfActual, position = "dodge", fill = "lightblue") +
+    geom_col(data = dfEstimate, aes(group = Value),
+             fill = "black", width = 0.01, position = position_dodge(width = 0.9))+
+    ggtitle("MLE")
+  
+  return(p1+p2)
+  
+}
+@
+
+<<>>=
+even.10 <- rbinom(n=10,        #number of observations
+                    size=1,        #number of trials (size=1 for Bernoulli)
+                    prob=.5)       #probability of success
+
+paste("MOM: ", MOM.bernoulli(uneven.10),"MLE: ", MLE.bernoulli(uneven.10))
+@
+Plot is Given Below:
+<<p4plot1, eval=FALSE>>=
+bernoulli.plot(even.10)
+@
+
+\begin{figure}[H]
+  \begin{center}
+  % This code is evaluated, but not printed
+  % note below I use message=FALSE and warning=FALSE to surpress what's printed
+  % when running library(ggmap) or library(patchwork) which would otherwise cause
+  % an error because Sweave is expecting just a graph (not a graph + text)
+<<echo=FALSE, fig.dim=c(5.5,3.5), message=FALSE, warning=FALSE, error=FALSE>>=
+<<p4plot1>>
+@
+    \caption{Bernoulli($n=10$, $p=.5$)}
+    \label{p4plot1}%we can now reference P3fig_1
+  \end{center}
+\end{figure}
+
+<<>>=
+uneven.10 <- rbinom(n=10,        #number of observations
+                    size=1,        #number of trials (size=1 for a Bernoulli distribution)
+                    prob=.7)       #probability of success
+
+paste("MOM: ", MOM.bernoulli(uneven.10),"MLE: ", MLE.bernoulli(uneven.10))
+@
+Plot is Given Below:
+<<p4plot2, eval=FALSE>>=
+bernoulli.plot(uneven.10) 
+@
+\begin{figure}[H]
+  \begin{center}
+  % This code is evaluated, but not printed
+  % note below I use message=FALSE and warning=FALSE to surpress what's printed
+  % when running library(ggmap) or library(patchwork) which would otherwise cause
+  % an error because Sweave is expecting just a graph (not a graph + text)
+<<echo=FALSE, fig.dim=c(5.5,3.5), message=FALSE, warning=FALSE, error=FALSE>>=
+<<p4plot2>>
+@
+    \caption{caption here}
+    \label{p4plot2}%we can now reference P3fig_1
+  \end{center}
+\end{figure}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (d)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=25$ for your two sets of parameter(s). 
+  Calculate the method of moments estimator(s) and maximum likelihood estimator(s).
+  In a $1 \times 2$ grid, plot a histogram (with bin size 1) of each set of data 
+  with (1) the method of moments estimated distribution, (2) the maximum likelihood 
+  estimated distribution, and superimpose the true distribution in both.
+<<>>=
+even.25 <- rbinom(n=25,        #number of observations
+                  size=1,        #number of trials (size=1 for Bernoulli)
+                  prob=.5)       #probability of success
+
+MOM.bernoulli(even.25)
+
+MLE.bernoulli(even.25)
+@
+Plot is Given Below:
+<<p4plot3, eval=FALSE>>=
+bernoulli.plot(even.25)
+@
+\begin{figure}[H]
+  \begin{center}
+  % This code is evaluated, but not printed
+  % note below I use message=FALSE and warning=FALSE to surpress what's printed
+  % when running library(ggmap) or library(patchwork) which would otherwise cause
+  % an error because Sweave is expecting just a graph (not a graph + text)
+<<echo=FALSE, fig.dim=c(5.5,3.5), message=FALSE, warning=FALSE, error=FALSE>>=
+<<p4plot3>>
+@
+    \caption{caption here}
+    \label{p4plot3}%we can now reference P3fig_1
+  \end{center}
+\end{figure}
+<<>>=
+uneven.25 <- rbinom(n=25,        #number of observations
+                    size=1,        #number of trials (size=1 for Bernoulli)
+                    prob=.7)       #probability of success
+
+MOM.bernoulli(uneven.25)
+
+MLE.bernoulli(uneven.25)
+@
+Plot is Given Below:
+<<p4plot4, eval=FALSE>>=
+bernoulli.plot(uneven.25)
+@
+\begin{figure}[H]
+  \begin{center}
+  % This code is evaluated, but not printed
+  % note below I use message=FALSE and warning=FALSE to surpress what's printed
+  % when running library(ggmap) or library(patchwork) which would otherwise cause
+  % an error because Sweave is expecting just a graph (not a graph + text)
+<<echo=FALSE, fig.dim=c(5.5,3.5), message=FALSE, warning=FALSE, error=FALSE>>=
+<<p4plot4>>
+@
+    \caption{caption here}
+    \label{p4plot4}%we can now reference P3fig_1
+  \end{center}
+\end{figure}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (e)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=100$ for your two sets of parameter(s).
+  Calculate the method of moments estimator(s) and maximum likelihood estimator(s). 
+  In a $1 \times 2$ grid, plot a histogram (with bin size 1) of each set of data 
+  with (1) the method of moments estimated distribution, (2) the maximum likelihood
+  estimated distribution, and superimpose the true distribution in both.
+<<>>=
+even.100 <- rbinom(n=100,        #number of observations
+                  size=1,        #number of trials (size=1 for Bernoulli)
+                  prob=.5)       #probability of success
+
+MOM.bernoulli(even.100)
+
+MLE.bernoulli(even.100)
+@
+Plot is Given Below:
+<<p4plot5, eval=FALSE>>=
+bernoulli.plot(even.100)
+@
+\begin{figure}[H]
+  \begin{center}
+  % This code is evaluated, but not printed
+  % note below I use message=FALSE and warning=FALSE to surpress what's printed
+  % when running library(ggmap) or library(patchwork) which would otherwise cause
+  % an error because Sweave is expecting just a graph (not a graph + text)
+<<echo=FALSE, fig.dim=c(5.5,3.5), message=FALSE, warning=FALSE, error=FALSE>>=
+<<p4plot5>>
+@
+    \caption{caption here}
+    \label{p4plot5}%we can now reference P3fig_1
+  \end{center}
+\end{figure}
+<<>>==
+uneven.100 <- rbinom(n=100,        #number of observations
+                    size=1,        #number of trials (size=1 for Bernoulli)
+                    prob=.7)       #probability of success
+
+MOM.bernoulli(uneven.100)
+
+MLE.bernoulli(uneven.100)
+@
+Plot is Given Below:
+<<p4plot6, eval=FALSE>>=
+bernoulli.plot(uneven.100)
+@
+\begin{figure}[H]
+  \begin{center}
+  % This code is evaluated, but not printed
+  % note below I use message=FALSE and warning=FALSE to surpress what's printed
+  % when running library(ggmap) or library(patchwork) which would otherwise cause
+  % an error because Sweave is expecting just a graph (not a graph + text)
+<<echo=FALSE, fig.dim=c(5.5,3.5), message=FALSE, warning=FALSE, error=FALSE>>=
+<<p4plot6>>
+@
+    \caption{caption here}
+    \label{p4plot6}%we can now reference P3fig_1
+  \end{center}
+\end{figure}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (f)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=100$ for your two sets of parameter(s).
+  Calculate the method of moments estimator(s) and maximum likelihood estimator(s).
+  In a $1 \times 2$ grid, plot a histogram (with bin size 1) of each set of data 
+  with (1) the method of moments estimated distribution, (2) the maximum likelihood
+  estimated distribution, and superimpose the true distribution in both.
+<<>>=
+even.1000 <- rbinom(n=1000,        #number of observations
+                  size=1,        #number of trials (size=1 for Bernoulli)
+                  prob=.5)       #probability of success
+
+MOM.bernoulli(even.1000)
+
+MLE.bernoulli(even.1000)
+
+bernoulli.plot(even.1000)
+
+
+
+uneven.1000 <- rbinom(n=1000,        #number of observations
+                    size=1,        #number of trials (size=1 for Bernoulli)
+                    prob=.7)       #probability of success
+
+MOM.bernoulli(uneven.1000)
+
+MLE.bernoulli(uneven.1000)
+
+bernoulli.plot(uneven.1000)
+@
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (g)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Comment on the results of parts (c)-(f). 
+  \\
+  \\
+  From the plots in the results of parts (c)-(f), we can see that both the Method of Moments estimator and the Maximum Likelihood Estimator were able to provide a perfect estimate for the parameter $p$ regardless of our random sample size $n$. Therefore, I feel it is reasonable to conclude that using larger random sample sizes to find the MOM and MLE of a Bernoulli distribution is unnecessary.  \\
+  \\
+\end{enumerate}
+\end{enumerate}%End overall enumerate
+\newpage
+\bibliography{bib}
+\end{document}
