@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.8.26)  10 OCT 2021 15:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.8.26)  10 OCT 2021 16:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -655,59 +655,59 @@ l.1114   \item C
 e{figure.11}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1119 \newpage
+l.1120 \newpage
                 <./figure/unnamed-chunk-42-1.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1132--1137
+Underfull \hbox (badness 10000) in paragraph at lines 1133--1138
 
  []
 
-Package color Info: Redefining color shadecolor on input line 1151.
+Package color Info: Redefining color shadecolor on input line 1152.
 [20]
-Underfull \hbox (badness 10000) in paragraph at lines 1212--1215
+Underfull \hbox (badness 10000) in paragraph at lines 1213--1216
 
  []
 
 LaTeX Font Info:    Trying to load font information for OML+cmr on input line 1
-216.
+217.
 (/Users/taequn/Library/TinyTeX/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1216.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1217.
 
-Package color Info: Redefining color shadecolor on input line 1234.
-Package color Info: Redefining color shadecolor on input line 1267.
+Package color Info: Redefining color shadecolor on input line 1235.
+Package color Info: Redefining color shadecolor on input line 1268.
 <figure/unnamed-chunk-44-1.pdf, id=296, 542.025pt x 397.485pt>
 File: figure/unnamed-chunk-44-1.pdf Graphic file (type pdf)
 <use figure/unnamed-chunk-44-1.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-44-1.pdf  used on input line 1268
+Package pdftex.def Info: figure/unnamed-chunk-44-1.pdf  used on input line 1269
 .
 (pdftex.def)             Requested size: 542.02367pt x 397.49614pt.
  [21]
-Package color Info: Redefining color shadecolor on input line 1285.
+Package color Info: Redefining color shadecolor on input line 1286.
 
 [22pdfTeX warning (ext4): destination with the same identifier (name{figure.12}
 ) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1308 \end{kframe}
+l.1309 \end{kframe}
                     <./figure/unnamed-chunk-44-1.pdf>]
-Package color Info: Redefining color shadecolor on input line 1317.
+Package color Info: Redefining color shadecolor on input line 1318.
 <figure/unnamed-chunk-45-1.pdf, id=319, 542.025pt x 397.485pt>
 File: figure/unnamed-chunk-45-1.pdf Graphic file (type pdf)
 <use figure/unnamed-chunk-45-1.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-45-1.pdf  used on input line 1318
+Package pdftex.def Info: figure/unnamed-chunk-45-1.pdf  used on input line 1319
 .
 (pdftex.def)             Requested size: 542.02367pt x 397.49614pt.
-Package color Info: Redefining color shadecolor on input line 1337.
+Package color Info: Redefining color shadecolor on input line 1338.
  [23pdfTeX warning (ext4): destination with the same identifier (name{figure.13
 }) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1337 ...969, 0.969}\color{fgcolor}\begin{kframe}
+l.1338 ...969, 0.969}\color{fgcolor}\begin{kframe}
                                                    <./figure/unnamed-chunk-45-1
 .pdf>]
-Overfull \hbox (29.97044pt too wide) in paragraph at lines 1364--1364
+Overfull \hbox (29.97044pt too wide) in paragraph at lines 1365--1365
 []  []\OT1/cmtt/m/n/10 ggtitle[]([]"Bernoulli Distribution"[],subtitle = []past
 e[]([]"Sample Size ="[], sample size, []", Prob ="[], prob))[] 
  []
@@ -715,14 +715,234 @@ e[]([]"Sample Size ="[], sample size, []", Prob ="[], prob))[]
 <figure/histogram.pdf, id=334, 399.4925pt x 650.43pt>
 File: figure/histogram.pdf Graphic file (type pdf)
 <use figure/histogram.pdf>
-Package pdftex.def Info: figure/histogram.pdf  used on input line 1390.
+Package pdftex.def Info: figure/histogram.pdf  used on input line 1391.
 (pdftex.def)             Requested size: 361.36865pt x 614.34201pt.
 [24] [25pdfTeX warning (ext4): destination with the same identifier (name{figur
 e.14}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1397 	
-         <./figure/histogram.pdf>] [26] (./HW2Final_Version.bbl
+l.1398 	
+         <./figure/histogram.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 1411--1417
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1411--1417
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1429--1434
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1437--1442
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1445--1450
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1453--1462
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1453--1462
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1453--1462
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1453--1462
+
+ []
+
+Package color Info: Redefining color shadecolor on input line 1466.
+[26] [27] [28] [29]
+Underfull \hbox (badness 10000) in paragraph at lines 1765--1771
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1765--1771
+
+ []
+
+Package color Info: Redefining color shadecolor on input line 1777.
+
+Overfull \hbox (89.20612pt too wide) in paragraph at lines 1790--1790
+[][]\OT1/cmtt/m/n/10 MOM.bernoulli[] []<-[] []function[][]([][]data[][])\OMS/cm
+sy/m/n/10 f[]          []\OT1/cmtt/m/it/10 #function to find the MOM Estimator 
+for p in a Bernoulli distribution[][] 
+ []
+
+
+Overfull \hbox (73.45625pt too wide) in paragraph at lines 1799--1799
+[]  []\OT1/cmtt/m/n/10 -[][]sum[][]([][]dbinom[][]([][]x[][]=data,[] []prob[][]
+=par,[] []size[][]=[][]1[][],[] []log[][]=[][]TRUE[][]))\OMS/cmsy/m/n/10 g[] []
+\OT1/cmtt/m/it/10 #Sum is negative, as we are looking for a min with optim[][] 
+
+ []
+
+[30]
+Underfull \vbox (badness 10000) detected at line 1883
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1883
+ []
+
+[31]
+Package color Info: Redefining color shadecolor on input line 1887.
+Package color Info: Redefining color shadecolor on input line 1903.
+Package color Info: Redefining color shadecolor on input line 1917.
+<figure/unnamed-chunk-49-1.pdf, id=380, 397.485pt x 252.945pt>
+File: figure/unnamed-chunk-49-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-49-1.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-49-1.pdf  used on input line 1918
+.
+(pdftex.def)             Requested size: 397.48402pt x 252.95209pt.
+Package color Info: Redefining color shadecolor on input line 1926.
+ [32pdfTeX warning (ext4): destination with the same identifier (name{figure.15
+}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1926 ...969, 0.969}\color{fgcolor}\begin{kframe}
+                                                   <./figure/unnamed-chunk-49-1
+.pdf>]
+Package color Info: Redefining color shadecolor on input line 1942.
+Package color Info: Redefining color shadecolor on input line 1955.
+<figure/unnamed-chunk-51-1.pdf, id=391, 397.485pt x 252.945pt>
+File: figure/unnamed-chunk-51-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-51-1.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-51-1.pdf  used on input line 1956
+.
+(pdftex.def)             Requested size: 397.48402pt x 252.95209pt.
+Package color Info: Redefining color shadecolor on input line 1971.
+Package color Info: Redefining color shadecolor on input line 1987.
+Package color Info: Redefining color shadecolor on input line 2000.
+<figure/unnamed-chunk-53-1.pdf, id=392, 397.485pt x 252.945pt>
+File: figure/unnamed-chunk-53-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-53-1.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-53-1.pdf  used on input line 2001
+.
+(pdftex.def)             Requested size: 397.48402pt x 252.95209pt.
+Package color Info: Redefining color shadecolor on input line 2008.
+ [33pdfTeX warning (ext4): destination with the same identifier (name{figure.16
+}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.2008 ...969, 0.969}\color{fgcolor}\begin{kframe}
+                                                   <./figure/unnamed-chunk-51-1
+.pdf>]
+Package color Info: Redefining color shadecolor on input line 2024.
+Package color Info: Redefining color shadecolor on input line 2037.
+<figure/unnamed-chunk-55-1.pdf, id=405, 397.485pt x 252.945pt>
+File: figure/unnamed-chunk-55-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-55-1.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-55-1.pdf  used on input line 2038
+.
+(pdftex.def)             Requested size: 397.48402pt x 252.95209pt.
+ [34pdfTeX warning (ext4): destination with the same identifier (name{figure.17
+}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.2047   \item G
+                enerate a random sample of size $n=100$ for your two sets of...
+ <./figure/unnamed-chunk-53-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 2053.
+Package color Info: Redefining color shadecolor on input line 2069.
+Package color Info: Redefining color shadecolor on input line 2082.
+<figure/unnamed-chunk-57-1.pdf, id=416, 397.485pt x 252.945pt>
+File: figure/unnamed-chunk-57-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-57-1.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-57-1.pdf  used on input line 2083
+.
+(pdftex.def)             Requested size: 397.48402pt x 252.95209pt.
+Package color Info: Redefining color shadecolor on input line 2090.
+ [35pdfTeX warning (ext4): destination with the same identifier (name{figure.18
+}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.2090 ...969, 0.969}\color{fgcolor}\begin{kframe}
+                                                   <./figure/unnamed-chunk-55-1
+.pdf>]
+Package color Info: Redefining color shadecolor on input line 2106.
+Package color Info: Redefining color shadecolor on input line 2119.
+<figure/unnamed-chunk-59-1.pdf, id=428, 397.485pt x 252.945pt>
+File: figure/unnamed-chunk-59-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-59-1.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-59-1.pdf  used on input line 2120
+.
+(pdftex.def)             Requested size: 397.48402pt x 252.95209pt.
+ [36pdfTeX warning (ext4): destination with the same identifier (name{figure.19
+}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.2129   \item G
+                enerate a random sample of size $n=100$ for your two sets of...
+ <./figure/unnamed-chunk-57-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 2135.
+Package color Info: Redefining color shadecolor on input line 2151.
+Package color Info: Redefining color shadecolor on input line 2161.
+<figure/unnamed-chunk-61-1.pdf, id=439, 397.485pt x 252.945pt>
+File: figure/unnamed-chunk-61-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-61-1.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-61-1.pdf  used on input line 2162
+.
+(pdftex.def)             Requested size: 397.48402pt x 252.95209pt.
+ [37pdfTeX warning (ext4): destination with the same identifier (name{figure.20
+}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.2168 
+        <./figure/unnamed-chunk-59-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 2171.
+Package color Info: Redefining color shadecolor on input line 2199.
+Package color Info: Redefining color shadecolor on input line 2209.
+<figure/unnamed-chunk-63-1.pdf, id=452, 397.485pt x 252.945pt>
+File: figure/unnamed-chunk-63-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-63-1.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-63-1.pdf  used on input line 2210
+.
+(pdftex.def)             Requested size: 397.48402pt x 252.95209pt.
+ [38pdfTeX warning (ext4): destination with the same identifier (name{figure.21
+}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.2219   \item C
+                omment on the results of parts (c)-(f). <./figure/unnamed-chunk
+-61-1.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 2219--2224
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2219--2224
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2219--2224
+
+ []
+
+[39pdfTeX warning (ext4): destination with the same identifier (name{figure.22}
+) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.2226 \newpage
+                <./figure/unnamed-chunk-63-1.pdf>] (./HW2Final_Version.bbl
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 4
 5.
 
@@ -731,19 +951,19 @@ File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 45.
-) [27]
+) [40]
 (./HW2Final_Version.aux)
 Package rerunfilecheck Info: File `HW2Final_Version.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 9574 strings out of 480502
- 143878 string characters out of 5898668
- 482189 words of memory out of 5000000
- 27002 multiletter control sequences out of 15000+600000
+ 9677 strings out of 480502
+ 146639 string characters out of 5898668
+ 498436 words of memory out of 5000000
+ 27076 multiletter control sequences out of 15000+600000
  407343 words of font info for 43 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,16n,66p,825b,585s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,16n,66p,1350b,585s stack positions out of 5000i,500n,10000p,200000b,80000s
 </Users/taequn/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx
 10.pfb></Users/taequn/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmbx12.pfb></Users/taequn/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfon
@@ -762,10 +982,10 @@ ry/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></Users/taequn/
 Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></Users/ta
 equn/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 
-Output written on HW2Final_Version.pdf (27 pages, 995852 bytes).
+Output written on HW2Final_Version.pdf (40 pages, 1049802 bytes).
 PDF statistics:
- 460 PDF objects out of 1000 (max. 8388607)
- 367 compressed objects within 4 object streams
- 102 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 577 PDF objects out of 1000 (max. 8388607)
+ 454 compressed objects within 5 object streams
+ 123 named destinations out of 1000 (max. 500000)
+ 111 words of extra memory for PDF output out of 10000 (max. 10000000)
 
