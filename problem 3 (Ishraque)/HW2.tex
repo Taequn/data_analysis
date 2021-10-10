@@ -1,0 +1,595 @@
+\documentclass{article}\usepackage[]{graphicx}\usepackage[]{color}
+% maxwidth is the original width if it is less than linewidth
+% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{amsmath} %This allows me to use the align functionality.
+                     %If you find yourself trying to replicate
+                     %something you found online, ensure you're
+                     %loading the necessary packages!
+\usepackage{amsfonts}%Math font
+\usepackage{graphicx}%For including graphics
+\usepackage{hyperref}%For Hyperlinks
+\hypersetup{colorlinks = true,citecolor=black}
+\usepackage{natbib}        %For the bibliography
+\bibliographystyle{apalike}%For the bibliography
+\usepackage[margin=0.5in]{geometry}
+\usepackage{float}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+\noindent \textbf{MA 354: Data Analysis -- Fall 2021 -- Due 10/8 at 5p}\\%\\ gives you a new line
+\noindent \textbf{Homework 2:}\vspace{1em}\\
+\emph{Complete the following opportunities to use what we've talked about in class. These questions will be graded for correctness, communication and succinctness. Ensure you show your work and explain your logic in a legible and refined submission.}\\\vspace{1em}
+%Comments -- anything after % is not put into the PDF
+
+The starting jobs will be applied in alphabetical order (last name) for question two.
+\begin{enumerate}
+  \item \textbf{Solver:} provide a solution, if possible, and reasoning for the solution. \textbf{Due to group 10/5 or earlier.}
+  \item \textbf{Code Checker:} provides a first check of the solver's worked solutions and ensures they are correct with a solid interpretation. 
+  \item \textbf{Checker} checks the solution for completeness, proposes and implements changes if agreed upon by the group. Provides a short paragraph summarizing the discussion of proposals and their reason for acceptance or non-acceptance.
+  \item \textbf{Double Checker} checks the solution for completeness, communication and polish. The Double Checker ensures that the solution is correct and highly polished for submission.
+\end{enumerate}
+
+\noindent For subsequent questions student roles will move down one position. The rolls change as follows.
+\begin{enumerate}
+  \item \textbf{Solver} $\Longrightarrow$ \textbf{Code Checker}
+  \item \textbf{Code Checker} $\Longrightarrow$ \textbf{Checker}
+  \item \textbf{Checker} $\Longrightarrow$ \textbf{Double Checker}
+  \item \textbf{Double Checker} $\Longrightarrow$ \textbf{Solver}
+\end{enumerate}
+While students have assigned jobs for each question I encourage students to help 
+each other complete the homework in collaboration.
+\newpage
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%  Question 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item\label{Q1} Select a continuous distribution (Not the uniform or exponential). 
+  It does not have to be one that we cover in the notes! To explore the PDF of your 
+  distribution, specify two sets of parameter(s) for your distribution.
+  \begin{enumerate}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (a)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item \textbf{History} Discuss what types of random variables are modeled with 
+  your distribution. Be sure to include a discussion about the support and ensure 
+  to provide the density function, and CDF. This requires some internet research 
+  -- what's the history of the distribution, why was it created and named? What 
+  are some exciting applications of this distribution?
+  
+  Cite all of your sources in LaTeX by adding a BibTeX citation to the .bib file. 
+  To help, I've cited R \citep{R21} in parentheses here. \cite{R21} provides helpful 
+  tools for the rest of the questions below. BibTeX citations are available through 
+  Google Scholar by clicking the cite button below the article of  interest and 
+  selecting the BibTeX option.
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (b)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item Show that you have a valid PDF. You will find the \texttt{integrate()} 
+	function in \texttt{R} helpful.
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (c)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item Find the median for your two sets of parameter(s). Conduct some research 
+	to find the median based on our PDF to confirm that your numerical approach is 
+	correct. 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (d)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item \label{q1PDF} Graph the PDF for several values of the parameter(s) 
+	including the two sets you specified. What does changing the parameter(s) do 
+	to the shape of the PDF?
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (e)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 \item Graph the CDF for the same values of the parameter(s) as you did in 
+	 Question \ref{q1PDF}. What does changing the parameter(s) do to the shape of 
+	 the CDF? Comment on the aspects of the CDFs that show that the CDF is valid.
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (f)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=10, 25, 100$, and $1000$ for your 
+  two sets of parameter(s). In a $4 \times 2$ grid, plot a histogram of each set
+  of data and superimpose the true density function at the specified parameter 
+  values. Interpret the results.
+  \textbf{Solution:}
+  
+
+  
+	\end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%  Question 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Continue with the continuous distribution you selected for Question \ref{Q1}.
+\begin{enumerate}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (a)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Provide the mean, standard deviation, skewness, and kurtosis of the PDF.
+  Ensure to interpret each.
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (b)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=10, 25, 100$, and $1000$ for your 
+  two sets of parameter(s). Calculate the sample mean, standard deviation, 
+  skewness, and kurtosis. Interpret the results.
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (c)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=10$ for your two sets of parameter(s).
+  Calculate the method of moments estimator(s) and maximum likelihood estimator(s).
+  In a $1 \times 2$ grid, plot a histogram of each set of data with (1) the method 
+  of moments estimated distribution, (2) the maximum likelihood estimated 
+  distribution, and superimpose the true distribution in both.
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (d)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=25$ for your two sets of parameter(s).
+  Calculate the method of moments estimator(s) and maximum likelihood estimator(s). 
+  In a $1 \times 2$ grid, plot a histogram of each set of data with (1) the method 
+  of moments estimated distribution, (2) the maximum likelihood estimated distribution, 
+  and superimpose the true distribution in both.
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (e)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=100$ for your two sets of parameter(s). 
+  Calculate the method of moments estimator(s) and maximum likelihood estimator(s).
+  In a $1 \times 2$ grid, plot a histogram of each set of data with (1) the method 
+  of moments estimated distribution, (2) the maximum likelihood estimated distribution,
+  and superimpose the true distribution in both.
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (f)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=100$ for your two sets of parameter(s). 
+  Calculate the method of moments estimator(s) and maximum likelihood estimator(s). 
+  In a $1 \times 2$ grid, plot a histogram of each set of data with (1) the method 
+  of moments estimated distribution, (2) the maximum likelihood estimated distribution, 
+  and superimpose the true distribution in both.
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (g)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Comment on the results of parts (c)-(f). 
+\end{enumerate}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%  Question 3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item\label{Q3} Select a discrete distribution (not the Poisson). It does not 
+  have to be one that we cover in the notes! To explore the PMF of your distribution, 
+  specify two sets of parameter(s) for your distribution.
+  \begin{enumerate}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (a)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item \textbf{History} Discuss what types of random variables are modeled with 
+  your distribution. Be sure to include a discussion about the support and ensure
+  to provide the mass function, and CDF. This requires some internet research -- 
+  what's the history of the distribution, why was it created and named? What are
+  some exciting applications of this distribution? Cite all of your sources.\\
+  
+\textbf{Solution:} The discrete distribution we have chosen is the Bernoulli distribution. The Bernoulli distribution  is a discrete probability distribution for a Bernoulli trial - a probabilistic experiment that can have one of two outcomes, success $\mathrm{(x = 1)}$ and failure $\mathrm{(x = 0)}$, and in which the probability fo success is $p$. Often $p$  is called the Bernoulli probability parameter \citep{forbes_stat}. In Bernoulli distribution, the random variable $X$ can have only one of two values: 0 or 1. This means that the support of our discrete random variable is the set $\mathrm{\{0,1\}}$. This distribution can be summarized as follows:
+\begin{align*}
+  p               &\in (0,1)                                                                               &\text{\textbf{[Parameter]}}\\
+  \mathcal{X}     & = \{x: x \in \{0,1\}\}                                                                   &\text{\textbf{[Support]}}\\
+  f_{X}(x \mid p) & = p^{x} (1-p)^{1-x}I(x \in \{0,1\})                                                      &\text{\textbf{[PMF]}}\\
+  F_{X}(x \mid p) & = P(X \leq \left\lfloor x \right\rfloor)\\
+                  & = [(1-p)I(\left\lfloor x \right\rfloor = 0)] + I(\left\lfloor x \right\rfloor \geq 1)  &\text{\textbf{[CDF]}}\\
+\end{align*}
+Simply, the Bernoulli distribution can be thought of as a model for the set of possible outcomes of any single experiment that asks a yes-no question \citep{bernoulli_brilliant}. This distribution is named after the 17th century Swiss mathematician Jacob Bernoulli, because he was the one who explicitly defined the concept of Bernoulli trial (in his book \emph{Ars Conjectandi}) described above. Bernoulli distribution serves as a building block for discrete distributions which model Bernoulli trials, such as Binomial distribution and geometric distribution \citep{prob_world}. Logistic regression, a widely used classification model that models a binary outcome, also takes advantage of the Bernoulli distribution \citep{logistic_regression}.
+
+Since the Bernoulli distribution is not cataloged by R, we have to introduce it into our calculations with the  following functions:
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# Bernoulli PMF}
+\hlstd{dbern}\hlkwb{<-}\hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{,}\hlkwc{prob}\hlstd{)\{}
+  \hlkwa{if}\hlstd{(prob}\hlopt{<}\hlnum{0} \hlopt{|} \hlstd{prob}\hlopt{>}\hlnum{1}\hlstd{)\{}
+    \hlstd{errormsg} \hlkwb{<-} \hlstr{"This function is only valid for success probabilities between 0 and 1."}
+    \hlkwd{stop}\hlstd{(errormsg)}
+  \hlstd{\}}
+  \hlstd{indicator} \hlkwb{<-} \hlkwd{rep}\hlstd{(}\hlnum{0}\hlstd{,} \hlkwd{length}\hlstd{(x))}
+  \hlstd{indicator[x}\hlopt{==}\hlnum{0}\hlstd{]} \hlkwb{<-} \hlnum{1} \hlcom{# indicator should be one if x=0}
+  \hlstd{indicator[x}\hlopt{==}\hlnum{1}\hlstd{]} \hlkwb{<-} \hlnum{1} \hlcom{# indicator should be one if x=1}
+  \hlstd{fx} \hlkwb{<-} \hlstd{(prob}\hlopt{^}\hlstd{x} \hlopt{*} \hlstd{(}\hlnum{1}\hlopt{-}\hlstd{prob)}\hlopt{^}\hlstd{(}\hlnum{1}\hlopt{-}\hlstd{x))} \hlopt{*} \hlstd{indicator} \hlcom{# PMF formula}
+  \hlkwd{return}\hlstd{(fx)}
+\hlstd{\}}
+\hlcom{# Bernoulli CDF}
+\hlstd{pbern}\hlkwb{<-}\hlkwa{function}\hlstd{(}\hlkwc{q}\hlstd{,} \hlkwc{prob}\hlstd{)\{}
+  \hlkwa{if}\hlstd{(prob}\hlopt{<}\hlnum{0} \hlopt{|} \hlstd{prob}\hlopt{>}\hlnum{1}\hlstd{)\{}
+    \hlstd{errormsg}\hlkwb{<-}\hlstr{"This function is only valid for success probabilities between 0 and 1."}
+    \hlkwd{stop}\hlstd{(errormsg)}
+  \hlstd{\}}
+  \hlstd{indicator1} \hlkwb{<-} \hlkwd{rep}\hlstd{(}\hlnum{1}\hlstd{,} \hlkwd{length}\hlstd{(q))}
+  \hlstd{indicator1[q} \hlopt{!=} \hlnum{0}\hlstd{]} \hlkwb{<-} \hlnum{0} \hlcom{#indicator should be zero if x!=0}
+  \hlstd{indicator2} \hlkwb{<-} \hlkwd{rep}\hlstd{(}\hlnum{1}\hlstd{,} \hlkwd{length}\hlstd{(q))}
+  \hlstd{indicator2[q} \hlopt{<} \hlnum{1}\hlstd{]} \hlkwb{<-} \hlnum{0} \hlcom{#indicator should be zero if x<1}
+  \hlstd{Fx} \hlkwb{<-} \hlstd{(}\hlnum{1}\hlopt{-}\hlstd{prob)} \hlopt{*} \hlstd{indicator1} \hlopt{+} \hlstd{indicator2}
+  \hlkwd{return}\hlstd{(Fx)}
+\hlstd{\}}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+The R packages Tidyverse \citep{tidyverse} and Patchwork \citep{Patchwork} will be used in all of the following plots in question 3.
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (b)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item Show that you have a valid PMF. You can show this approximately by 
+	calculating the series in a repeat loop until probability mass evaluations are 
+	infinitesimally small.
+	
+	\textbf{Solution:} For a PMF to be valid, it has to fulfill the following statements:
+	\begin{enumerate}
+	\item[1.] $0 \leq f_{X}(x) \leq 1$ for all $x \in \mathbb{R}$
+	\item[2.] $ \sum_{-\infty}^{\infty} f_{X} = \sum_{\mathcal{X}}f_{X} = 1$
+	\end{enumerate}
+	
+	By definition, the Bernoulli distribution satisfies statement 1, since the support is {0,1} and the probability parameter $\mathrm{p \in (0,1)}$, so the term for PMF (see above) cannot have a value smaller than 0 or greater than 1.
+	
+	We can also show that the statement 2 is true for the Bernoulli distribution:
+	
+	\begin{align*}
+	  \sum_{\mathcal{X}}f_{X} = \sum_{x = 0}^{1}f_{X}(x) &= \sum_{x = 0}^{1}p^{x}(1-p)^{1-x}\\
+	  &= p^{0}(1-p)^{1-0} +p^{1}(1-p)^{1-1}\\
+	  &= (1)(1-p) + p(1)\\
+	  &= 1-p+p\\
+	  &= 1
+	\end{align*}
+	
+	Therefore, we have a valid PMF for our distribution.
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (c)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item Find the median for your two sets of parameter(s). Conduct some research 
+	to find the median based on our PMF to confirm that your numerical approach is
+	correct.\\ 
+	
+	\textbf{Solution:} In the Bernoulli distribution, where p is the probability parameter and $\mathrm{q = 1 - p}$, when p\textgreater q, there are more "successes" (that is when $X$ is 1) than failure (when $X$ is 0), so the median must also be a success. Similar, when q\textgreater p, there are more "failures" than "successes", hence resulting in the median being 0. When $\mathrm{p = q}$, there is an equal probability of $X$ being 0 or 1, thus the median is ambiguous. Therefore, the median for when $\mathrm{p = 0.4}$ is zero and the median for when $\mathrm{p = 0.6}$ is 1. Further inquiry \textbf{(QUOTE: Wikipedia)} suggests that this really is the case for the median of the Bernoulli distribution:\
+	\begin{align*}
+	Median=\begin{cases}
+          0 \quad &\text{if} \, p < 1/2\\
+          [0,1] \quad &\text{if} \, p = 1/2\\
+          1 \quad &\text{if} \, p > 1/2\\
+     \end{cases}
+	\end{align*}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (d)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item \label{q3PMF} Graph the PMF for several values of the parameter(s) 
+	including the two sets you specified. What does changing the parameter(s) do 
+	to the shape of the PMF?
+	
+	\textbf{Solution:} We can plot the PMF of the Bernoulli distribution for different parameters.Note that the initially chosen parameters were $\mathrm{p =0.4}$ and $\mathrm{p=0.6}$. Let us also look at the PMF when the parameter values are 0.5, and 0.8.
+	
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{library}\hlstd{(tidyverse)}
+\hlkwd{library}\hlstd{(patchwork)}
+\hlstd{plotbernPMF} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{prob}\hlstd{)\{} \hlcom{# Pass in the success probability}
+  \hlstd{ggdat} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),}
+                      \hlkwc{f} \hlstd{=} \hlkwd{dbern}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{= prob),}
+                      \hlkwc{F} \hlstd{=} \hlkwd{pbern}\hlstd{(}\hlkwc{q} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{= prob))}
+  \hlcom{## Plot PMF}
+  \hlstd{PMF} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= ggdat,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x))} \hlopt{+}
+    \hlkwd{geom_linerange}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{ymax} \hlstd{= f),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{)} \hlopt{+}
+    \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept} \hlstd{=} \hlnum{0}\hlstd{)} \hlopt{+}
+    \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+    \hlkwd{ylim}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{1}\hlstd{)} \hlopt{+}
+    \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)} \hlopt{+}
+    \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(f[x](x)))} \hlopt{+}
+    \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlkwd{paste}\hlstd{(}\hlstr{"p ="}\hlstd{, prob))}
+
+  \hlkwd{return}\hlstd{(PMF)}
+\hlstd{\}}
+
+\hlkwd{plotbernPMF}\hlstd{(}\hlnum{0.4}\hlstd{)} \hlopt{+} \hlkwd{plotbernPMF}\hlstd{(}\hlnum{0.5}\hlstd{)} \hlopt{+} \hlkwd{plotbernPMF}\hlstd{(}\hlnum{0.6}\hlstd{)} \hlopt{+} \hlkwd{plotbernPMF}\hlstd{(}\hlnum{0.8}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\begin{figure}[H]
+  \begin{center}
+  % This code is evaluated, but not printed
+  % note below I use message=FALSE and warning=FALSE to surpress what's printed
+  % when running library(ggmap) or library(patchwork) which would otherwise cause
+  % an error because Sweave is expecting just a graph (not a graph + text)
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-3-1} 
+\end{knitrout}
+    \caption{The CDF of the Bernoulli distribution for different probability parameters p}
+    \label{P3fig_1} %we can now reference P3fig_1
+  \end{center}
+\end{figure}
+
+We observe the same characteristic of the Bernoulli distribution in Figure \ref{P3fig_1} as we discussed about its median above. If the $\mathrm{p<0.5}$ then there are more failures than successes, indicated by the taller PMF at 0. On the other hand, if If the $\mathrm{p>0.5}$ then there are more successes than failures, which is reflected in the PMF plot being taller at 1. The plot of the PMF when $\mathrm{p=0.5}$ suggests that there is an equal chance for success as there is for failure.
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (e)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 \item Graph the CDF for the same values of the parameter(s) as you did in 
+	 Question \ref{q3PMF}. What does changing the parameter(s) do to the shape of 
+	 the CDF? Comment on the aspects of the CDFs that show that the CDF is valid.
+	 
+	 \textbf{Solution:} We can plot the CDF of the Bernoulli distribution for the different parameters 0.4, 0.5, 0.6, and 0.8 below:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{plotbernCDF} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{prob}\hlstd{)\{} \hlcom{# Pass in the success probability}
+  \hlstd{ggdat} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),}
+                      \hlkwc{f} \hlstd{=} \hlkwd{dbern}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{= prob),}
+                      \hlkwc{F} \hlstd{=} \hlkwd{pbern}\hlstd{(}\hlkwc{q} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{= prob))}
+  \hlstd{ggdat.openpoints} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= ggdat}\hlopt{$}\hlstd{x,}
+                                 \hlkwc{y} \hlstd{=} \hlkwd{pbern}\hlstd{(ggdat}\hlopt{$}\hlstd{x}\hlopt{-}\hlnum{1}\hlstd{,} \hlkwc{prob} \hlstd{= prob))}
+  \hlstd{ggdat.closedpoints} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= ggdat}\hlopt{$}\hlstd{x,}
+                                   \hlkwc{y} \hlstd{=} \hlkwd{pbern}\hlstd{(ggdat}\hlopt{$}\hlstd{x,}\hlkwc{prob}\hlstd{=prob))}
+  \hlstd{CDF}\hlkwb{<-}\hlkwd{ggplot}\hlstd{(}\hlkwc{data} \hlstd{= ggdat,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= F))} \hlopt{+}
+    \hlkwd{geom_step}\hlstd{()}\hlopt{+}
+    \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= ggdat.openpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y),} \hlkwc{shape} \hlstd{=} \hlnum{1}\hlstd{)} \hlopt{+}
+    \hlkwd{geom_point}\hlstd{(}\hlkwc{data} \hlstd{= ggdat.closedpoints,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{= y))} \hlopt{+}
+    \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept} \hlstd{=} \hlnum{0.5}\hlstd{,} \hlkwc{linetype}\hlstd{=}\hlstr{"dotted"}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
+    \hlkwd{theme_bw}\hlstd{()}\hlopt{+}
+    \hlkwd{xlab}\hlstd{(}\hlstr{"X"}\hlstd{)}\hlopt{+}
+    \hlkwd{ylab}\hlstd{(}\hlkwd{bquote}\hlstd{(F[x](x)))}\hlopt{+}
+    \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli CDF"}\hlstd{,}\hlkwc{subtitle}\hlstd{=(}\hlkwd{paste}\hlstd{(}\hlstr{"p ="}\hlstd{, prob)))}
+  \hlkwd{return}\hlstd{(CDF)}
+\hlstd{\}}
+\hlkwd{plotbernCDF}\hlstd{(}\hlnum{0.4}\hlstd{)} \hlopt{+} \hlkwd{plotbernCDF}\hlstd{(}\hlnum{0.5}\hlstd{)} \hlopt{+} \hlkwd{plotbernCDF}\hlstd{(}\hlnum{0.6}\hlstd{)} \hlopt{+} \hlkwd{plotbernCDF}\hlstd{(}\hlnum{0.8}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\begin{figure}[H]
+  \begin{center}
+  % This code is evaluated, but not printed
+  % note below I use message=FALSE and warning=FALSE to surpress what's printed
+  % when running library(ggmap) or library(patchwork) which would otherwise cause
+  % an error because Sweave is expecting just a graph (not a graph + text)
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-4-1} 
+\end{knitrout}
+    \caption{The CDF of the Bernoulli distribution for different probability parameters p}
+    \label{P3fig_2} %we can now reference P3fig_1
+  \end{center}
+\end{figure}
+
+In the Figure \ref{P3fig_2}, we can see that with increasing p, the most of the "area" under the CDF is moving towards 1, which correctly indicates that the number of successes increase as the value of p increases. Furthermore, we can see that in all the CDF plots, the functions always add up to 1. The CDF are also monotonically increasing towards the right. All of these above characteristics together indicate that our CDF is valid. Notice that in all of the plots of Figure \ref{P3fig_2}, we have drawn a horizontal line at 1/2. This is another way we can determine the median of the Bernoulli distribution using the CDF. Where the horizontal line intersects the CDF indicates where the median is for the given value of p. These results agree with our results from problem 3(c).
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (f)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=10, 25, 100$, and $1000$ for your 
+  two sets of parameter(s). In a $4 \times 2$ grid, plot a histogram (with bin 
+  size 1) of each set of data and superimpose the true mass function at the 
+  specified parameter values. Interpret the results.
+  
+
+  \textbf{Solution:} The two parameters we are working with are $\mathrm{p=0.4}$ and $\mathrm{p=0.6}$
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# Using sampling with replacement to generate arrays of 0 and 1}
+
+\hlkwd{library}\hlstd{(tidyverse)}
+\hlkwd{library}\hlstd{(patchwork)}
+
+\hlstd{plot.df} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),}
+                      \hlkwc{f1} \hlstd{=} \hlkwd{dbern}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.4}\hlstd{),}
+                      \hlkwc{f2} \hlstd{=} \hlkwd{dbern}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.6}\hlstd{))}
+
+\hlstd{bern_sample} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{n}\hlstd{,}\hlkwc{prob}\hlstd{)\{}
+  \hlstd{support} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{1}\hlstd{)}
+  \hlstd{x} \hlkwb{<-} \hlkwd{sample}\hlstd{(}\hlkwc{x} \hlstd{= support,} \hlkwc{size}\hlstd{=n,} \hlkwc{replace}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{prob}\hlstd{=}\hlkwd{dbern}\hlstd{(support, prob))}
+  \hlstd{x}
+\hlstd{\}}
+
+
+\hlstd{sample_p1_n10} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{10}\hlstd{,} \hlnum{0.4}\hlstd{))}
+\hlstd{sample_p1_n25} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{25}\hlstd{,} \hlnum{0.4}\hlstd{))}
+\hlstd{sample_p1_n100} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{100}\hlstd{,} \hlnum{0.4}\hlstd{))}
+\hlstd{sample_p1_n1000}\hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{1000}\hlstd{,} \hlnum{0.4}\hlstd{))}
+
+\hlstd{sample_p2_n10} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{10}\hlstd{,} \hlnum{0.6}\hlstd{))}
+\hlstd{sample_p2_n25} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{25}\hlstd{,} \hlnum{0.6}\hlstd{))}
+\hlstd{sample_p2_n100} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{100}\hlstd{,} \hlnum{0.6}\hlstd{))}
+\hlstd{sample_p2_n1000}\hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{1000}\hlstd{,} \hlnum{0.6}\hlstd{))}
+
+
+\hlcom{#first line}
+          \hlstd{x1}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
+          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p1_n10,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
+                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
+          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f1),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
+          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+          \hlkwd{xlab}\hlstd{(}\hlstr{"x1"}\hlstd{)}\hlopt{+}
+          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 10, Prob =0.4"}\hlstd{)}
+
+                \hlstd{x2}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
+          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p1_n25,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
+                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
+          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f1),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
+          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+          \hlkwd{xlab}\hlstd{(}\hlstr{"x2"}\hlstd{)}\hlopt{+}
+          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 25, Prob =0.4"}\hlstd{)}
+
+                \hlstd{x3}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
+          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p1_n100,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
+                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
+          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f1),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
+          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+          \hlkwd{xlab}\hlstd{(}\hlstr{"x3"}\hlstd{)}\hlopt{+}
+          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 100, Prob =0.4"}\hlstd{)}
+
+                \hlstd{x4}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
+          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p1_n1000,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
+                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
+          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f1),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
+          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+          \hlkwd{xlab}\hlstd{(}\hlstr{"x4"}\hlstd{)}\hlopt{+}
+          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 1000, Prob =0.4"}\hlstd{)}
+
+\hlcom{#second line}
+
+                \hlstd{y1}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
+          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p2_n10,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
+                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
+          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f2),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
+          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+          \hlkwd{xlab}\hlstd{(}\hlstr{"y1"}\hlstd{)}\hlopt{+}
+          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 10, Prob =0.6"}\hlstd{)}
+
+                \hlstd{y2}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
+          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p2_n25,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
+                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
+          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f2),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
+          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+          \hlkwd{xlab}\hlstd{(}\hlstr{"y2"}\hlstd{)}\hlopt{+}
+          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 25, Prob =0.6"}\hlstd{)}
+
+                \hlstd{y3}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
+          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p2_n100,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
+                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
+          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f2),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
+          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+          \hlkwd{xlab}\hlstd{(}\hlstr{"y3"}\hlstd{)}\hlopt{+}
+          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 100, Prob =0.6"}\hlstd{)}
+
+                \hlstd{y4}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
+          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p2_n1000,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
+                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
+          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f2),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
+          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
+          \hlkwd{xlab}\hlstd{(}\hlstr{"y4"}\hlstd{)}\hlopt{+}
+          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 1000, Prob =0.6"}\hlstd{)}
+
+\hlcom{#(x1|x2|x3|x4)/(y1|y2|y3|y4)}
+\hlstd{(x1}\hlopt{+}\hlstd{y1)}\hlopt{/}\hlstd{(x2}\hlopt{+}\hlstd{y2)}\hlopt{/}\hlstd{(x3}\hlopt{+}\hlstd{y3)}\hlopt{/}\hlstd{(x4}\hlopt{+}\hlstd{y4)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\begin{figure}[H]
+  \begin{center}
+  % This code is evaluated, but not printed
+  % note below I use message=FALSE and warning=FALSE to surpress what's printed
+  % when running library(ggmap) or library(patchwork) which would otherwise cause
+  % an error because Sweave is expecting just a graph (not a graph + text)
+  \includegraphics[width=5in, height=8.5in]{figure/histogram.pdf}
+    \caption{(Top row) Samples of 10, 25, 100, 1000 for the Bernoulli distribution with p = 0.4. (Bottom row) Samples of 10, 25, 100, 1000 for the Bernoulli distribution with p = 0.6. In each plot the red lines indicate the true PMF function of the corresponding Bernoulli distribution. Notice that the y-axis indicates the prportional frequency in the histograms}
+    \label{P3fig_3} %we can now reference P3fig_1
+  \end{center}
+\end{figure}
+	\end{enumerate}
+	For each of the cases of p (see the first and the second row of plots in Figure \ref{P3fig_3}), the more we sample, the better our histograms agree with the the true PMF of the Bernoulli distribution. These histograms above represent only one variation of the random sampling done on the Bernoulli distribution. While the histograms for n=1000 does not stray much from the PMF as we take newere samples, the smaller samples (10, 25) vary significantly from the PMF. From sample to sample, the results of the histograms vary (in terms of agreement with the true PMF). The larger the size of the sample, the more consistent is its agreement with the true PMF. 
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%  Question 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Continue with the discrete distribution you selected for Question \ref{Q3}.
+\begin{enumerate}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (a)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Provide the mean, standard deviation, skewness, and kurtosis of the PMF. 
+  Ensure to interpret each.
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (b)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=10, 25, 100$, and $1000$ for your 
+  two sets of parameter(s). Calculate the sample mean, standard deviation, 
+  skewness, and kurtosis. Interpret the results.
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (c)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=10$ for your two sets of parameter(s).
+  Calculate the method of moments estimator(s) and maximum likelihood estimator(s).
+  In a $1 \times 2$ grid, plot a histogram (with bin size 1) of each set of data 
+  with (1) the method of moments estimated distribution, (2) the maximum likelihood 
+  estimated distribution, and superimpose the true distribution in both.
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (d)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=25$ for your two sets of parameter(s). 
+  Calculate the method of moments estimator(s) and maximum likelihood estimator(s).
+  In a $1 \times 2$ grid, plot a histogram (with bin size 1) of each set of data 
+  with (1) the method of moments estimated distribution, (2) the maximum likelihood 
+  estimated distribution, and superimpose the true distribution in both.
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (e)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=100$ for your two sets of parameter(s).
+  Calculate the method of moments estimator(s) and maximum likelihood estimator(s). 
+  In a $1 \times 2$ grid, plot a histogram (with bin size 1) of each set of data 
+  with (1) the method of moments estimated distribution, (2) the maximum likelihood
+  estimated distribution, and superimpose the true distribution in both.
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (f)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Generate a random sample of size $n=100$ for your two sets of parameter(s).
+  Calculate the method of moments estimator(s) and maximum likelihood estimator(s).
+  In a $1 \times 2$ grid, plot a histogram (with bin size 1) of each set of data 
+  with (1) the method of moments estimated distribution, (2) the maximum likelihood
+  estimated distribution, and superimpose the true distribution in both.
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%  Part (g)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Comment on the results of parts (c)-(f). 
+\end{enumerate}
+\end{enumerate}%End overall enumerate
+\newpage
+\bibliography{bib}
+\end{document}
