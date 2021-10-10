@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.10)  10 OCT 2021 11:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.10)  10 OCT 2021 13:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -493,25 +493,22 @@ Package color Info: Redefining color shadecolor on input line 421.
 l.421 ....969, 0.969}\color{fgcolor}\begin{kframe}
                                                    <./figure/unnamed-chunk-4-1.
 pdf>]
-Underfull \vbox (badness 10000) detected at line 520
+Overfull \hbox (29.97044pt too wide) in paragraph at lines 448--448
+[]  []\OT1/cmtt/m/n/10 ggtitle[]([]"Bernoulli Distribution"[],subtitle = []past
+e[]([]"Sample Size ="[], sample size, []", Prob ="[], prob))[] 
  []
 
-
-Underfull \vbox (badness 10000) detected at line 520
- []
-
-[7]
-<figure/histogram.pdf, id=122, 399.4925pt x 650.43pt>
+<figure/histogram.pdf, id=117, 399.4925pt x 650.43pt>
 File: figure/histogram.pdf Graphic file (type pdf)
 <use figure/histogram.pdf>
-Package pdftex.def Info: figure/histogram.pdf  used on input line 529.
+Package pdftex.def Info: figure/histogram.pdf  used on input line 474.
 (pdftex.def)             Requested size: 361.36865pt x 614.34201pt.
- [8] [9pdfTeX warning (ext4): destination with the same identifier (name{figure
-.3}) has been already used, duplicate ignored
+[7] [8pdfTeX warning (ext4): destination with the same identifier (name{figure.
+3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.536 	
-        <./figure/histogram.pdf>] [10] (./HW2.bbl
+l.481 	
+        <./figure/histogram.pdf>] [9] (./HW2.bbl
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 3
 1.
 
@@ -521,14 +518,14 @@ File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 31.
 )
-[11] (./HW2.aux)
+[10] (./HW2.aux)
 Package rerunfilecheck Info: File `HW2.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 9409 strings out of 480559
- 140524 string characters out of 5901862
- 492765 words of memory out of 5000000
+ 9408 strings out of 480559
+ 140517 string characters out of 5901862
+ 460217 words of memory out of 5000000
  26834 multiletter control sequences out of 15000+600000
  407343 words of font info for 43 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -549,10 +546,10 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/fairuzishraque/Library
 raque/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></Us
 ers/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbo
 ls/msbm10.pfb>
-Output written on HW2.pdf (11 pages, 203269 bytes).
+Output written on HW2.pdf (10 pages, 200888 bytes).
 PDF statistics:
- 228 PDF objects out of 1000 (max. 8388607)
- 181 compressed objects within 2 object streams
- 61 named destinations out of 1000 (max. 500000)
+ 223 PDF objects out of 1000 (max. 8388607)
+ 177 compressed objects within 2 object streams
+ 60 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

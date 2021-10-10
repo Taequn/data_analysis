@@ -360,97 +360,43 @@ In the Figure \ref{P3fig_2}, we can see that with increasing p, the most of the 
 library(tidyverse)
 library(patchwork)
 
-plot.df <- data.frame(x = (-1:2),
-                      f1 = dbern(x = (-1:2), prob = 0.4),
-                      f2 = dbern(x = (-1:2), prob = 0.6))
+plot_df <- list( x1 = bern_sample(10, 0.4),
+                 x2 = bern_sample(25, 0.4),
+                 x3 = bern_sample(100, 0.4),
+                 x4 = bern_sample(1000, 0.4),
+                 y1 = bern_sample(10, 0.6),
+                 y2 = bern_sample(25, 0.6),
+                 y3 = bern_sample(100, 0.6),
+                 y4 = bern_sample(1000, 0.6))
 
-bern_sample <- function(n,prob){
-  support <- c(0,1)
-  x <- sample(x = support, size=n, replace=TRUE, prob=dbern(support, prob))
-  x
-}
+                 
+buildingPlot2 <- function(source, prob, sample_size){
+	  df <- data.frame(value=source) #turning values from the list into a df
+	  colnames(df) <- "value" #changing the name of the column
+	  df_PMF <- data.frame(x = (-1:2),
+                      f = dbern(x = (-1:2), prob = prob))
+	  answer<-ggplot(df, aes(value))+
+	     geom_histogram(data = df, aes(y=..density..), binwidth=1,
+	                 color="black")+
+	  geom_linerange(data=df_PMF, aes(x=x, ymax = f), ymin = 0, size=2, color="red")+
+	  theme_bw() +
+	  ggtitle("Bernoulli Distribution",subtitle = paste("Sample Size =", sample size, ", Prob =", prob))
+	  answer
+	}
 
+x1 <- buildingPlot2(plot_df[1], 0.4, 10)
+x2 <- buildingPlot2(plot_df[2], 0.4, 25)
+x3 <- buildingPlot2(plot_df[3], 0.4, 100)
+x4 <- buildingPlot2(plot_df[4], 0.4, 1000)
 
-sample_p1_n10 <- data.frame(sample = bern_sample(10, 0.4))
-sample_p1_n25 <- data.frame(sample = bern_sample(25, 0.4))
-sample_p1_n100 <- data.frame(sample = bern_sample(100, 0.4))
-sample_p1_n1000<- data.frame(sample = bern_sample(1000, 0.4))
+y1 <- buildingPlot2(plot_df[5], 0.6, 10)
+y2 <- buildingPlot2(plot_df[6], 0.6, 25)
+y3 <- buildingPlot2(plot_df[7], 0.6, 100)
+y4 <- buildingPlot2(plot_df[8], 0.6, 1000)
+		
 
-sample_p2_n10 <- data.frame(sample = bern_sample(10, 0.6))
-sample_p2_n25 <- data.frame(sample = bern_sample(25, 0.6))
-sample_p2_n100 <- data.frame(sample = bern_sample(100, 0.6))
-sample_p2_n1000<- data.frame(sample = bern_sample(1000, 0.6))
-
-
-#first line
- 	  x1<-ggplot()+
-	  geom_histogram(data = sample_p1_n10, aes(x = sample, y=..density..), binwidth=1,
-	                 color="black")+
-	  geom_linerange(data=plot.df, aes(x=x, ymax = f1), ymin = 0, size=2, color="red")+
-	  theme_bw() +
-	  xlab("x1")+
-	  ggtitle("Bernoulli Distribution",subtitle = "Sample = 10, Prob =0.4")
-	
-		x2<-ggplot()+
-	  geom_histogram(data = sample_p1_n25, aes(x = sample, y=..density..), binwidth=1,
-	                 color="black")+
-	  geom_linerange(data=plot.df, aes(x=x, ymax = f1), ymin = 0, size=2, color="red")+
-	  theme_bw() +
-	  xlab("x2")+
-	  ggtitle("Bernoulli Distribution",subtitle = "Sample = 25, Prob =0.4")
-		
-		x3<-ggplot()+
-	  geom_histogram(data = sample_p1_n100, aes(x = sample, y=..density..), binwidth=1,
-	                 color="black")+
-	  geom_linerange(data=plot.df, aes(x=x, ymax = f1), ymin = 0, size=2, color="red")+
-	  theme_bw() +
-	  xlab("x3")+
-	  ggtitle("Bernoulli Distribution",subtitle = "Sample = 100, Prob =0.4")
-		
-		x4<-ggplot()+
-	  geom_histogram(data = sample_p1_n1000, aes(x = sample, y=..density..), binwidth=1,
-	                 color="black")+
-	  geom_linerange(data=plot.df, aes(x=x, ymax = f1), ymin = 0, size=2, color="red")+
-	  theme_bw() +
-	  xlab("x4")+
-	  ggtitle("Bernoulli Distribution",subtitle = "Sample = 1000, Prob =0.4")
-		
-#second line
-	  
-		y1<-ggplot()+
-	  geom_histogram(data = sample_p2_n10, aes(x = sample, y=..density..), binwidth=1,
-	                 color="black")+
-	  geom_linerange(data=plot.df, aes(x=x, ymax = f2), ymin = 0, size=2, color="red")+
-	  theme_bw() +
-	  xlab("y1")+
-	  ggtitle("Bernoulli Distribution",subtitle = "Sample = 10, Prob =0.6")
-	
-		y2<-ggplot()+
-	  geom_histogram(data = sample_p2_n25, aes(x = sample, y=..density..), binwidth=1,
-	                 color="black")+
-	  geom_linerange(data=plot.df, aes(x=x, ymax = f2), ymin = 0, size=2, color="red")+
-	  theme_bw() +
-	  xlab("y2")+
-	  ggtitle("Bernoulli Distribution",subtitle = "Sample = 25, Prob =0.6")
-		
-		y3<-ggplot()+
-	  geom_histogram(data = sample_p2_n100, aes(x = sample, y=..density..), binwidth=1,
-	                 color="black")+
-	  geom_linerange(data=plot.df, aes(x=x, ymax = f2), ymin = 0, size=2, color="red")+
-	  theme_bw() +
-	  xlab("y3")+
-	  ggtitle("Bernoulli Distribution",subtitle = "Sample = 100, Prob =0.6")
-		
-		y4<-ggplot()+
-	  geom_histogram(data = sample_p2_n1000, aes(x = sample, y=..density..), binwidth=1,
-	                 color="black")+
-	  geom_linerange(data=plot.df, aes(x=x, ymax = f2), ymin = 0, size=2, color="red")+
-	  theme_bw() +
-	  xlab("y4")+
-	  ggtitle("Bernoulli Distribution",subtitle = "Sample = 1000, Prob =0.6")
-		
-#(x1|x2|x3|x4)/(y1|y2|y3|y4)
 (x1+y1)/(x2+y2)/(x3+y3)/(x4+y4)
+
 @
 
 \begin{figure}[H]

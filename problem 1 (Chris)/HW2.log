@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.10)  10 OCT 2021 11:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.10)  10 OCT 2021 13:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -436,37 +436,61 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/Users/fairuzishraque/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex
 .map}]
-Underfull \hbox (badness 10000) in paragraph at lines 108--116
+Underfull \hbox (badness 10000) in paragraph at lines 108--113
 
  []
 
-Package color Info: Redefining color shadecolor on input line 157.
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--117
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 143--145
+
+ []
+
 [2]
+Package color Info: Redefining color shadecolor on input line 159.
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 161.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 163.
 LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 
-161.
+163.
  (/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/omscmtt.fd
 File: omscmtt.fd 
 )
 LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 161.
-Package color Info: Redefining color shadecolor on input line 196.
-Package color Info: Redefining color shadecolor on input line 232.
-<figure/unnamed-chunk-3-1.pdf, id=57, 361.35pt x 252.945pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 163.
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--180
+
+ []
+
+Package color Info: Redefining color shadecolor on input line 199.
+
+Underfull \hbox (badness 10000) in paragraph at lines 227--230
+
+ []
+
+Package color Info: Redefining color shadecolor on input line 236.
+<figure/unnamed-chunk-3-1.pdf, id=56, 433.62pt x 252.945pt>
 File: figure/unnamed-chunk-3-1.pdf Graphic file (type pdf)
 <use figure/unnamed-chunk-3-1.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-3-1.pdf  used on input line 250.
-(pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
- [3]
-Package color Info: Redefining color shadecolor on input line 267.
-<figure/unnamed-chunk-4-1.pdf, id=70, 361.35pt x 252.945pt>
+Package pdftex.def Info: figure/unnamed-chunk-3-1.pdf  used on input line 255.
+(pdftex.def)             Requested size: 433.61894pt x 252.95595pt.
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 265--268
+
+ []
+
+Package color Info: Redefining color shadecolor on input line 273.
+<figure/unnamed-chunk-4-1.pdf, id=70, 433.62pt x 252.945pt>
 File: figure/unnamed-chunk-4-1.pdf Graphic file (type pdf)
 <use figure/unnamed-chunk-4-1.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-4-1.pdf  used on input line 284.
-(pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
+Package pdftex.def Info: figure/unnamed-chunk-4-1.pdf  used on input line 291.
+(pdftex.def)             Requested size: 433.61894pt x 252.95595pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 260--290
+Underfull \hbox (badness 10000) in paragraph at lines 269--297
 
  []
 
@@ -474,27 +498,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 260--290
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.291 
+l.298 
        <./figure/unnamed-chunk-3-1.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 296--301
+Underfull \hbox (badness 10000) in paragraph at lines 303--307
 
  []
 
-Package color Info: Redefining color shadecolor on input line 303.
+
+Underfull \hbox (badness 10000) in paragraph at lines 308--309
+
+ []
+
+Package color Info: Redefining color shadecolor on input line 311.
 [5pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.349 \end{kframe}
+l.359 \end{kframe}
                    <./figure/unnamed-chunk-4-1.pdf>]
-Package color Info: Redefining color shadecolor on input line 355.
-<figure/unnamed-chunk-5-1.pdf, id=94, 542.025pt x 397.485pt>
+Package color Info: Redefining color shadecolor on input line 365.
+<figure/unnamed-chunk-5-1.pdf, id=94, 433.62pt x 614.295pt>
 File: figure/unnamed-chunk-5-1.pdf Graphic file (type pdf)
 <use figure/unnamed-chunk-5-1.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-5-1.pdf  used on input line 356.
-(pdftex.def)             Requested size: 469.75502pt x 344.49908pt.
+Package pdftex.def Info: figure/unnamed-chunk-5-1.pdf  used on input line 366.
+(pdftex.def)             Requested size: 433.61894pt x 614.3216pt.
  [6]
-Underfull \hbox (badness 10000) in paragraph at lines 362--363
+Underfull \hbox (badness 10000) in paragraph at lines 372--373
 
  []
 
@@ -502,16 +531,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 362--363
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.406   \item G
-               enerate a random sample of size $n=100$ for your two sets of ...
- <./figure/unnamed-chunk-5-1.pdf>] [8] [9] (./HW2.bbl) [10] (./HW2.aux)
+l.373 \begin{enumerate}
+                        <./figure/unnamed-chunk-5-1.pdf>] [8] [9] (./HW2.bbl)
+[10] (./HW2.aux)
 Package rerunfilecheck Info: File `HW2.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
  9367 strings out of 480559
  139738 string characters out of 5901862
- 480575 words of memory out of 5000000
+ 481709 words of memory out of 5000000
  26794 multiletter control sequences out of 15000+600000
  406724 words of font info for 41 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -535,7 +564,7 @@ que/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></Users
 nts/cm/cmti10.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmtt10.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dis
 t/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on HW2.pdf (10 pages, 719863 bytes).
+Output written on HW2.pdf (10 pages, 827416 bytes).
 PDF statistics:
  236 PDF objects out of 1000 (max. 8388607)
  184 compressed objects within 2 object streams

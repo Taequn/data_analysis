@@ -110,6 +110,7 @@ each other complete the homework in collaboration.
   tools for the rest of the questions below. BibTeX citations are available through 
   Google Scholar by clicking the cite button below the article of  interest and 
   selecting the BibTeX option.\\
+  
   \textbf{Solution:}\\
   Our group has chosen to use a normal distribution for the \texttt{Q1} and \texttt{Q2}!\\
   To start with, I will define what a normal distribution is. A continuous variable X has a normal distribution — with mean $\mu$ and $\sigma^2$ — X ~ N($\mu, \sigma^2)$, if it has the following properties:\\
@@ -141,6 +142,7 @@ each other complete the homework in collaboration.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\item Show that you have a valid PDF. You will find the \texttt{integrate()} 
 	function in \texttt{R} helpful.\\
+	
 	\textbf{Solution:}\\
 	Here's the equation of PDF for normal distribution!
 	\begin{equation*}
@@ -175,6 +177,7 @@ each other complete the homework in collaboration.
 	\item Find the median for your two sets of parameter(s). Conduct some research 
 	to find the median based on our PDF to confirm that your numerical approach is 
 	correct. \\
+	
 	\textbf{Solution:}\\
 	As we have established in part \texttt{(a)} of this problem, one of the key features of the normal distribution is the fact that it's symmetrical. Let's set out to prove it through the direct proof!\\
 		Let \texttt{m} be median!
@@ -224,8 +227,9 @@ It would appear that $\mu=m!$ Therefore, mean is equal to median within the norm
 	\item \label{q1PDF} Graph the PDF for several values of the parameter(s) 
 	including the two sets you specified. What does changing the parameter(s) do 
 	to the shape of the PDF?\\
+	
 	\textbf{Solution:}\\
-	Let's take various values and plot different PDFs! I am going to use \cite{ggplot2} library for it!
+	Let's take various values and plot different PDFs! I am going to use  the ggplot2 \citep{ggplot2} library for it!
 \begin{figure}[H]
 \begin{center}
 \begin{knitrout}
@@ -244,7 +248,8 @@ It would appear that $\mu=m!$ Therefore, mean is equal to median within the norm
   \hlkwd{geom_line}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=f1,} \hlkwc{color}\hlstd{=}\hlstr{"m=1, sd=1"}\hlstd{))}\hlopt{+}
   \hlkwd{geom_line}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=f2,} \hlkwc{color}\hlstd{=}\hlstr{"m=-2, sd=4"}\hlstd{))}\hlopt{+}
   \hlkwd{geom_line}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=f3,} \hlkwc{color}\hlstd{=}\hlstr{"m=0, sd=5"}\hlstd{))}\hlopt{+}
-  \hlkwd{geom_line}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=f4,} \hlkwc{color}\hlstd{=}\hlstr{"m=3, sd=3"}\hlstd{))}
+  \hlkwd{geom_line}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=f4,} \hlkwc{color}\hlstd{=}\hlstr{"m=3, sd=3"}\hlstd{))}\hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}
 \end{alltt}
 \end{kframe}
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-3-1} 
@@ -260,6 +265,7 @@ As we can see on Figure \ref{plot1}, changing our parameters does indeed change 
 	 \item Graph the CDF for the same values of the parameter(s) as you did in 
 	 Question \ref{q1PDF}. What does changing the parameter(s) do to the shape of 
 	 the CDF? Comment on the aspects of the CDFs that show that the CDF is valid.\\
+	 
 	 \textbf{Solution:}\\
 \begin{figure}[H]
 \begin{center}
@@ -278,7 +284,8 @@ As we can see on Figure \ref{plot1}, changing our parameters does indeed change 
   \hlkwd{geom_line}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=f1,} \hlkwc{color}\hlstd{=}\hlstr{"m=1, sd=1"}\hlstd{))}\hlopt{+}
   \hlkwd{geom_line}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=f2,} \hlkwc{color}\hlstd{=}\hlstr{"m=-2, sd=4"}\hlstd{))}\hlopt{+}
   \hlkwd{geom_line}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=f3,} \hlkwc{color}\hlstd{=}\hlstr{"m=0, sd=5"}\hlstd{))}\hlopt{+}
-  \hlkwd{geom_line}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=f4,} \hlkwc{color}\hlstd{=}\hlstr{"m=3, sd=3"}\hlstd{))}
+  \hlkwd{geom_line}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=f4,} \hlkwc{color}\hlstd{=}\hlstr{"m=3, sd=3"}\hlstd{))}\hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}
 \end{alltt}
 \end{kframe}
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-4-1} 
@@ -297,6 +304,7 @@ We see that Figure \ref{plot2} is a graph of CDF function with different sets of
   two sets of parameter(s). In a $4 \times 2$ grid, plot a histogram of each set
   of data and superimpose the true density function at the specified parameter 
   values. Interpret the results.\\
+  
   \textbf{Solution:}\\
 
 \begin{knitrout}
@@ -322,7 +330,8 @@ We see that Figure \ref{plot2} is a graph of CDF function with different sets of
             \hlkwd{geom_histogram}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=..density..),} \hlkwc{bins}\hlstd{=}\hlnum{10}\hlstd{,}
                          \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+} \hlcom{#building a histogram}
             \hlkwd{geom_function}\hlstd{(}\hlkwc{fun}\hlstd{=dnorm,} \hlkwc{args} \hlstd{=} \hlkwd{list}\hlstd{(}\hlkwc{mean} \hlstd{= mu,} \hlkwc{sd} \hlstd{= sigma),}
-                \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+} \hlcom{#superimposing the function}
+                \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
+            \hlkwd{theme_bw}\hlstd{()} \hlopt{+}\hlcom{#superimposing the function}
             \hlkwd{labs}\hlstd{(}\hlkwc{x}\hlstd{=}\hlstr{"Value"}\hlstd{,} \hlkwc{y}\hlstd{=}\hlstr{"Density"}\hlstd{)}
           \hlstd{answer}
         \hlstd{\}}
@@ -344,7 +353,8 @@ We see that Figure \ref{plot2} is a graph of CDF function with different sets of
                                                   \hlkwc{subtitle} \hlstd{=} \hlstr{"mean=-2, sd=4"}\hlstd{)}
         \hlstd{y4}\hlkwb{<-}\hlkwd{buildingPlot}\hlstd{(sample.df[}\hlnum{8}\hlstd{],} \hlopt{-}\hlnum{2}\hlstd{,} \hlnum{4}\hlstd{)}\hlopt{+}\hlkwd{labs}\hlstd{(}\hlkwc{title}\hlstd{=}\hlstr{"Sample=1000"}\hlstd{,}
                                                   \hlkwc{subtitle} \hlstd{=} \hlstr{"mean=-2, sd=4"}\hlstd{)}
-        \hlstd{(x1}\hlopt{|}\hlstd{x2}\hlopt{|}\hlstd{x3}\hlopt{|}\hlstd{x4)}\hlopt{/}\hlstd{(y1}\hlopt{|}\hlstd{y2}\hlopt{|}\hlstd{y3}\hlopt{|}\hlstd{y4)}
+        \hlcom{#(x1|x2|x3|x4)/(y1|y2|y3|y4)}
+        \hlstd{(x1}\hlopt{+}\hlstd{y1)}\hlopt{/}\hlstd{(x2}\hlopt{+}\hlstd{y2)}\hlopt{/}\hlstd{(x3}\hlopt{+}\hlstd{y3)}\hlopt{/}\hlstd{(x4}\hlopt{+}\hlstd{y4)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}

@@ -422,100 +422,45 @@ In the Figure \ref{P3fig_2}, we can see that with increasing p, the most of the 
 \begin{alltt}
 \hlcom{# Using sampling with replacement to generate arrays of 0 and 1}
 
-\hlkwd{library}\hlstd{(tidyverse)}
-\hlkwd{library}\hlstd{(patchwork)}
+\hlkwd{library}(tidyverse)
+\hlkwd{library}(patchwork)
 
-\hlstd{plot.df} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),}
-                      \hlkwc{f1} \hlstd{=} \hlkwd{dbern}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.4}\hlstd{),}
-                      \hlkwc{f2} \hlstd{=} \hlkwd{dbern}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),} \hlkwc{prob} \hlstd{=} \hlnum{0.6}\hlstd{))}
+plot_df <- \hlkwd{list}( x1 = \hlkwd{bern_sample}(10, 0.4),
+                 x2 = \hlkwd{bern_sample}(25, 0.4),
+                 x3 = \hlkwd{bern_sample}(100, 0.4),
+                 x4 = \hlkwd{bern_sample}(1000, 0.4),
+                 y1 = \hlkwd{bern_sample}(10, 0.6),
+                 y2 = \hlkwd{bern_sample}(25, 0.6),
+                 y3 = \hlkwd{bern_sample}(100, 0.6),
+                 y4 = \hlkwd{bern_sample}(1000, 0.6))
 
-\hlstd{bern_sample} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{n}\hlstd{,}\hlkwc{prob}\hlstd{)\{}
-  \hlstd{support} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{1}\hlstd{)}
-  \hlstd{x} \hlkwb{<-} \hlkwd{sample}\hlstd{(}\hlkwc{x} \hlstd{= support,} \hlkwc{size}\hlstd{=n,} \hlkwc{replace}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{prob}\hlstd{=}\hlkwd{dbern}\hlstd{(support, prob))}
-  \hlstd{x}
-\hlstd{\}}
+                 
+buildingPlot2 <- \hlkwd{function}(source, prob, sample_size)\{
+	  df <- \hlkwd{data.frame}(value=source) \hlcom{#turning values from the list into a df}
+	  \hlkwd{colnames}(df) <- \hlstr{"value"} #changing the name of the column
+	  df_PMF <- \hlkwd{data.frame}(x = (-1:2),
+                      f = \hlkwd{dbern}(x = (-1:2), prob = prob))
+	  answer<-\hlkwd{ggplot}(df, \hlkwd{aes}(value))+
+	     \hlkwd{geom_histogram}(data = df, \hlkwd{aes}(y=..density..), binwidth=1,
+	                 color=\hlstr{"black"})+
+	  \hlkwd{geom_linerange}(data=df_PMF, \hlkwd{aes}(x=x, ymax = f), ymin = 0, size=2, color=\hlstr{"red"})+
+	  \hlkwd{theme_bw}() +
+	  \hlkwd{ggtitle}(\hlstr{"Bernoulli Distribution"},subtitle = \hlkwd{paste}(\hlstr{"Sample Size ="}, sample size, \hlstr{", Prob ="}, prob))
+	  answer
+	\}
 
+x1 <- \hlkwd{buildingPlot2}(plot_df[1], 0.4, 10)
+x2 <- \hlkwd{buildingPlot2}(plot_df[2], 0.4, 25)
+x3 <- \hlkwd{buildingPlot2}(plot_df[3], 0.4, 100)
+x4 <- \hlkwd{buildingPlot2}(plot_df[4], 0.4, 1000)
 
-\hlstd{sample_p1_n10} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{10}\hlstd{,} \hlnum{0.4}\hlstd{))}
-\hlstd{sample_p1_n25} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{25}\hlstd{,} \hlnum{0.4}\hlstd{))}
-\hlstd{sample_p1_n100} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{100}\hlstd{,} \hlnum{0.4}\hlstd{))}
-\hlstd{sample_p1_n1000}\hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{1000}\hlstd{,} \hlnum{0.4}\hlstd{))}
+y1 <- \hlkwd{buildingPlot2}(plot_df[5], 0.6, 10)
+y2 <- \hlkwd{buildingPlot2}(plot_df[6], 0.6, 25)
+y3 <- \hlkwd{buildingPlot2}(plot_df[7], 0.6, 100)
+y4 <- \hlkwd{buildingPlot2}(plot_df[8], 0.6, 1000)
+		
 
-\hlstd{sample_p2_n10} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{10}\hlstd{,} \hlnum{0.6}\hlstd{))}
-\hlstd{sample_p2_n25} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{25}\hlstd{,} \hlnum{0.6}\hlstd{))}
-\hlstd{sample_p2_n100} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{100}\hlstd{,} \hlnum{0.6}\hlstd{))}
-\hlstd{sample_p2_n1000}\hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{sample} \hlstd{=} \hlkwd{bern_sample}\hlstd{(}\hlnum{1000}\hlstd{,} \hlnum{0.6}\hlstd{))}
-
-
-\hlcom{#first line}
-          \hlstd{x1}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
-          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p1_n10,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
-                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
-          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f1),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
-          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
-          \hlkwd{xlab}\hlstd{(}\hlstr{"x1"}\hlstd{)}\hlopt{+}
-          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 10, Prob =0.4"}\hlstd{)}
-
-                \hlstd{x2}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
-          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p1_n25,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
-                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
-          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f1),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
-          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
-          \hlkwd{xlab}\hlstd{(}\hlstr{"x2"}\hlstd{)}\hlopt{+}
-          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 25, Prob =0.4"}\hlstd{)}
-
-                \hlstd{x3}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
-          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p1_n100,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
-                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
-          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f1),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
-          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
-          \hlkwd{xlab}\hlstd{(}\hlstr{"x3"}\hlstd{)}\hlopt{+}
-          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 100, Prob =0.4"}\hlstd{)}
-
-                \hlstd{x4}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
-          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p1_n1000,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
-                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
-          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f1),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
-          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
-          \hlkwd{xlab}\hlstd{(}\hlstr{"x4"}\hlstd{)}\hlopt{+}
-          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 1000, Prob =0.4"}\hlstd{)}
-
-\hlcom{#second line}
-
-                \hlstd{y1}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
-          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p2_n10,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
-                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
-          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f2),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
-          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
-          \hlkwd{xlab}\hlstd{(}\hlstr{"y1"}\hlstd{)}\hlopt{+}
-          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 10, Prob =0.6"}\hlstd{)}
-
-                \hlstd{y2}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
-          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p2_n25,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
-                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
-          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f2),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
-          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
-          \hlkwd{xlab}\hlstd{(}\hlstr{"y2"}\hlstd{)}\hlopt{+}
-          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 25, Prob =0.6"}\hlstd{)}
-
-                \hlstd{y3}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
-          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p2_n100,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
-                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
-          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f2),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
-          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
-          \hlkwd{xlab}\hlstd{(}\hlstr{"y3"}\hlstd{)}\hlopt{+}
-          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 100, Prob =0.6"}\hlstd{)}
-
-                \hlstd{y4}\hlkwb{<-}\hlkwd{ggplot}\hlstd{()}\hlopt{+}
-          \hlkwd{geom_histogram}\hlstd{(}\hlkwc{data} \hlstd{= sample_p2_n1000,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= sample,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{binwidth}\hlstd{=}\hlnum{1}\hlstd{,}
-                         \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{)}\hlopt{+}
-          \hlkwd{geom_linerange}\hlstd{(}\hlkwc{data}\hlstd{=plot.df,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x,} \hlkwc{ymax} \hlstd{= f2),} \hlkwc{ymin} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{size}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{)}\hlopt{+}
-          \hlkwd{theme_bw}\hlstd{()} \hlopt{+}
-          \hlkwd{xlab}\hlstd{(}\hlstr{"y4"}\hlstd{)}\hlopt{+}
-          \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 1000, Prob =0.6"}\hlstd{)}
-
-\hlcom{#(x1|x2|x3|x4)/(y1|y2|y3|y4)}
-\hlstd{(x1}\hlopt{+}\hlstd{y1)}\hlopt{/}\hlstd{(x2}\hlopt{+}\hlstd{y2)}\hlopt{/}\hlstd{(x3}\hlopt{+}\hlstd{y3)}\hlopt{/}\hlstd{(x4}\hlopt{+}\hlstd{y4)}
+(x1+y1)/(x2+y2)/(x3+y3)/(x4+y4)
 \end{alltt}
 \end{kframe}
 \end{knitrout}

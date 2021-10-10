@@ -59,6 +59,7 @@ each other complete the homework in collaboration.
   tools for the rest of the questions below. BibTeX citations are available through 
   Google Scholar by clicking the cite button below the article of  interest and 
   selecting the BibTeX option.\\
+  
   \textbf{Solution:}\\
   Our group has chosen to use a normal distribution for the \texttt{Q1} and \texttt{Q2}!\\
   To start with, I will define what a normal distribution is. A continuous variable X has a normal distribution — with mean $\mu$ and $\sigma^2$ — X ~ N($\mu, \sigma^2)$, if it has the following properties:\\
@@ -90,6 +91,7 @@ each other complete the homework in collaboration.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\item Show that you have a valid PDF. You will find the \texttt{integrate()} 
 	function in \texttt{R} helpful.\\
+	
 	\textbf{Solution:}\\
 	Here's the equation of PDF for normal distribution!
 	\begin{equation*}
@@ -117,6 +119,7 @@ each other complete the homework in collaboration.
 	\item Find the median for your two sets of parameter(s). Conduct some research 
 	to find the median based on our PDF to confirm that your numerical approach is 
 	correct. \\
+	
 	\textbf{Solution:}\\
 	As we have established in part \texttt{(a)} of this problem, one of the key features of the normal distribution is the fact that it's symmetrical. Let's set out to prove it through the direct proof!\\
 		Let \texttt{m} be median!
@@ -154,11 +157,12 @@ It would appear that $\mu=m!$ Therefore, mean is equal to median within the norm
 	\item \label{q1PDF} Graph the PDF for several values of the parameter(s) 
 	including the two sets you specified. What does changing the parameter(s) do 
 	to the shape of the PDF?\\
+	
 	\textbf{Solution:}\\
-	Let's take various values and plot different PDFs! I am going to use \cite{ggplot2} library for it!
+	Let's take various values and plot different PDFs! I am going to use  the ggplot2 \citep{ggplot2} library for it!
 \begin{figure}[H]
 \begin{center}
-	<<fig.dim=c(5,3.5)>>=
+	<<fig.dim=c(6,3.5)>>=
 	library(ggplot2)
 	plot.df <- data.frame(
 	  x=seq(-15, 15, 0.001),
@@ -172,7 +176,8 @@ It would appear that $\mu=m!$ Therefore, mean is equal to median within the norm
 	  geom_line(aes(y=f1, color="m=1, sd=1"))+
 	  geom_line(aes(y=f2, color="m=-2, sd=4"))+
 	  geom_line(aes(y=f3, color="m=0, sd=5"))+
-	  geom_line(aes(y=f4, color="m=3, sd=3"))
+	  geom_line(aes(y=f4, color="m=3, sd=3"))+
+	  theme_bw()
 	@
 \caption{Gaussian PDF with various sets of parameters}
 \label{plot1}
@@ -185,10 +190,11 @@ As we can see on Figure \ref{plot1}, changing our parameters does indeed change 
 	 \item Graph the CDF for the same values of the parameter(s) as you did in 
 	 Question \ref{q1PDF}. What does changing the parameter(s) do to the shape of 
 	 the CDF? Comment on the aspects of the CDFs that show that the CDF is valid.\\
+	 
 	 \textbf{Solution:}\\
 \begin{figure}[H]
 \begin{center}
-	<<fig.dim=c(5,3.5)>>=
+	<<fig.dim=c(6,3.5)>>=
 	plot.df <- data.frame(
 	  x=seq(-15, 15, 0.001),
 	  f1=pnorm(q=seq(-15, 15, 0.001), mean=1, sd=1),
@@ -201,7 +207,8 @@ As we can see on Figure \ref{plot1}, changing our parameters does indeed change 
 	  geom_line(aes(y=f1, color="m=1, sd=1"))+
 	  geom_line(aes(y=f2, color="m=-2, sd=4"))+
 	  geom_line(aes(y=f3, color="m=0, sd=5"))+
-	  geom_line(aes(y=f4, color="m=3, sd=3"))
+	  geom_line(aes(y=f4, color="m=3, sd=3"))+
+	  theme_bw()
 	@
 
 \caption{Gaussian CDF with various sets of parameters}
@@ -217,6 +224,7 @@ We see that Figure \ref{plot2} is a graph of CDF function with different sets of
   two sets of parameter(s). In a $4 \times 2$ grid, plot a histogram of each set
   of data and superimpose the true density function at the specified parameter 
   values. Interpret the results.\\
+  
   \textbf{Solution:}\\
 
 <<plot3, message=FALSE, eval=FALSE>>=
@@ -240,7 +248,8 @@ We see that Figure \ref{plot2} is a graph of CDF function with different sets of
 	    geom_histogram(aes(y=..density..), bins=10,
 	                 color="black")+ #building a histogram
 	    geom_function(fun=dnorm, args = list(mean = mu, sd = sigma),
-                color="red")+ #superimposing the function
+                color="red")+
+	    theme_bw() +#superimposing the function
 	    labs(x="Value", y="Density")
 	  answer
 	}
@@ -262,12 +271,13 @@ We see that Figure \ref{plot2} is a graph of CDF function with different sets of
 	                                          subtitle = "mean=-2, sd=4")
 	y4<-buildingPlot(sample.df[8], -2, 4)+labs(title="Sample=1000",
 	                                          subtitle = "mean=-2, sd=4")
-	(x1|x2|x3|x4)/(y1|y2|y3|y4)
+	#(x1|x2|x3|x4)/(y1|y2|y3|y4)
+	(x1+y1)/(x2+y2)/(x3+y3)/(x4+y4)
 	@
 
 \begin{figure}[H]
 \begin{center}
-<<echo=FALSE, fig.dim=c(7.5,5.5), message=FALSE, warning=FALSE, error=FALSE>>=
+<<echo=FALSE, fig.dim=c(6,8.5), message=FALSE, warning=FALSE, error=FALSE>>=
 <<plot3>>
 @
 	\caption{Histograms of each set of data with superimposed true density function}
