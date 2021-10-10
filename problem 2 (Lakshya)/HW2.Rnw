@@ -276,7 +276,7 @@ summarize(Mean = mean(x), SD = sd(x),
   @
   In a $1 \times 2$ grid, plot a histogram of each set of data with (1) the method of moments estimated distribution, (2) the maximum likelihood estimated 
   distribution, and superimpose the true distribution in both.
-  <<message=FALSE>>=
+  <<p2plot1, message=FALSE, eval=FALSE>>=
   mom_dat1 <- data.frame(x = rnorm(n = obs[1], mean = mom1$x[1], sd = mom1$x[2]))
   mom1_p <- ggplot(data=mom_dat1, aes(x=x))+ 
     geom_histogram(color="black", fill = "blue", 
@@ -302,7 +302,19 @@ summarize(Mean = mean(x), SD = sd(x),
     geom_vline(xintercept = mean(dat1$x), alpha=0.35, color="red",size=1)
   
   mom1_p + mle1_p
+  @
+
+\begin{figure}[H]
+\begin{center}
+<<echo=FALSE, fig.dim=c(6,4), message=FALSE, warning=FALSE, error=FALSE>>=
+<<p2plot1>>
+@
+	\caption{Cool caption!}
+\label{p2plot1} %we can now reference plot1
+\end{center}
+\end{figure}
   
+  <<p2plot2, message=FALSE, eval=FALSE>>=
   dat1_h <- ggplot(data=dat1, aes(x=x))+ 
     geom_histogram(color="black", fill = "lightblue", 
                    alpha = 0.5, binwidth = 0.2, aes(y=..density..))+ 
@@ -324,6 +336,17 @@ summarize(Mean = mean(x), SD = sd(x),
   
   dat1_h + dat1_p
   @
+  
+  \begin{figure}[H]
+\begin{center}
+<<echo=FALSE, fig.dim=c(6,4), message=FALSE, warning=FALSE, error=FALSE>>=
+<<p2plot2>>
+@
+	\caption{Cool caption!}
+\label{p2plot2} %we can now reference plot1
+\end{center}
+\end{figure}
+  
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (d)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -339,7 +362,8 @@ summarize(Mean = mean(x), SD = sd(x),
   In a $1 \times 2$ grid, plot a histogram of each set of data with (1) the method 
   of moments estimated distribution, (2) the maximum likelihood estimated distribution, 
   and superimpose the true distribution in both.
-  <<message=FALSE>>=
+  
+  <<p2plot3, message=FALSE, eval=FALSE>>=
   mom_dat2 <- data.frame(x = rnorm(n = obs[2], 
                                    mean = mom2$x[1], sd = mom2$x[2]))
   mom2_p <- ggplot(data=mom_dat2, aes(x=x))+ 
@@ -367,7 +391,19 @@ summarize(Mean = mean(x), SD = sd(x),
     geom_vline(xintercept = mean(dat2$x), alpha=0.35, color="red",size=1)
   
   mom2_p + mle2_p
+  @
+  \begin{figure}[H]
+\begin{center}
+<<echo=FALSE, fig.dim=c(6,4), message=FALSE, warning=FALSE, error=FALSE>>=
+<<p2plot3>>
+@
+	\caption{Cool caption!}
+\label{p2plot3} %we can now reference plot1
+\end{center}
+\end{figure}
+
   
+  <<p2plot4, message=FALSE, eval=FALSE>>=
   dat2_h <- ggplot(data=dat2, aes(x=x))+ 
     geom_histogram(color="black", fill = "lightblue", 
                    alpha = 0.5, binwidth = 0.2, 
@@ -392,6 +428,16 @@ summarize(Mean = mean(x), SD = sd(x),
   
   dat2_h + dat2_p
   @
+
+  \begin{figure}[H]
+\begin{center}
+<<echo=FALSE, fig.dim=c(6,4), message=FALSE, warning=FALSE, error=FALSE>>=
+<<p2plot4>>
+@
+	\caption{Cool caption!}
+\label{p2plot4} %we can now reference plot1
+\end{center}
+\end{figure}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (e)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -407,7 +453,7 @@ summarize(Mean = mean(x), SD = sd(x),
   In a $1 \times 2$ grid, plot a histogram of each set of data with (1) the method 
   of moments estimated distribution, (2) the maximum likelihood estimated distribution,
   and superimpose the true distribution in both.
-  <<message=FALSE>>=
+  <<p2plot5, message=FALSE, eval=FALSE>>=
   mom_dat3 <- data.frame(x = rnorm(n = obs[3], mean = mom3$x[1], sd = mom3$x[2]))
   mom3_p <- ggplot(data=mom_dat3, aes(x=x))+ 
     geom_histogram(color="black", 
@@ -435,7 +481,19 @@ summarize(Mean = mean(x), SD = sd(x),
     geom_vline(xintercept = mean(dat3$x), alpha=0.35, color="red",size=1)
   
   mom3_p + mle3_p
+  @
   
+  \begin{figure}[H]
+\begin{center}
+<<echo=FALSE, fig.dim=c(6,4), message=FALSE, warning=FALSE, error=FALSE>>=
+<<p2plot5>>
+@
+	\caption{Cool caption!}
+\label{p2plot5} %we can now reference plot1
+\end{center}
+\end{figure}
+  
+  <<p2plot6, message=FALSE, eval=FALSE>>=
   dat3_h <- ggplot(data=dat3, aes(x=x))+ 
     geom_histogram(color="black", fill = "lightblue", 
                    alpha = 0.5, binwidth = 0.2, aes(y=..density..))+ 
@@ -454,6 +512,16 @@ summarize(Mean = mean(x), SD = sd(x),
   
   dat3_h + dat3_p
   @
+  
+    \begin{figure}[H]
+\begin{center}
+<<echo=FALSE, fig.dim=c(6,4), message=FALSE, warning=FALSE, error=FALSE>>=
+<<p2plot6>>
+@
+	\caption{Cool caption!}
+\label{p2plot6} %we can now reference plot1
+\end{center}
+\end{figure}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (f)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -469,7 +537,8 @@ summarize(Mean = mean(x), SD = sd(x),
   In a $1 \times 2$ grid, plot a histogram of each set of data with (1) the method 
   of moments estimated distribution, (2) the maximum likelihood estimated distribution, 
   and superimpose the true distribution in both.
-  <<message=FALSE>>=
+  
+  <<p2plot7, message=FALSE, eval=FALSE>>=
   mom_dat4 <- data.frame(x = rnorm(n = obs[4], mean = mom4$x[1], sd = mom4$x[2]))
   mom4_p <- ggplot(data=mom_dat4, aes(x=x))+ 
     geom_histogram(color="black", fill = "blue",
@@ -496,7 +565,19 @@ summarize(Mean = mean(x), SD = sd(x),
                    color="black", fill = "green", alpha = 0.2)
   
   mom4_p + mle4_p
+  @
   
+      \begin{figure}[H]
+\begin{center}
+<<echo=FALSE, fig.dim=c(6,4), message=FALSE, warning=FALSE, error=FALSE>>=
+<<p2plot7>>
+@
+	\caption{Cool caption!}
+\label{p2plot7} %we can now reference plot1
+\end{center}
+\end{figure}
+  
+  <<p2plot8, message=FALSE, eval=FALSE>>=
   dat4_h <- ggplot(data=dat4, aes(x=x))+ 
     geom_histogram(color="black", fill = "lightblue", 
                    alpha = 0.5, aes(y=..density..))+ 
@@ -513,6 +594,16 @@ summarize(Mean = mean(x), SD = sd(x),
   
   dat4_h + dat4_p
   @
+  
+\begin{figure}[H]
+\begin{center}
+<<echo=FALSE, fig.dim=c(6,4), message=FALSE, warning=FALSE, error=FALSE>>=
+<<p2plot8>>
+@
+	\caption{Cool caption!}
+\label{p2plot8} %we can now reference plot1
+\end{center}
+\end{figure}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (g)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
