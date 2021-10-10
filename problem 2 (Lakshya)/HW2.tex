@@ -153,14 +153,15 @@ each other complete the homework in collaboration.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Provide the mean, standard deviation, skewness, and kurtosis of the PDF.
   Ensure to interpret each.
-    \\
-    \\E(X) = mu
-    \\var(X) = sigma^2
-    \\skew(X) = 0
-    \\The population skewness of the PDF is 0, which indicates that the Normal distribution is symmetric (with line of symmetry at the mean).
-    \\ kurt(X) = 0
-    \\ The population excess kurtosis of the PDF is 0, which indicates that the
-    Normal distribution is mesokurtic.
+  
+\begin{align*}
+  E(x) &= \mu &\text{\textbf{[Mean]}}\\
+var(X) &= \sigma ^{2} &\text{\textbf{[Variance]}}\\
+skew(X) &= 0 &\text{\textbf{[Skewness]}}\\
+kurt(X) &= 0 &\text{\textbf{[Kurtosis]}}
+\end{align*}
+
+The population skewness of the PDF is 0, which indicates that the Normal distribution is symmetric (with line of symmetry at the mean). The population excess kurtosis of the PDF is 0, which indicates that the Normal distribution is mesokurtic.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (b)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -173,14 +174,6 @@ each other complete the homework in collaboration.
 \begin{alltt}
 \hlkwd{library}\hlstd{(e1071)}
 \hlkwd{library}\hlstd{(tidyverse)}
-\end{alltt}
-
-
-{\ttfamily\noindent\itshape\color{messagecolor}{\#\# -- Attaching packages --------------------------------------- tidyverse 1.3.1 --}}
-
-{\ttfamily\noindent\itshape\color{messagecolor}{\#\# v ggplot2 3.3.5 \ \ \ \ v purrr \ \ 0.3.4\\\#\# v tibble \ 3.1.4 \ \ \ \ v dplyr \ \ 1.0.7\\\#\# v tidyr \ \ 1.1.3 \ \ \ \ v stringr 1.4.0\\\#\# v readr \ \ 2.0.1 \ \ \ \ v forcats 0.5.1}}
-
-{\ttfamily\noindent\itshape\color{messagecolor}{\#\# -- Conflicts ------------------------------------------ tidyverse\_conflicts() --\\\#\# x dplyr::filter() masks stats::filter()\\\#\# x dplyr::lag() \ \ \ masks stats::lag()}}\begin{alltt}
 \hlkwd{library}\hlstd{(patchwork)}
 \hlstd{obs} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{10}\hlstd{,} \hlnum{25}\hlstd{,} \hlnum{100}\hlstd{,} \hlnum{1000}\hlstd{)}
 \end{alltt}
@@ -191,12 +184,13 @@ each other complete the homework in collaboration.
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{s1} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlkwc{n} \hlstd{= obs[}\hlnum{1}\hlstd{],} \hlkwc{mean} \hlstd{=} \hlnum{0}\hlstd{,} \hlkwc{sd} \hlstd{=} \hlnum{1}\hlstd{))}
-\hlstd{s1_stats} \hlkwb{<-} \hlstd{s1} \hlopt{%>%} \hlkwd{summarize}\hlstd{(}\hlkwc{Mean} \hlstd{=} \hlkwd{mean}\hlstd{(x),} \hlkwc{SD} \hlstd{=} \hlkwd{sd}\hlstd{(x),} \hlkwc{Skewness} \hlstd{=} \hlkwd{skewness}\hlstd{(x),} \hlstr{"Excess Kurtosis"} \hlstd{=} \hlkwd{kurtosis}\hlstd{(x))}
+\hlstd{s1_stats} \hlkwb{<-} \hlstd{s1} \hlopt{%>%}
+  \hlkwd{summarize}\hlstd{(}\hlkwc{Mean} \hlstd{=} \hlkwd{mean}\hlstd{(x),} \hlkwc{SD} \hlstd{=} \hlkwd{sd}\hlstd{(x),} \hlkwc{Skewness} \hlstd{=} \hlkwd{skewness}\hlstd{(x),} \hlstr{"Excess Kurtosis"} \hlstd{=} \hlkwd{kurtosis}\hlstd{(x))}
 \hlstd{s1_stats}
 \end{alltt}
 \begin{verbatim}
-##         Mean       SD  Skewness Excess Kurtosis
-## 1 -0.1808968 1.006114 0.6411854      -0.4480926
+##         Mean        SD  Skewness Excess Kurtosis
+## 1 -0.2891175 0.7894614 0.8377559      -0.1875298
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -208,33 +202,33 @@ each other complete the homework in collaboration.
 \hlstd{s1_stats}\hlopt{$}\hlstd{Mean}
 \end{alltt}
 \begin{verbatim}
-## [1] -0.1808968
+## [1] -0.2891175
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-  \\ \textbf{Spread:} The average distance from the sample mean is - 
+  \textbf{Spread:} The average distance from the sample mean is - 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{s1_stats}\hlopt{$}\hlstd{SD}
 \end{alltt}
 \begin{verbatim}
-## [1] 1.006114
+## [1] 0.7894614
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-  \\ \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
+  \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{s1_stats}\hlopt{$}\hlstd{Skewness}
 \end{alltt}
 \begin{verbatim}
-## [1] 0.6411854
+## [1] 0.8377559
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-  \\ Since skewness > 0, there are more observations for low values and fewer with high values.
+  Since skewness > 0, there are more observations for low values and fewer with high values.
   \\ Kurtosis describes how the peaked data is in relation to the Gaussian distribution (the bell-shaped curve). 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -242,7 +236,7 @@ each other complete the homework in collaboration.
 \hlstd{s1_stats}\hlopt{$}\hlstd{`Excess Kurtosis`}
 \end{alltt}
 \begin{verbatim}
-## [1] -0.4480926
+## [1] -0.1875298
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -255,8 +249,8 @@ each other complete the homework in collaboration.
 \hlstd{s2_stats}
 \end{alltt}
 \begin{verbatim}
-##        Mean       SD  Skewness Excess Kurtosis
-## 1 0.1344379 0.939759 0.3316368       -0.847848
+##         Mean       SD   Skewness Excess Kurtosis
+## 1 -0.1022959 1.157837 -0.4381694      -0.6596139
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -268,33 +262,33 @@ each other complete the homework in collaboration.
 \hlstd{s2_stats}\hlopt{$}\hlstd{Mean}
 \end{alltt}
 \begin{verbatim}
-## [1] 0.1344379
+## [1] -0.1022959
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-  \\ \textbf{Spread:} The average distance from the sample mean is - 
+  \textbf{Spread:} The average distance from the sample mean is - 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{s2_stats}\hlopt{$}\hlstd{SD}
 \end{alltt}
 \begin{verbatim}
-## [1] 0.939759
+## [1] 1.157837
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-  \\ \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
+  \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{s2_stats}\hlopt{$}\hlstd{Skewness}
 \end{alltt}
 \begin{verbatim}
-## [1] 0.3316368
+## [1] -0.4381694
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-  \\ Since skewness is slightly greater than 0, there are more observations for low values and fewer with high values. However, note that the skewness for this sample is closer to 0 than s1. 
+  Since skewness is slightly greater than 0, there are more observations for low values and fewer with high values. However, note that the skewness for this sample is closer to 0 than s1. 
   \\ Kurtosis describes how the peaked data is in relation to the Gaussian distribution (the bell-shaped curve). 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -302,11 +296,11 @@ each other complete the homework in collaboration.
 \hlstd{s2_stats}\hlopt{$}\hlstd{`Excess Kurtosis`}
 \end{alltt}
 \begin{verbatim}
-## [1] -0.847848
+## [1] -0.6596139
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-  \\ Since the excess kurtosis < 0, it indicates that the data is platykurtic. However, note that the excess kurtosis for this sample is closer to 0 than s1. 
+  Since the excess kurtosis < 0, it indicates that the data is platykurtic. However, note that the excess kurtosis for this sample is closer to 0 than s1. 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -315,8 +309,8 @@ each other complete the homework in collaboration.
 \hlstd{s3_stats}
 \end{alltt}
 \begin{verbatim}
-##        Mean        SD  Skewness Excess Kurtosis
-## 1 0.1310484 0.9982157 0.1327652      -0.4305158
+##         Mean       SD   Skewness Excess Kurtosis
+## 1 -0.1078957 1.001425 -0.1934592     -0.05901574
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -328,33 +322,33 @@ each other complete the homework in collaboration.
 \hlstd{s3_stats}\hlopt{$}\hlstd{Mean}
 \end{alltt}
 \begin{verbatim}
-## [1] 0.1310484
+## [1] -0.1078957
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-  \\ \textbf{Spread:} The average distance from the sample mean is - 
+  \textbf{Spread:} The average distance from the sample mean is - 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{s3_stats}\hlopt{$}\hlstd{SD}
 \end{alltt}
 \begin{verbatim}
-## [1] 0.9982157
+## [1] 1.001425
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-  \\ \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
+  \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{s3_stats}\hlopt{$}\hlstd{Skewness}
 \end{alltt}
 \begin{verbatim}
-## [1] 0.1327652
+## [1] -0.1934592
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-  \\ Since skewness is slightly greater than 0, there are more observations for low values and fewer with high values. However, note that the skewness for this sample is closer to 0 than s2. 
+  Since skewness is slightly greater than 0, there are more observations for low values and fewer with high values. However, note that the skewness for this sample is closer to 0 than s2. 
   \\ Kurtosis describes how the peaked data is in relation to the Gaussian distribution (the bell-shaped curve). 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -362,11 +356,11 @@ each other complete the homework in collaboration.
 \hlstd{s3_stats}\hlopt{$}\hlstd{`Excess Kurtosis`}
 \end{alltt}
 \begin{verbatim}
-## [1] -0.4305158
+## [1] -0.05901574
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-  \\ Since the excess kurtosis < 0, it indicates that the data is platykurtic. However, note that the excess kurtosis for this sample is closer to 0 than s2. 
+  Since the excess kurtosis < 0, it indicates that the data is platykurtic. However, note that the excess kurtosis for this sample is closer to 0 than s2. 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -383,33 +377,33 @@ each other complete the homework in collaboration.
 \hlstd{s4_stats}\hlopt{$}\hlstd{Mean}
 \end{alltt}
 \begin{verbatim}
-## [1] -0.004068178
+## [1] -0.0180137
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-  \\ \textbf{Spread:} The average distance from the sample mean is - 
+  \textbf{Spread:} The average distance from the sample mean is - 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{s4_stats}\hlopt{$}\hlstd{SD}
 \end{alltt}
 \begin{verbatim}
-## [1] 1.010893
+## [1] 0.9640693
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-  \\ \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
+  \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{s4_stats}\hlopt{$}\hlstd{Skewness}
 \end{alltt}
 \begin{verbatim}
-## [1] -0.1582327
+## [1] 0.0620886
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-  \\ Since skewness is almost 0 (slightly greater), the distribution is almost symmetric. 
+  Since skewness is almost 0 (slightly greater), the distribution is almost symmetric. 
   \\ Kurtosis describes how the peaked data is in relation to the Gaussian distribution (the bell-shaped curve). 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -417,13 +411,13 @@ each other complete the homework in collaboration.
 \hlstd{s4_stats}\hlopt{$}\hlstd{`Excess Kurtosis`}
 \end{alltt}
 \begin{verbatim}
-## [1] -0.167169
+## [1] 0.1202453
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-  \\ Since the excess kurtosis is almost 0 (slightly lesser), it indicates that the data is almost mesokurtic.
+  Since the excess kurtosis is almost 0 (slightly lesser), it indicates that the data is almost mesokurtic.
   
-  \\ \textbf{As the sample size increases, the distribution moves towards becoming more Normal - the mean tends to equal 0, the SD tends to equal 1, and both the skewness and excess kurtosis tend to equal 0.}
+  \textbf{As the sample size increases, the distribution moves towards becoming more Normal - the mean tends to equal 0, the SD tends to equal 1, and both the skewness and excess kurtosis tend to equal 0.}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (c)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -481,10 +475,21 @@ each other complete the homework in collaboration.
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{mom_dat1} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlkwc{n} \hlstd{= obs[}\hlnum{1}\hlstd{],} \hlkwc{mean} \hlstd{= mom1}\hlopt{$}\hlstd{x[}\hlnum{1}\hlstd{],} \hlkwc{sd} \hlstd{= mom1}\hlopt{$}\hlstd{x[}\hlnum{2}\hlstd{]))}
-\hlstd{mom1_p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=mom_dat1,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x))}\hlopt{+} \hlkwd{geom_histogram}\hlstd{(}\hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"blue"}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.5}\hlstd{,} \hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=..density..))}\hlopt{+} \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+} \hlkwd{geom_density}\hlstd{(}\hlkwc{alpha}\hlstd{=}\hlnum{.2}\hlstd{,} \hlkwc{fill}\hlstd{=}\hlstr{"purple"}\hlstd{)} \hlopt{+} \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"Density"}\hlstd{)}\hlopt{+} \hlkwd{ggtitle}\hlstd{(}\hlstr{"Method Of Moments (n = 10)"}\hlstd{)} \hlopt{+} \hlkwd{geom_histogram}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= dat1}\hlopt{$}\hlstd{x),} \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"green"}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.2}\hlstd{)} \hlopt{+} \hlkwd{geom_vline}\hlstd{(}\hlkwc{xintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat1}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)}
+\hlstd{mom1_p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=mom_dat1,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x))}\hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"blue"}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.5}\hlstd{,} \hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=..density..))}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+} \hlkwd{geom_density}\hlstd{(}\hlkwc{alpha}\hlstd{=}\hlnum{.2}\hlstd{,} \hlkwc{fill}\hlstd{=}\hlstr{"purple"}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"Density"}\hlstd{)}\hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Method Of Moments (n = 10)"}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= dat1}\hlopt{$}\hlstd{x),} \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"green"}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.2}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_vline}\hlstd{(}\hlkwc{xintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat1}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)}
 
 \hlstd{mle_dat1} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{=} \hlkwd{rnorm}\hlstd{(}\hlkwc{n} \hlstd{= obs[}\hlnum{1}\hlstd{],} \hlkwc{mean} \hlstd{= mle1}\hlopt{$}\hlstd{par[}\hlnum{1}\hlstd{],} \hlkwc{sd} \hlstd{= mle1}\hlopt{$}\hlstd{par[}\hlnum{2}\hlstd{]))}
-\hlstd{mle1_p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=mle_dat1,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x))}\hlopt{+} \hlkwd{geom_histogram}\hlstd{(}\hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"blue"}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.5}\hlstd{,} \hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=..density..))}\hlopt{+} \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+} \hlkwd{geom_density}\hlstd{(}\hlkwc{alpha}\hlstd{=}\hlnum{.2}\hlstd{,} \hlkwc{fill}\hlstd{=}\hlstr{"purple"}\hlstd{)} \hlopt{+} \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"Density"}\hlstd{)}\hlopt{+} \hlkwd{ggtitle}\hlstd{(}\hlstr{"Maximum Likelihood Estimator (n = 10)"}\hlstd{)}  \hlopt{+} \hlkwd{geom_histogram}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= dat1}\hlopt{$}\hlstd{x,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"green"}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.2}\hlstd{)} \hlopt{+} \hlkwd{geom_vline}\hlstd{(}\hlkwc{xintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat1}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)}
+\hlstd{mle1_p} \hlkwb{<-} \hlkwd{ggplot}\hlstd{(}\hlkwc{data}\hlstd{=mle_dat1,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=x))}\hlopt{+} \hlkwd{geom_histogram}\hlstd{(}\hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"blue"}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.5}\hlstd{,} \hlkwd{aes}\hlstd{(}\hlkwc{y}\hlstd{=..density..))}\hlopt{+}
+  \hlkwd{geom_hline}\hlstd{(}\hlkwc{yintercept}\hlstd{=}\hlnum{0}\hlstd{)}\hlopt{+} \hlkwd{geom_density}\hlstd{(}\hlkwc{alpha}\hlstd{=}\hlnum{.2}\hlstd{,} \hlkwc{fill}\hlstd{=}\hlstr{"purple"}\hlstd{)} \hlopt{+}
+  \hlkwd{theme_bw}\hlstd{()}\hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"x"}\hlstd{)}\hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"Density"}\hlstd{)}\hlopt{+}
+  \hlkwd{ggtitle}\hlstd{(}\hlstr{"Maximum Likelihood Estimator (n = 10)"}\hlstd{)}  \hlopt{+}
+  \hlkwd{geom_histogram}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= dat1}\hlopt{$}\hlstd{x,} \hlkwc{y}\hlstd{=..density..),} \hlkwc{color}\hlstd{=}\hlstr{"black"}\hlstd{,} \hlkwc{fill} \hlstd{=} \hlstr{"green"}\hlstd{,} \hlkwc{alpha} \hlstd{=} \hlnum{0.2}\hlstd{)} \hlopt{+}
+  \hlkwd{geom_vline}\hlstd{(}\hlkwc{xintercept} \hlstd{=} \hlkwd{mean}\hlstd{(dat1}\hlopt{$}\hlstd{x),} \hlkwc{alpha}\hlstd{=}\hlnum{0.35}\hlstd{,} \hlkwc{color}\hlstd{=}\hlstr{"red"}\hlstd{,}\hlkwc{size}\hlstd{=}\hlnum{1}\hlstd{)}
 
 \hlstd{mom1_p} \hlopt{+} \hlstd{mle1_p}
 \end{alltt}

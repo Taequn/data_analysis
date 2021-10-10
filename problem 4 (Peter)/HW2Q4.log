@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.10)  10 OCT 2021 13:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.10)  10 OCT 2021 13:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**HW2.tex
-(./HW2.tex
+**HW2Q4.tex
+(./HW2Q4.tex
 LaTeX2e <2021-06-01> patch level 1
 L3 programming layer <2021-08-27>
 (/Users/fairuzishraque/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
@@ -330,8 +330,8 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 File: l3backend-pdftex.def 2021-08-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count283
 \l__pdf_internal_box=\box54
-) (./HW2.aux)
-\openout1 = `HW2.aux'.
+) (./HW2Q4.aux)
+\openout1 = `HW2Q4.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
 LaTeX Font Info:    ... okay on input line 65.
@@ -382,9 +382,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 65.
 LaTeX Info: Redefining \pageref on input line 65.
 LaTeX Info: Redefining \nameref on input line 65.
- (./HW2.out) (./HW2.out)
+ (./HW2Q4.out) (./HW2Q4.out)
 \@outlinefile=\write3
-\openout3 = `HW2.out'.
+\openout3 = `HW2Q4.out'.
 
 
 *geometry* driver: auto-detecting
@@ -395,15 +395,15 @@ LaTeX Info: Redefining \nameref on input line 65.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(36.135pt, 542.02501pt, 36.135pt)
-* v-part:(T,H,B)=(36.135pt, 722.7pt, 36.135pt)
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=542.02501pt
-* \textheight=722.7pt
-* \oddsidemargin=-36.135pt
-* \evensidemargin=-36.135pt
-* \topmargin=-73.135pt
+* \textwidth=469.75502pt
+* \textheight=650.43001pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-37.0pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=10.0pt
@@ -436,210 +436,267 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/Users/fairuzishraque/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex
 .map}]
-Underfull \hbox (badness 10000) in paragraph at lines 108--113
+Underfull \hbox (badness 10000) in paragraph at lines 100--106
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 114--117
+Underfull \hbox (badness 10000) in paragraph at lines 100--106
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 143--145
+Underfull \hbox (badness 10000) in paragraph at lines 118--123
 
  []
 
-Package color Info: Redefining color shadecolor on input line 159.
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--131
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 134--139
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 142--151
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 142--151
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 142--151
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 142--151
+
+ []
+
+Package color Info: Redefining color shadecolor on input line 155.
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 163.
-LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 
-163.
-(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/omscmtt.fd
-File: omscmtt.fd 
-)
-LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 163.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 157.
 
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 177--180
-
- []
-
-Package color Info: Redefining color shadecolor on input line 199.
-
-Underfull \hbox (badness 10000) in paragraph at lines 227--230
-
- []
-
-Package color Info: Redefining color shadecolor on input line 236.
-<figure/unnamed-chunk-3-1.pdf, id=59, 433.62pt x 252.945pt>
-File: figure/unnamed-chunk-3-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-3-1.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-3-1.pdf  used on input line 255.
-(pdftex.def)             Requested size: 433.61894pt x 252.95595pt.
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 265--268
-
- []
-
-Package color Info: Redefining color shadecolor on input line 273.
-<figure/unnamed-chunk-4-1.pdf, id=71, 433.62pt x 252.945pt>
-File: figure/unnamed-chunk-4-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-4-1.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-4-1.pdf  used on input line 291.
-(pdftex.def)             Requested size: 433.61894pt x 252.95595pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 269--297
-
- []
-
-[4pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.298 
-       <./figure/unnamed-chunk-3-1.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 303--307
-
+Overfull \hbox (40.9771pt too wide) in paragraph at lines 160--160
+[]              []\OT1/cmtt/m/n/10 size[][]=[][]1[][],[]            []\OT1/cmtt
+/m/it/10 #number of trials (size=1 for a Bernoulli distribution)[][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 308--309
+Overfull \hbox (40.9771pt too wide) in paragraph at lines 188--188
+[]              []\OT1/cmtt/m/n/10 size[][]=[][]1[][],[]            []\OT1/cmtt
+/m/it/10 #number of trials (size=1 for a Bernoulli distribution)[][] 
+ []
+
+
+Overfull \hbox (40.9771pt too wide) in paragraph at lines 216--216
+[]              []\OT1/cmtt/m/n/10 size[][]=[][]1[][],[]            []\OT1/cmtt
+/m/it/10 #number of trials (size=1 for a Bernoulli distribution)[][] 
+ []
+
+
+Overfull \hbox (40.9771pt too wide) in paragraph at lines 244--244
+[]              []\OT1/cmtt/m/n/10 size[][]=[][]1[][],[]            []\OT1/cmtt
+/m/it/10 #number of trials (size=1 for a Bernoulli distribution)[][] 
+ []
+
+
+Overfull \hbox (40.9771pt too wide) in paragraph at lines 272--272
+[]                  []\OT1/cmtt/m/n/10 size[][]=[][]1[][],[]        []\OT1/cmtt
+/m/it/10 #number of trials (size=1 for a Bernoulli distribution)[][] 
+ []
+
+
+Overfull \hbox (40.9771pt too wide) in paragraph at lines 300--300
+[]                   []\OT1/cmtt/m/n/10 size[][]=[][]1[][],[]       []\OT1/cmtt
+/m/it/10 #number of trials (size=1 for a Bernoulli distribution)[][] 
+ []
+
+
+Overfull \hbox (40.9771pt too wide) in paragraph at lines 328--328
+[]                   []\OT1/cmtt/m/n/10 size[][]=[][]1[][],[]       []\OT1/cmtt
+/m/it/10 #number of trials (size=1 for a Bernoulli distribution)[][] 
+ []
+
+
+Overfull \hbox (40.9771pt too wide) in paragraph at lines 356--356
+[]                    []\OT1/cmtt/m/n/10 size[][]=[][]1[][],[]      []\OT1/cmtt
+/m/it/10 #number of trials (size=1 for a Bernoulli distribution)[][] 
+ []
+
+[2] [3] [4] [5]
+Underfull \hbox (badness 10000) in paragraph at lines 454--460
 
  []
 
-Package color Info: Redefining color shadecolor on input line 311.
-[5pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.359 \end{kframe}
-                   <./figure/unnamed-chunk-4-1.pdf>]
-Package color Info: Redefining color shadecolor on input line 365.
-<figure/unnamed-chunk-5-1.pdf, id=95, 433.62pt x 614.295pt>
-File: figure/unnamed-chunk-5-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-5-1.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-5-1.pdf  used on input line 366.
-(pdftex.def)             Requested size: 433.61894pt x 614.3216pt.
- [6]
-Underfull \hbox (badness 10000) in paragraph at lines 372--373
 
- []
-
-[7pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.376 \end{enumerate}
-                      <./figure/unnamed-chunk-5-1.pdf>] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 447--452
+Underfull \hbox (badness 10000) in paragraph at lines 454--460
 
  []
 
 Package color Info: Redefining color shadecolor on input line 466.
+[6]
+Overfull \hbox (12.99121pt too wide) in paragraph at lines 472--473
+[]\OT1/cmtt/m/it/10 ## -- Attaching packages ----------------------------------
+----- tidyverse 1.3.1 --[] 
+ []
+
+
+Overfull \hbox (11.52121pt too wide) in paragraph at lines 476--476
+[]\OT1/cmtt/m/it/10 ## -- Conflicts ------------------------------------------ 
+tidyverse[]conflicts() -- 
+ []
+
+LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 
+477.
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/omscmtt.fd
+File: omscmtt.fd 
+)
+LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 477.
+
+Overfull \hbox (161.4761pt too wide) in paragraph at lines 485--485
+[][]\OT1/cmtt/m/n/10 MOM.bernoulli[] []<-[] []function[][]([][]data[][])\OMS/cm
+sy/m/n/10 f[]          []\OT1/cmtt/m/it/10 #function to find the MOM Estimator 
+for p in a Bernoulli distribution[][] 
+ []
+
+
+Overfull \hbox (145.72624pt too wide) in paragraph at lines 494--494
+[]  []\OT1/cmtt/m/n/10 -[][]sum[][]([][]dbinom[][]([][]x[][]=data,[] []prob[][]
+=par,[] []size[][]=[][]1[][],[] []log[][]=[][]TRUE[][]))\OMS/cmsy/m/n/10 g[] []
+\OT1/cmtt/m/it/10 #Sum is negative, as we are looking for a min with optim[][] 
+
+ []
+
+
+Overfull \hbox (7.74126pt too wide) in paragraph at lines 539--539
+[]             []\OT1/cmtt/m/n/10 fill[] []=[] []"black"[][],[] []width[] []=[]
+ []0.01[][],[] []position[] []=[] []position_dodge[][]([][]width[] []=[] []0.9[
+][]))[][] 
+ []
+
+
+Overfull \hbox (7.74126pt too wide) in paragraph at lines 570--570
+[]             []\OT1/cmtt/m/n/10 fill[] []=[] []"black"[][],[] []width[] []=[]
+ []0.01[][],[] []position[] []=[] []position_dodge[][]([][]width[] []=[] []0.9[
+][]))[][] 
+ []
+
+
+Overfull \hbox (51.477pt too wide) in paragraph at lines 580--580
+[]                    []\OT1/cmtt/m/n/10 size[][]=[][]1[][],[]        []\OT1/cm
+tt/m/it/10 #number of trials (size=1 for a Bernoulli distribution)[][] 
+ []
+
+
+Overfull \hbox (51.477pt too wide) in paragraph at lines 601--601
+[]                    []\OT1/cmtt/m/n/10 size[][]=[][]1[][],[]        []\OT1/cm
+tt/m/it/10 #number of trials (size=1 for a Bernoulli distribution)[][] 
+ []
+
+[7]
+Underfull \vbox (badness 10000) detected at line 620
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 620
+ []
+
+[8]
+Package color Info: Redefining color shadecolor on input line 631.
+
+Overfull \hbox (40.9771pt too wide) in paragraph at lines 634--634
+[]                  []\OT1/cmtt/m/n/10 size[][]=[][]1[][],[]        []\OT1/cmtt
+/m/it/10 #number of trials (size=1 for a Bernoulli distribution)[][] 
+ []
+
+
+Overfull \hbox (51.477pt too wide) in paragraph at lines 655--655
+[]                    []\OT1/cmtt/m/n/10 size[][]=[][]1[][],[]        []\OT1/cm
+tt/m/it/10 #number of trials (size=1 for a Bernoulli distribution)[][] 
+ []
+
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 527--530
+Package color Info: Redefining color shadecolor on input line 685.
 
+Overfull \hbox (40.9771pt too wide) in paragraph at lines 688--688
+[]                  []\OT1/cmtt/m/n/10 size[][]=[][]1[][],[]        []\OT1/cmtt
+/m/it/10 #number of trials (size=1 for a Bernoulli distribution)[][] 
  []
 
-LaTeX Font Info:    Trying to load font information for OML+cmr on input line 5
-31.
-(/Users/fairuzishraque/Library/TinyTeX/texmf-dist/tex/latex/base/omlcmr.fd
-File: omlcmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 531.
-Package color Info: Redefining color shadecolor on input line 549.
-Package color Info: Redefining color shadecolor on input line 582.
-<figure/unnamed-chunk-7-1.pdf, id=151, 542.025pt x 397.485pt>
-File: figure/unnamed-chunk-7-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-7-1.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-7-1.pdf  used on input line 583.
-(pdftex.def)             Requested size: 542.02367pt x 397.49614pt.
 
+Overfull \hbox (51.477pt too wide) in paragraph at lines 709--709
+[]                    []\OT1/cmtt/m/n/10 size[][]=[][]1[][],[]        []\OT1/cm
+tt/m/it/10 #number of trials (size=1 for a Bernoulli distribution)[][] 
+ []
+
+Package color Info: Redefining color shadecolor on input line 739.
 [10]
-Package color Info: Redefining color shadecolor on input line 600.
- [11pdfTeX warning (ext4): destination with the same identifier (name{figure.4}
-) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.623 \end{kframe}
-                   <./figure/unnamed-chunk-7-1.pdf>]
-Package color Info: Redefining color shadecolor on input line 632.
-<figure/unnamed-chunk-8-1.pdf, id=173, 542.025pt x 397.485pt>
-File: figure/unnamed-chunk-8-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-8-1.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-8-1.pdf  used on input line 633.
-(pdftex.def)             Requested size: 542.02367pt x 397.49614pt.
-Package color Info: Redefining color shadecolor on input line 652.
- [12pdfTeX warning (ext4): destination with the same identifier (name{figure.5}
-) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.652 ....969, 0.969}\color{fgcolor}\begin{kframe}
-                                                   <./figure/unnamed-chunk-8-1.
-pdf>]
-Overfull \hbox (29.97044pt too wide) in paragraph at lines 679--679
-[]  []\OT1/cmtt/m/n/10 ggtitle[]([]"Bernoulli Distribution"[],subtitle = []past
-e[]([]"Sample Size ="[], sample size, []", Prob ="[], prob))[] 
+Overfull \hbox (40.9771pt too wide) in paragraph at lines 742--742
+[]                  []\OT1/cmtt/m/n/10 size[][]=[][]1[][],[]        []\OT1/cmtt
+/m/it/10 #number of trials (size=1 for a Bernoulli distribution)[][] 
  []
 
-<figure/histogram.pdf, id=188, 399.4925pt x 650.43pt>
-File: figure/histogram.pdf Graphic file (type pdf)
-<use figure/histogram.pdf>
-Package pdftex.def Info: figure/histogram.pdf  used on input line 705.
-(pdftex.def)             Requested size: 361.36865pt x 614.34201pt.
-[13] [14pdfTeX warning (ext4): destination with the same identifier (name{figur
-e.6}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.712 	
-        <./figure/histogram.pdf>] [15] (./HW2.bbl
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 4
-2.
 
-(/Users/fairuzishraque/Library/TinyTeX/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 42.
-)
-[16] (./HW2.aux)
-Package rerunfilecheck Info: File `HW2.out' has not changed.
+Overfull \hbox (51.477pt too wide) in paragraph at lines 763--763
+[]                    []\OT1/cmtt/m/n/10 size[][]=[][]1[][],[]        []\OT1/cm
+tt/m/it/10 #number of trials (size=1 for a Bernoulli distribution)[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 787--792
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 787--792
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 787--792
+
+ []
+
+[11]
+No file HW2Q4.bbl.
+(./HW2Q4.aux)
+Package rerunfilecheck Info: File `HW2Q4.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 9469 strings out of 480559
- 141833 string characters out of 5901862
- 480831 words of memory out of 5000000
- 26870 multiletter control sequences out of 15000+600000
- 407343 words of font info for 43 fonts, out of 8000000 for 9000
+ 9275 strings out of 480559
+ 138219 string characters out of 5901862
+ 495155 words of memory out of 5000000
+ 26749 multiletter control sequences out of 15000+600000
+ 406119 words of font info for 39 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,16n,66p,812b,585s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,13n,66p,427b,544s stack positions out of 5000i,500n,10000p,200000b,80000s
 </Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmbx10.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmbx12.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmex10.pfb></Users/fairuzishraque/Library/TinyTeX
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></Users/fairuzishraque/L
-ibrary/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/fai
-ruzishraque/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb
-></Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmi7.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr5.pfb></Users/fairuzishraque/Library/TinyTeX/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/fairuzishraque/Library/T
-inyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/fairuzishra
-que/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></Users
-/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7
-.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmti10.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmtt10.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dis
-t/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on HW2.pdf (16 pages, 870141 bytes).
+blic/amsfonts/cm/cmex10.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmitt10.pfb></Users/fairuzishraque/Library/TinyTe
+X/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/fairuzishraque/L
+ibrary/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/fair
+uzishraque/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+</Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr7.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy7.pfb></Users/fairuzishraque/Library/TinyTeX/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></Users/fairuzishraque/Library
+/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on HW2Q4.pdf (11 pages, 155980 bytes).
 PDF statistics:
- 311 PDF objects out of 1000 (max. 8388607)
- 246 compressed objects within 3 object streams
- 82 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 131 PDF objects out of 1000 (max. 8388607)
+ 95 compressed objects within 1 object stream
+ 28 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

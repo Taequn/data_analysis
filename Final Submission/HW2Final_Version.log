@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.10)  10 OCT 2021 13:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.10)  10 OCT 2021 13:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**HW2.tex
-(./HW2.tex
+**HW2Final_Version.tex
+(./HW2Final_Version.tex
 LaTeX2e <2021-06-01> patch level 1
 L3 programming layer <2021-08-27>
 (/Users/fairuzishraque/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
@@ -330,8 +330,8 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 File: l3backend-pdftex.def 2021-08-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count283
 \l__pdf_internal_box=\box54
-) (./HW2.aux)
-\openout1 = `HW2.aux'.
+) (./HW2Final_Version.aux)
+\openout1 = `HW2Final_Version.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
 LaTeX Font Info:    ... okay on input line 65.
@@ -382,9 +382,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 65.
 LaTeX Info: Redefining \pageref on input line 65.
 LaTeX Info: Redefining \nameref on input line 65.
- (./HW2.out) (./HW2.out)
+ (./HW2Final_Version.out) (./HW2Final_Version.out)
 \@outlinefile=\write3
-\openout3 = `HW2.out'.
+\openout3 = `HW2Final_Version.out'.
 
 
 *geometry* driver: auto-detecting
@@ -595,7 +595,7 @@ e.6}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.712 	
-        <./figure/histogram.pdf>] [15] (./HW2.bbl
+        <./figure/histogram.pdf>] [15] (./HW2Final_Version.bbl
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 4
 2.
 
@@ -605,18 +605,18 @@ File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 42.
 )
-[16] (./HW2.aux)
-Package rerunfilecheck Info: File `HW2.out' has not changed.
+[16] (./HW2Final_Version.aux)
+Package rerunfilecheck Info: File `HW2Final_Version.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
  9469 strings out of 480559
- 141833 string characters out of 5901862
- 480831 words of memory out of 5000000
+ 142106 string characters out of 5901862
+ 480863 words of memory out of 5000000
  26870 multiletter control sequences out of 15000+600000
  407343 words of font info for 43 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,16n,66p,812b,585s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,16n,66p,825b,585s stack positions out of 5000i,500n,10000p,200000b,80000s
 </Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmbx10.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmbx12.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/f
@@ -636,7 +636,7 @@ que/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></Users
 nts/cm/cmti10.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmtt10.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dis
 t/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on HW2.pdf (16 pages, 870141 bytes).
+Output written on HW2Final_Version.pdf (16 pages, 870338 bytes).
 PDF statistics:
  311 PDF objects out of 1000 (max. 8388607)
  246 compressed objects within 3 object streams

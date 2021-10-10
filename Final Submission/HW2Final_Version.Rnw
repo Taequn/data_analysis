@@ -601,7 +601,7 @@ y4 <- buildingPlot2(plot_df[8], 0.6, 1000)
   % when running library(ggmap) or library(patchwork) which would otherwise cause
   % an error because Sweave is expecting just a graph (not a graph + text)
   \includegraphics[width=5in, height=8.5in]{figure/histogram.pdf}
-    \caption{(Top row) Samples of 10, 25, 100, 1000 for the Bernoulli distribution with p = 0.4. (Bottom row) Samples of 10, 25, 100, 1000 for the Bernoulli distribution with p = 0.6. In each plot the red lines indicate the true PMF function of the corresponding Bernoulli distribution. Notice that the y-axis indicates the prportional frequency in the histograms}
+    \caption{(Left Column) Samples of 10, 25, 100, 1000 for the Bernoulli distribution with p = 0.4. (Right Column) Samples of 10, 25, 100, 1000 for the Bernoulli distribution with p = 0.6. In each plot the red lines indicate the true PMF function of the corresponding Bernoulli distribution. Notice that the y-axis indicates the prportional frequency in the histograms}
     \label{P3fig_3} %we can now reference P3fig_1
   \end{center}
 \end{figure}

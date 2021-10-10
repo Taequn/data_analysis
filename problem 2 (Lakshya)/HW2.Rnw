@@ -102,14 +102,15 @@ each other complete the homework in collaboration.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Provide the mean, standard deviation, skewness, and kurtosis of the PDF.
   Ensure to interpret each.
-    \\
-    \\E(X) = mu
-    \\var(X) = sigma^2
-    \\skew(X) = 0
-    \\The population skewness of the PDF is 0, which indicates that the Normal distribution is symmetric (with line of symmetry at the mean).
-    \\ kurt(X) = 0
-    \\ The population excess kurtosis of the PDF is 0, which indicates that the
-    Normal distribution is mesokurtic.
+  
+\begin{align*}
+  E(x) &= \mu &\text{\textbf{[Mean]}}\\
+var(X) &= \sigma ^{2} &\text{\textbf{[Variance]}}\\
+skew(X) &= 0 &\text{\textbf{[Skewness]}}\\
+kurt(X) &= 0 &\text{\textbf{[Kurtosis]}}
+\end{align*}
+
+The population skewness of the PDF is 0, which indicates that the Normal distribution is symmetric (with line of symmetry at the mean). The population excess kurtosis of the PDF is 0, which indicates that the Normal distribution is mesokurtic.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (b)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -117,7 +118,7 @@ each other complete the homework in collaboration.
   two sets of parameter(s). Calculate the sample mean, standard deviation, 
   skewness, and kurtosis. Interpret the results.
   
-  <<>>=
+  <<message=FALSE, warning=FALSE>>=
   library(e1071)
   library(tidyverse)
   library(patchwork)
@@ -126,7 +127,8 @@ each other complete the homework in collaboration.
   
   <<>>=
   s1 <- data.frame(x = rnorm(n = obs[1], mean = 0, sd = 1))
-  s1_stats <- s1 %>% summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" = kurtosis(x))
+  s1_stats <- s1 %>% 
+    summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" = kurtosis(x))
   s1_stats
   @
   \textbf{Interpretation:}
@@ -134,15 +136,15 @@ each other complete the homework in collaboration.
   <<>>= 
   s1_stats$Mean
   @
-  \\ \textbf{Spread:} The average distance from the sample mean is - 
+  \textbf{Spread:} The average distance from the sample mean is - 
   <<>>= 
   s1_stats$SD
   @
-  \\ \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
+  \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
   <<>>=
   s1_stats$Skewness
   @
-  \\ Since skewness > 0, there are more observations for low values and fewer with high values.
+  Since skewness > 0, there are more observations for low values and fewer with high values.
   \\ Kurtosis describes how the peaked data is in relation to the Gaussian distribution (the bell-shaped curve). 
   <<>>= 
   s1_stats$`Excess Kurtosis`
@@ -158,20 +160,20 @@ each other complete the homework in collaboration.
   <<>>= 
   s2_stats$Mean
   @
-  \\ \textbf{Spread:} The average distance from the sample mean is - 
+  \textbf{Spread:} The average distance from the sample mean is - 
   <<>>= 
   s2_stats$SD
   @
-  \\ \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
+  \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
   <<>>=
   s2_stats$Skewness
   @
-  \\ Since skewness is slightly greater than 0, there are more observations for low values and fewer with high values. However, note that the skewness for this sample is closer to 0 than s1. 
+  Since skewness is slightly greater than 0, there are more observations for low values and fewer with high values. However, note that the skewness for this sample is closer to 0 than s1. 
   \\ Kurtosis describes how the peaked data is in relation to the Gaussian distribution (the bell-shaped curve). 
   <<>>= 
   s2_stats$`Excess Kurtosis`
   @
-  \\ Since the excess kurtosis < 0, it indicates that the data is platykurtic. However, note that the excess kurtosis for this sample is closer to 0 than s1. 
+  Since the excess kurtosis < 0, it indicates that the data is platykurtic. However, note that the excess kurtosis for this sample is closer to 0 than s1. 
   <<>>=
   s3 <- data.frame(x = rnorm(n = obs[3], mean = 0, sd = 1))
   s3_stats <- s3 %>% summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" = kurtosis(x))
@@ -182,20 +184,20 @@ each other complete the homework in collaboration.
   <<>>= 
   s3_stats$Mean
   @
-  \\ \textbf{Spread:} The average distance from the sample mean is - 
+  \textbf{Spread:} The average distance from the sample mean is - 
   <<>>= 
   s3_stats$SD
   @
-  \\ \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
+  \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
   <<>>=
   s3_stats$Skewness
   @
-  \\ Since skewness is slightly greater than 0, there are more observations for low values and fewer with high values. However, note that the skewness for this sample is closer to 0 than s2. 
+  Since skewness is slightly greater than 0, there are more observations for low values and fewer with high values. However, note that the skewness for this sample is closer to 0 than s2. 
   \\ Kurtosis describes how the peaked data is in relation to the Gaussian distribution (the bell-shaped curve). 
   <<>>= 
   s3_stats$`Excess Kurtosis`
   @
-  \\ Since the excess kurtosis < 0, it indicates that the data is platykurtic. However, note that the excess kurtosis for this sample is closer to 0 than s2. 
+  Since the excess kurtosis < 0, it indicates that the data is platykurtic. However, note that the excess kurtosis for this sample is closer to 0 than s2. 
   <<>>=
   s4 <- data.frame(x = rnorm(n = obs[4], mean = 0, sd = 1))
   s4_stats <- s4 %>% summarize(Mean = mean(x), SD = sd(x), Skewness = skewness(x), "Excess Kurtosis" = kurtosis(x))
@@ -205,22 +207,22 @@ each other complete the homework in collaboration.
   <<>>= 
   s4_stats$Mean
   @
-  \\ \textbf{Spread:} The average distance from the sample mean is - 
+  \textbf{Spread:} The average distance from the sample mean is - 
   <<>>= 
   s4_stats$SD
   @
-  \\ \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
+  \textbf{Skewness:} The skewness of a dataset describes the symmetry of a distribution.
   <<>>=
   s4_stats$Skewness
   @
-  \\ Since skewness is almost 0 (slightly greater), the distribution is almost symmetric. 
+  Since skewness is almost 0 (slightly greater), the distribution is almost symmetric. 
   \\ Kurtosis describes how the peaked data is in relation to the Gaussian distribution (the bell-shaped curve). 
   <<>>= 
   s4_stats$`Excess Kurtosis`
   @
-  \\ Since the excess kurtosis is almost 0 (slightly lesser), it indicates that the data is almost mesokurtic.
+  Since the excess kurtosis is almost 0 (slightly lesser), it indicates that the data is almost mesokurtic.
   
-  \\ \textbf{As the sample size increases, the distribution moves towards becoming more Normal - the mean tends to equal 0, the SD tends to equal 1, and both the skewness and excess kurtosis tend to equal 0.}
+  \textbf{As the sample size increases, the distribution moves towards becoming more Normal - the mean tends to equal 0, the SD tends to equal 1, and both the skewness and excess kurtosis tend to equal 0.}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (c)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -268,10 +270,21 @@ each other complete the homework in collaboration.
   distribution, and superimpose the true distribution in both.
   <<>>=
   mom_dat1 <- data.frame(x = rnorm(n = obs[1], mean = mom1$x[1], sd = mom1$x[2]))
-  mom1_p <- ggplot(data=mom_dat1, aes(x=x))+ geom_histogram(color="black", fill = "blue", alpha = 0.5, aes(y=..density..))+ geom_hline(yintercept=0)+ geom_density(alpha=.2, fill="purple") + theme_bw()+ xlab("x")+ ylab("Density")+ ggtitle("Method Of Moments (n = 10)") + geom_histogram(aes(x = dat1$x), color="black", fill = "green", alpha = 0.2) + geom_vline(xintercept = mean(dat1$x), alpha=0.35, color="red",size=1)
+  mom1_p <- ggplot(data=mom_dat1, aes(x=x))+ 
+    geom_histogram(color="black", fill = "blue", alpha = 0.5, aes(y=..density..))+ 
+    geom_hline(yintercept=0)+ geom_density(alpha=.2, fill="purple") + 
+    theme_bw()+ xlab("x")+ ylab("Density")+ 
+    ggtitle("Method Of Moments (n = 10)") + 
+    geom_histogram(aes(x = dat1$x), color="black", fill = "green", alpha = 0.2) + 
+    geom_vline(xintercept = mean(dat1$x), alpha=0.35, color="red",size=1)
   
   mle_dat1 <- data.frame(x = rnorm(n = obs[1], mean = mle1$par[1], sd = mle1$par[2]))
-  mle1_p <- ggplot(data=mle_dat1, aes(x=x))+ geom_histogram(color="black", fill = "blue", alpha = 0.5, aes(y=..density..))+ geom_hline(yintercept=0)+ geom_density(alpha=.2, fill="purple") + theme_bw()+ xlab("x")+ ylab("Density")+ ggtitle("Maximum Likelihood Estimator (n = 10)")  + geom_histogram(aes(x = dat1$x, y=..density..), color="black", fill = "green", alpha = 0.2) + geom_vline(xintercept = mean(dat1$x), alpha=0.35, color="red",size=1)
+  mle1_p <- ggplot(data=mle_dat1, aes(x=x))+ geom_histogram(color="black", fill = "blue", alpha = 0.5, aes(y=..density..))+ 
+    geom_hline(yintercept=0)+ geom_density(alpha=.2, fill="purple") + 
+    theme_bw()+ xlab("x")+ ylab("Density")+ 
+    ggtitle("Maximum Likelihood Estimator (n = 10)")  + 
+    geom_histogram(aes(x = dat1$x, y=..density..), color="black", fill = "green", alpha = 0.2) + 
+    geom_vline(xintercept = mean(dat1$x), alpha=0.35, color="red",size=1)
   
   mom1_p + mle1_p
   
