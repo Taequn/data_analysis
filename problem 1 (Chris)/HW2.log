@@ -1,15 +1,11 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.8.27)  6 OCT 2021 23:14
-=======
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.8.26)  9 OCT 2021 20:19
->>>>>>> 3c55f7e818290c5c7f5e5c6226adb9db8090f182
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.10)  10 OCT 2021 11:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **HW2.tex
 (./HW2.tex
 LaTeX2e <2021-06-01> patch level 1
-L3 programming layer <2021-07-12>
+L3 programming layer <2021-08-27>
 (/Users/fairuzishraque/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/02/12 v1.4n Standard LaTeX document class
 (/Users/fairuzishraque/Library/TinyTeX/texmf-dist/tex/latex/base/size10.clo
@@ -438,19 +434,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 [1
 
-<<<<<<< HEAD
 {/Users/fairuzishraque/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex
 .map}]
-Package color Info: Redefining color shadecolor on input line 131.
-=======
-{/Users/taequn/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Underfull \hbox (badness 10000) in paragraph at lines 108--116
 
  []
 
 Package color Info: Redefining color shadecolor on input line 157.
 [2]
->>>>>>> 3c55f7e818290c5c7f5e5c6226adb9db8090f182
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 161.
 LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 
@@ -518,14 +509,13 @@ Package rerunfilecheck Info: File `HW2.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
-<<<<<<< HEAD
- 9349 strings out of 480502
- 139561 string characters out of 5898668
- 483806 words of memory out of 5000000
- 26841 multiletter control sequences out of 15000+600000
+ 9367 strings out of 480559
+ 139738 string characters out of 5901862
+ 480575 words of memory out of 5000000
+ 26794 multiletter control sequences out of 15000+600000
  406724 words of font info for 41 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,7n,66p,328b,575s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,7n,66p,624b,575s stack positions out of 5000i,500n,10000p,200000b,80000s
 </Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmbx10.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmbx12.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/f
@@ -543,36 +533,9 @@ que/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></Users
 /fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7
 .pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmti10.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmtt10.pfb>
-Output written on HW2.pdf (10 pages, 696446 bytes).
-=======
- 9369 strings out of 480502
- 138721 string characters out of 5898668
- 481648 words of memory out of 5000000
- 26851 multiletter control sequences out of 15000+600000
- 406724 words of font info for 41 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 60i,7n,66p,624b,575s stack positions out of 5000i,500n,10000p,200000b,80000s
-</Users/taequn/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx
-10.pfb></Users/taequn/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmbx12.pfb></Users/taequn/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmex10.pfb></Users/taequn/Library/TinyTeX/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmitt10.pfb></Users/taequn/Library/TinyTeX/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi10.pfb></Users/taequn/Library/TinyTeX/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmmi5.pfb></Users/taequn/Library/TinyTeX/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi7.pfb></Users/taequn/Library/TinyTeX/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr10.pfb></Users/taequn/Library/TinyTeX/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr5.pfb></Users/taequn/Library/TinyTeX/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/taequn/Library/TinyTeX/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/taequn/Library/TinyT
-eX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></Users/taequn/Library/T
-inyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/taequn/Libra
-ry/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></Users/taequn/
-Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></Users/ta
-equn/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-
-Output written on HW2.pdf (10 pages, 719804 bytes).
->>>>>>> 3c55f7e818290c5c7f5e5c6226adb9db8090f182
+/public/amsfonts/cm/cmtt10.pfb></Users/fairuzishraque/Library/TinyTeX/texmf-dis
+t/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on HW2.pdf (10 pages, 719863 bytes).
 PDF statistics:
  236 PDF objects out of 1000 (max. 8388607)
  184 compressed objects within 2 object streams
