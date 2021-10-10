@@ -353,7 +353,7 @@ We see that Figure \ref{plot2} is a graph of CDF function with different sets of
                                                   \hlkwc{subtitle} \hlstd{=} \hlstr{"mean=-2, sd=4"}\hlstd{)}
         \hlstd{y4}\hlkwb{<-}\hlkwd{buildingPlot}\hlstd{(sample.df[}\hlnum{8}\hlstd{],} \hlopt{-}\hlnum{2}\hlstd{,} \hlnum{4}\hlstd{)}\hlopt{+}\hlkwd{labs}\hlstd{(}\hlkwc{title}\hlstd{=}\hlstr{"Sample=1000"}\hlstd{,}
                                                   \hlkwc{subtitle} \hlstd{=} \hlstr{"mean=-2, sd=4"}\hlstd{)}
-        \hlcom{#(x1|x2|x3|x4)/(y1|y2|y3|y4)}
+
         \hlstd{(x1}\hlopt{+}\hlstd{y1)}\hlopt{/}\hlstd{(x2}\hlopt{+}\hlstd{y2)}\hlopt{/}\hlstd{(x3}\hlopt{+}\hlstd{y3)}\hlopt{/}\hlstd{(x4}\hlopt{+}\hlstd{y4)}
 \end{alltt}
 \end{kframe}
@@ -374,7 +374,9 @@ As we can see, the bigger sample we have, the closer the resulting histogram is 
   \item Our PDF is such a good fit for the data because we are using \texttt{rnorm()} function that randomly generates numbers for the normal distribution. 
   \item A good fit can also be explained via Central Limit Theorem: as our sample enlarges, the distribution of our random variable follows a normal distribution.
 \end{enumerate}
-  
+
+\textbf{Checker Response (Ishraque):} After our group meeting on Thursday I analyzed Chris' work and gave a few suggestions. I suggested some edits to the formatting of equations and descriptions in question 1. Next, I suggested some edits to the aesthetics of the plots of PDF and CDF and the histograms for the sections d, e,and f. These proposals were accepted promptly since they would improve the overall readability of the code and the solutions. I also suggested that for problem 1(f), he switches his method of plotting to a function based  method instead. In general the code and the initial responses were already very well thought our and formatted and further edits only helped make it more concsise and clear.
+
 \end{enumerate}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -528,7 +530,7 @@ The R packages Tidyverse \citep{tidyverse} and Patchwork \citep{Patchwork} will 
 	to find the median based on our PMF to confirm that your numerical approach is
 	correct.\\ 
 	
-	\textbf{Solution:} In the Bernoulli distribution, where p is the probability parameter and $\mathrm{q = 1 - p}$, when p\textgreater q, there are more "successes" (that is when $X$ is 1) than failure (when $X$ is 0), so the median must also be a success. Similar, when q\textgreater p, there are more "failures" than "successes", hence resulting in the median being 0. When $\mathrm{p = q}$, there is an equal probability of $X$ being 0 or 1, thus the median is ambiguous. Therefore, the median for when $\mathrm{p = 0.4}$ is zero and the median for when $\mathrm{p = 0.6}$ is 1. Further inquiry \textbf{(QUOTE: Wikipedia)} suggests that this really is the case for the median of the Bernoulli distribution:\
+	\textbf{Solution:} In the Bernoulli distribution, where p is the probability parameter and $\mathrm{q = 1 - p}$, when p\textgreater q, there are more "successes" (that is when $X$ is 1) than failure (when $X$ is 0), so the median must also be a success. Similar, when q\textgreater p, there are more "failures" than "successes", hence resulting in the median being 0. When $\mathrm{p = q}$, there is an equal probability of $X$ being 0 or 1, thus the median is ambiguous. Therefore, the median for when $\mathrm{p = 0.4}$ is zero and the median for when $\mathrm{p = 0.6}$ is 1. Further inquiry \citep{BernoulliWiki} suggests that this really is the case for the median of the Bernoulli distribution:\
 	\begin{align*}
 	Median=\begin{cases}
           0 \quad &\text{if} \, p < 1/2\\
@@ -709,6 +711,8 @@ y4 <- \hlkwd{buildingPlot2}(plot_df[8], 0.6, 1000)
 \end{figure}
 	\end{enumerate}
 	For each of the cases of p (see the first and the second row of plots in Figure \ref{P3fig_3}), the more we sample, the better our histograms agree with the the true PMF of the Bernoulli distribution. These histograms above represent only one variation of the random sampling done on the Bernoulli distribution. While the histograms for n=1000 does not stray much from the PMF as we take newere samples, the smaller samples (10, 25) vary significantly from the PMF. From sample to sample, the results of the histograms vary (in terms of agreement with the true PMF). The larger the size of the sample, the more consistent is its agreement with the true PMF. 
+	
+\textbf{Checker Response (Chris):}After having a group meeting on Thursday, I analyzed Ishraque's work and gave a couple of suggestions on the best way to improve his part of the assignment. First off, I suggested putting his separate data frames into one list instead: it would clean up his code and make it more readable. Also, instead of making new plots for each variable he's creating, I suggested writing a function that would take in variables and give him a plot as an output. This would improve the overall readability of the code. The team agreed with this decision, and we decided to implement them!
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
