@@ -1,8 +1,42 @@
 \begin{thebibliography}{}
 
+\bibitem[Cthaeh, 2020]{prob_world}
+Cthaeh, T. (2020).
+\newblock The bernoulli distribution: Intuitive understanding.
+
+\bibitem[Forbes et~al., 2011]{forbes_stat}
+Forbes, C., Evans, M., Hastings, N., and Peacock, B. (2011).
+\newblock {\em Statistical {Distributions}}.
+\newblock John Wiley \& Sons, Inc., Hoboken, New Jersey.
+
+\bibitem[Kleinbaum and Klein, 2010]{logistic_regression}
+Kleinbaum, D.~G. and Klein, M. (2010).
+\newblock Introduction to {Logistic} {Regression}.
+\newblock In Kleinbaum, D.~G. and Klein, M., editors, {\em Logistic
+  {Regression}: {A} {Self}-{Learning} {Text}}, Statistics for {Biology} and
+  {Health}, pages 1--39. Springer, New York, NY.
+
+\bibitem[Pedersen, 2020]{Patchwork}
+Pedersen, T.~L. (2020).
+\newblock {\em patchwork: The Composer of Plots}.
+\newblock R package version 1.1.1.
+
 \bibitem[{R Core Team}, 2021]{R21}
 {R Core Team} (2021).
 \newblock {\em R: A Language and Environment for Statistical Computing}.
 \newblock R Foundation for Statistical Computing, Vienna, Austria.
+
+\bibitem[Vukadin et~al., 2021]{bernoulli_brilliant}
+Vukadin, O., Lee, S., Williams, C., and Khim, J. (2021).
+\newblock Bernoulli distribution {\textbar} {B}rilliant.
+
+\bibitem[Wickham et~al., 2019]{tidyverse}
+Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L.~D., François, R.,
+  Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen, T.~L.,
+  Miller, E., Bache, S.~M., Müller, K., Ooms, J., Robinson, D., Seidel, D.~P.,
+  Spinu, V., Takahashi, K., Vaughan, D., Wilke, C., Woo, K., and Yutani, H.
+  (2019).
+\newblock Welcome to the {tidyverse}.
+\newblock {\em Journal of Open Source Software}, 4(43):1686.
 
 \end{thebibliography}

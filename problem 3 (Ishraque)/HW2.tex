@@ -219,7 +219,7 @@ each other complete the homework in collaboration.
   what's the history of the distribution, why was it created and named? What are
   some exciting applications of this distribution? Cite all of your sources.\\
   
-\textbf{Solution:} The discrete distribution we have chosen is the Bernoulli distribution. The Bernoulli distribution  is a discrete probability distribution for a Bernoulli trial - a probabilistic experiment that can have one of two outcomes, success $\mathrm{(x = 1)}$ and failure $\mathrm{(x = 0)}$, and in which the probability fo success is $p$. Often $p$  is called the Bernoulli probability parameter \textbf{(QUOTE: Statistical Distributions fourth edition, Catherine forbes)}. In Bernoulli distribution, the random variable $X$ can have only one of two values: 0 or 1. This means that the support of our discrete random variable is the set $\mathrm{{0, 1}}$. This distribution can be summarized as follows:
+\textbf{Solution:} The discrete distribution we have chosen is the Bernoulli distribution. The Bernoulli distribution  is a discrete probability distribution for a Bernoulli trial - a probabilistic experiment that can have one of two outcomes, success $\mathrm{(x = 1)}$ and failure $\mathrm{(x = 0)}$, and in which the probability fo success is $p$. Often $p$  is called the Bernoulli probability parameter \citep{forbes_stat}. In Bernoulli distribution, the random variable $X$ can have only one of two values: 0 or 1. This means that the support of our discrete random variable is the set $\mathrm{\{0,1\}}$. This distribution can be summarized as follows:
 \begin{align*}
   p               &\in (0,1)                                                                               &\text{\textbf{[Parameter]}}\\
   \mathcal{X}     & = \{x: x \in \{0,1\}\}                                                                   &\text{\textbf{[Support]}}\\
@@ -227,7 +227,7 @@ each other complete the homework in collaboration.
   F_{X}(x \mid p) & = P(X \leq \left\lfloor x \right\rfloor)\\
                   & = [(1-p)I(\left\lfloor x \right\rfloor = 0)] + I(\left\lfloor x \right\rfloor \geq 1)  &\text{\textbf{[CDF]}}\\
 \end{align*}
-Simply, the Bernoulli distribution can be thought of as a model for the set of possible outcomes of any single experiment that asks a yes-no question \textbf{(QUOTE:https://brilliant.org/wiki/bernoulli-distribution/)}. This distribution is named after the 17th century Swiss mathematician Jacob Bernoulli, because he was the one who explicitly defined the concept of Bernoulli trial (in his book \emph{Ars Conjectandi}) described above. Bernoulli distribution serves as a building block for discrete distributions which model Bernoulli trials, such as Binomial distribution and geometric distribution \textbf{(https://www.probabilisticworld.com/bernoulli-distribution-intuitive-understanding/)}. Logistic regression, a widely used classification model that models a binary outcome, also takes advantage of the Bernoulli distribution.
+Simply, the Bernoulli distribution can be thought of as a model for the set of possible outcomes of any single experiment that asks a yes-no question \citep{bernoulli_brilliant}. This distribution is named after the 17th century Swiss mathematician Jacob Bernoulli, because he was the one who explicitly defined the concept of Bernoulli trial (in his book \emph{Ars Conjectandi}) described above. Bernoulli distribution serves as a building block for discrete distributions which model Bernoulli trials, such as Binomial distribution and geometric distribution \citep{prob_world}. Logistic regression, a widely used classification model that models a binary outcome, also takes advantage of the Bernoulli distribution \citep{logistic_regression}.
 
 Since the Bernoulli distribution is not cataloged by R, we have to introduce it into our calculations with the  following functions:
 
@@ -262,6 +262,7 @@ Since the Bernoulli distribution is not cataloged by R, we have to introduce it 
 \end{alltt}
 \end{kframe}
 \end{knitrout}
+The R packages Tidyverse \citep{tidyverse} and Patchwork \citep{Patchwork} will be used in all of the following plots in question 3.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (b)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -316,7 +317,7 @@ Since the Bernoulli distribution is not cataloged by R, we have to introduce it 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{library}\hlstd{(ggplot2)}
+\hlkwd{library}\hlstd{(tidyverse)}
 \hlkwd{library}\hlstd{(patchwork)}
 \hlstd{plotbernPMF} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{prob}\hlstd{)\{} \hlcom{# Pass in the success probability}
   \hlstd{ggdat} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),}
@@ -355,7 +356,7 @@ Since the Bernoulli distribution is not cataloged by R, we have to introduce it 
   \end{center}
 \end{figure}
 
-We observe the same characteristic of the Bernoulli distribution in Figure \ref{P3fig_1} as we discussed about its median above. If the $\mathrm{p<0.5}$ then there are more failures than successes, indicated by the taller PMF at 0. On the other hand, if If the $\mathrm{p>0.5}$ then there are more successes than failures, which is reflected in the PMF plot being taller at 1. The plot of the PMF when $\mathrm{p=0.5}$ suggests that there are equal chances for success as there is for failure.
+We observe the same characteristic of the Bernoulli distribution in Figure \ref{P3fig_1} as we discussed about its median above. If the $\mathrm{p<0.5}$ then there are more failures than successes, indicated by the taller PMF at 0. On the other hand, if If the $\mathrm{p>0.5}$ then there are more successes than failures, which is reflected in the PMF plot being taller at 1. The plot of the PMF when $\mathrm{p=0.5}$ suggests that there is an equal chance for success as there is for failure.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%  Part (e)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -421,7 +422,7 @@ In the Figure \ref{P3fig_2}, we can see that with increasing p, the most of the 
 \begin{alltt}
 \hlcom{# Using sampling with replacement to generate arrays of 0 and 1}
 
-\hlkwd{library}\hlstd{(ggplot2)}
+\hlkwd{library}\hlstd{(tidyverse)}
 \hlkwd{library}\hlstd{(patchwork)}
 
 \hlstd{plot.df} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{x} \hlstd{= (}\hlopt{-}\hlnum{1}\hlopt{:}\hlnum{2}\hlstd{),}
@@ -513,7 +514,8 @@ In the Figure \ref{P3fig_2}, we can see that with increasing p, the most of the 
           \hlkwd{xlab}\hlstd{(}\hlstr{"y4"}\hlstd{)}\hlopt{+}
           \hlkwd{ggtitle}\hlstd{(}\hlstr{"Bernoulli Distribution"}\hlstd{,}\hlkwc{subtitle} \hlstd{=} \hlstr{"Sample = 1000, Prob =0.6"}\hlstd{)}
 
-\hlstd{(x1}\hlopt{|}\hlstd{x2}\hlopt{|}\hlstd{x3}\hlopt{|}\hlstd{x4)}\hlopt{/}\hlstd{(y1}\hlopt{|}\hlstd{y2}\hlopt{|}\hlstd{y3}\hlopt{|}\hlstd{y4)}
+\hlcom{#(x1|x2|x3|x4)/(y1|y2|y3|y4)}
+\hlstd{(x1}\hlopt{+}\hlstd{y1)}\hlopt{/}\hlstd{(x2}\hlopt{+}\hlstd{y2)}\hlopt{/}\hlstd{(x3}\hlopt{+}\hlstd{y3)}\hlopt{/}\hlstd{(x4}\hlopt{+}\hlstd{y4)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -524,7 +526,7 @@ In the Figure \ref{P3fig_2}, we can see that with increasing p, the most of the 
   % note below I use message=FALSE and warning=FALSE to surpress what's printed
   % when running library(ggmap) or library(patchwork) which would otherwise cause
   % an error because Sweave is expecting just a graph (not a graph + text)
-  \includegraphics[width=7in, height=4in]{figure/histograms.png}
+  \includegraphics[width=5in, height=8.5in]{figure/histogram.pdf}
     \caption{(Top row) Samples of 10, 25, 100, 1000 for the Bernoulli distribution with p = 0.4. (Bottom row) Samples of 10, 25, 100, 1000 for the Bernoulli distribution with p = 0.6. In each plot the red lines indicate the true PMF function of the corresponding Bernoulli distribution. Notice that the y-axis indicates the prportional frequency in the histograms}
     \label{P3fig_3} %we can now reference P3fig_1
   \end{center}
